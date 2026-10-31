@@ -7,3 +7,4 @@ formal/*/
 !formal/*.sby
 logs/tmp/
 .vscode/
+docker/local-ca.crt

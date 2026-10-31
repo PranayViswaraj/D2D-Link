@@ -10,8 +10,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Verilator 5.020, Yosys 0.33, SMT solvers
 RUN apt-get update && apt-get install -y --no-install-recommends \
       verilator yosys z3 boolector && rm -rf /var/lib/apt/lists/*
+# Optional site CA (e.g. antivirus/proxy TLS inspection root): put it in docker/local-ca.crt.
+# The file is git-ignored; without it the build uses the stock CA bundle.
+COPY docker/ /tmp/ctx/
+RUN if [ -f /tmp/ctx/local-ca.crt ]; then cp /tmp/ctx/local-ca.crt /usr/local/share/ca-certificates/; fi \
+      && update-ca-certificates --fresh && rm -rf /tmp/ctx
 # SymbiYosys matching the distro Yosys version
-RUN git clone --depth 1 -b ${SBY_TAG} https://github.com/YosysHQ/sby /tmp/sby \
+RUN mkdir /tmp/sby && curl -fsSL https://github.com/YosysHQ/sby/archive/refs/tags/${SBY_TAG}.tar.gz \
+      | tar -xz -C /tmp/sby --strip-components=1 \
       && make -C /tmp/sby install PREFIX=/usr/local && rm -rf /tmp/sby
 RUN curl -fsSL https://github.com/chipsalliance/verible/releases/download/${VERIBLE}/verible-${VERIBLE}-linux-static-x86_64.tar.gz \
       | tar -xz -C /opt && ln -s /opt/verible-${VERIBLE} /opt/verible
