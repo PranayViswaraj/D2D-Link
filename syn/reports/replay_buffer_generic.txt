@@ -1,0 +1,26 @@
+
+20. Printing statistics.
+
+=== replay_buffer ===
+
+   Number of wires:               1562
+   Number of wire bits:           3061
+   Number of public wires:          39
+   Number of public wire bits:    1524
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2935
+     $_ANDNOT_                     140
+     $_AND_                         13
+     $_DFFE_PP_                   1280
+     $_MUX_                       1224
+     $_NAND_                        11
+     $_NOR_                         12
+     $_NOT_                         42
+     $_ORNOT_                       34
+     $_OR_                          47
+     $_SDFF_PN0_                    24
+     $_XNOR_                        21
+     $_XOR_                         87
+

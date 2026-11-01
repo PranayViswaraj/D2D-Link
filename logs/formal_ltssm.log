@@ -1,0 +1,109 @@
+SBY  5:05:01 [ltssm_bmc] Removing directory '/work/formal/ltssm_bmc'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/ltssm_bmc/src/d2d_checks.svh'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/d2d_defs.svh' to '/work/formal/ltssm_bmc/src/d2d_defs.svh'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/link_training_fsm.sv' to '/work/formal/ltssm_bmc/src/link_training_fsm.sv'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/formal/ltssm_props.sv' to '/work/formal/ltssm_bmc/src/ltssm_props.sv'.
+SBY  5:05:01 [ltssm_bmc] engine_0: smtbmc z3
+SBY  5:05:01 [ltssm_cover] Removing directory '/work/formal/ltssm_cover'.
+SBY  5:05:01 [ltssm_cover] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/ltssm_cover/src/d2d_checks.svh'.
+SBY  5:05:01 [ltssm_cover] Copy '/work/rtl/d2d_defs.svh' to '/work/formal/ltssm_cover/src/d2d_defs.svh'.
+SBY  5:05:01 [ltssm_cover] Copy '/work/rtl/link_training_fsm.sv' to '/work/formal/ltssm_cover/src/link_training_fsm.sv'.
+SBY  5:05:02 [ltssm_cover] Copy '/work/formal/ltssm_props.sv' to '/work/formal/ltssm_cover/src/ltssm_props.sv'.
+SBY  5:05:02 [ltssm_cover] engine_0: smtbmc z3
+SBY  5:05:02 [ltssm_bmc] base: starting process "cd ltssm_bmc/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:05:02 [ltssm_cover] base: starting process "cd ltssm_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:05:03 [ltssm_bmc] base: finished (returncode=0)
+SBY  5:05:03 [ltssm_cover] base: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] prep: starting process "cd ltssm_bmc/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:05:03 [ltssm_cover] prep: starting process "cd ltssm_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:05:03 [ltssm_bmc] prep: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] smt2: starting process "cd ltssm_bmc/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:05:03 [ltssm_cover] prep: finished (returncode=0)
+SBY  5:05:03 [ltssm_cover] smt2: starting process "cd ltssm_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:05:03 [ltssm_bmc] smt2: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] engine_0: starting process "cd ltssm_bmc; yosys-smtbmc -s z3 --presat --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  5:05:03 [ltssm_cover] smt2: finished (returncode=0)
+SBY  5:05:03 [ltssm_cover] engine_0: starting process "cd ltssm_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  5:05:04 [ltssm_bmc] engine_0: ##   0:00:00  Solver: z3
+SBY  5:05:04 [ltssm_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  5:05:04 [ltssm_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY  5:05:04 [ltssm_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  5:06:04 [ltssm_bmc] engine_0: ##   0:01:00  waiting for solver (1 minute)
+SBY  5:06:04 [ltssm_cover] engine_0: ##   0:01:00  waiting for solver (1 minute)
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 0..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 1..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 1..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 2..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 2..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 3..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 3..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 4..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 4..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 5..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 5..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 6..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 6..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 7..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 7..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 8..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 8..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 9..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 9..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 10..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 10..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 11..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 11..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 12..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 12..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 13..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 13..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 14..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 14..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 15..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 15..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 16..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 16..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 17..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 17..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 18..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 1..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 2..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 3..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 4..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 18..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 5..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 19..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Reached cover statement at ltssm_props.sv:53.29-54.44 ($cover$ltssm_props.sv:53$159) in step 5.
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Reached cover statement at ltssm_props.sv:52.43-53.28 ($cover$ltssm_props.sv:52$158) in step 5.
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 19..
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  5:09:19 [ltssm_cover] engine_0: ##   0:04:15  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 5..
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:15  Checking cover reachability in step 6..
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:16  Reached cover statement at ltssm_props.sv:54.45-55.28 ($cover$ltssm_props.sv:54$160) in step 6.
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:16  Writing trace to VCD file: engine_0/trace1.vcd
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:16  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:16  Writing trace to constraints file: engine_0/trace1.smtc
+SBY  5:09:20 [ltssm_cover] engine_0: ##   0:04:16  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY  5:09:23 [ltssm_bmc] engine_0: ##   0:04:18  Status: passed
+SBY  5:09:24 [ltssm_bmc] engine_0: finished (returncode=0)
+SBY  5:09:24 [ltssm_bmc] engine_0: Status returned by engine: pass
+SBY  5:09:24 [ltssm_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:04:23 (263)
+SBY  5:09:24 [ltssm_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:04:17 (257)
+SBY  5:09:24 [ltssm_bmc] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:09:24 [ltssm_bmc] summary: engine_0 did not produce any traces
+SBY  5:09:24 [ltssm_bmc] DONE (PASS, rc=0)
+SBY  5:09:25 [ltssm_cover] engine_0: ##   0:04:21  Status: passed
+SBY  5:09:25 [ltssm_cover] engine_0: finished (returncode=0)
+SBY  5:09:26 [ltssm_cover] engine_0: Status returned by engine: pass
+SBY  5:09:26 [ltssm_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:04:24 (264)
+SBY  5:09:26 [ltssm_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:08:36 (516)
+SBY  5:09:26 [ltssm_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:09:26 [ltssm_cover] summary: cover trace: ltssm_cover/engine_0/trace0.vcd
+SBY  5:09:26 [ltssm_cover] summary:   reached cover statement ltssm_props.$cover$ltssm_props.sv:52$158 at ltssm_props.sv:52.43-53.28 in step 5
+SBY  5:09:26 [ltssm_cover] summary:   reached cover statement ltssm_props.$cover$ltssm_props.sv:53$159 at ltssm_props.sv:53.29-54.44 in step 5
+SBY  5:09:26 [ltssm_cover] summary: cover trace: ltssm_cover/engine_0/trace1.vcd
+SBY  5:09:26 [ltssm_cover] summary:   reached cover statement ltssm_props.$cover$ltssm_props.sv:54$160 at ltssm_props.sv:54.45-55.28 in step 6
+SBY  5:09:26 [ltssm_cover] DONE (PASS, rc=0)

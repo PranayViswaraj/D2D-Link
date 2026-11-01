@@ -1,0 +1,14 @@
+{
+ "coverage_pct": 100.0,
+ "bins_hit": 233,
+ "bins_total": 233,
+ "cov_files": 44,
+ "transactions": 5108,
+ "faults": 3604,
+ "replays": 353,
+ "naks": 350,
+ "timeouts": 62,
+ "retrains": 26,
+ "crc_errors": 1361,
+ "runs_with_results": 44
+}

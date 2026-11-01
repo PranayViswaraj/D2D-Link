@@ -1,0 +1,28 @@
+
+20. Printing statistics.
+
+=== apb_csr ===
+
+   Number of wires:                445
+   Number of wire bits:            790
+   Number of public wires:          37
+   Number of public wire bits:     382
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                580
+     $_ANDNOT_                     169
+     $_AND_                         21
+     $_MUX_                         33
+     $_NAND_                         8
+     $_NOR_                          7
+     $_NOT_                          5
+     $_ORNOT_                       26
+     $_OR_                         159
+     $_SDFFE_PN0N_                  83
+     $_SDFFE_PN0P_                   4
+     $_SDFF_PN0_                    29
+     $_SDFF_PN1_                     4
+     $_XNOR_                         2
+     $_XOR_                         30
+

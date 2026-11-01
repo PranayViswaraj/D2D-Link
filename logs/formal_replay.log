@@ -1,0 +1,104 @@
+SBY  5:02:05 [replay_prove] Removing directory '/work/formal/replay_prove'.
+SBY  5:02:06 [replay_prove] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/replay_prove/src/d2d_checks.svh'.
+SBY  5:02:06 [replay_prove] Copy '/work/rtl/replay_buffer.sv' to '/work/formal/replay_prove/src/replay_buffer.sv'.
+SBY  5:02:06 [replay_prove] Copy '/work/formal/replay_props.sv' to '/work/formal/replay_prove/src/replay_props.sv'.
+SBY  5:02:06 [replay_prove] engine_0: smtbmc z3
+SBY  5:02:06 [replay_cover] Removing directory '/work/formal/replay_cover'.
+SBY  5:02:07 [replay_cover] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/replay_cover/src/d2d_checks.svh'.
+SBY  5:02:07 [replay_cover] Copy '/work/rtl/replay_buffer.sv' to '/work/formal/replay_cover/src/replay_buffer.sv'.
+SBY  5:02:07 [replay_cover] Copy '/work/formal/replay_props.sv' to '/work/formal/replay_cover/src/replay_props.sv'.
+SBY  5:02:07 [replay_cover] engine_0: smtbmc z3
+SBY  5:02:07 [replay_prove] base: starting process "cd replay_prove/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:02:07 [replay_cover] base: starting process "cd replay_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:02:08 [replay_cover] base: finished (returncode=0)
+SBY  5:02:08 [replay_prove] base: finished (returncode=0)
+SBY  5:02:08 [replay_cover] prep: starting process "cd replay_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:02:08 [replay_prove] prep: starting process "cd replay_prove/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:02:08 [replay_cover] prep: finished (returncode=0)
+SBY  5:02:08 [replay_cover] smt2: starting process "cd replay_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:02:08 [replay_prove] prep: finished (returncode=0)
+SBY  5:02:08 [replay_prove] smt2: starting process "cd replay_prove/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:02:09 [replay_prove] smt2: finished (returncode=0)
+SBY  5:02:09 [replay_cover] smt2: finished (returncode=0)
+SBY  5:02:09 [replay_prove] engine_0.basecase: starting process "cd replay_prove; yosys-smtbmc -s z3 --presat --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  5:02:09 [replay_prove] engine_0.induction: starting process "cd replay_prove; yosys-smtbmc -s z3 --presat -i --noprogress -t 20  --append 0 --dump-vcd engine_0/trace_induct.vcd --dump-yw engine_0/trace_induct.yw --dump-vlogtb engine_0/trace_induct_tb.v --dump-smtc engine_0/trace_induct.smtc model/design_smt2.smt2"
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Solver: z3
+SBY  5:02:09 [replay_prove] engine_0.induction: ##   0:00:00  Solver: z3
+SBY  5:02:09 [replay_cover] engine_0: starting process "cd replay_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 0..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 0..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 1..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 1..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 2..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 2..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 3..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 3..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 4..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 4..
+SBY  5:02:09 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assumptions in step 5..
+SBY  5:02:10 [replay_prove] engine_0.basecase: ##   0:00:00  Checking assertions in step 5..
+SBY  5:02:10 [replay_prove] engine_0.induction: ##   0:00:00  Trying induction in step 20..
+SBY  5:02:10 [replay_prove] engine_0.induction: ##   0:00:00  Trying induction in step 19..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Reached cover statement at replay_props.sv:45.60-46.41 ($cover$replay_props.sv:45$93) in step 5.
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Status: passed
+SBY  5:02:10 [replay_cover] engine_0: finished (returncode=0)
+SBY  5:02:10 [replay_cover] engine_0: Status returned by engine: pass
+SBY  5:02:10 [replay_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:03 (3)
+SBY  5:02:10 [replay_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY  5:02:10 [replay_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:02:10 [replay_cover] summary: cover trace: replay_cover/engine_0/trace0.vcd
+SBY  5:02:10 [replay_cover] summary:   reached cover statement replay_props.$cover$replay_props.sv:45$93 at replay_props.sv:45.60-46.41 in step 5
+SBY  5:02:10 [replay_cover] DONE (PASS, rc=0)
+SBY  5:02:12 [replay_prove] engine_0.induction: ##   0:00:03  Temporal induction successful.
+SBY  5:02:12 [replay_prove] engine_0.induction: ##   0:00:03  Status: passed
+SBY  5:02:12 [replay_prove] engine_0.induction: finished (returncode=0)
+SBY  5:02:12 [replay_prove] engine_0.induction: Status returned by engine for induction: pass
+SBY  5:02:15 [replay_prove] engine_0.basecase: ##   0:00:06  Checking assumptions in step 6..
+SBY  5:02:15 [replay_prove] engine_0.basecase: ##   0:00:06  Checking assertions in step 6..
+SBY  5:02:18 [replay_prove] engine_0.basecase: ##   0:00:08  Checking assumptions in step 7..
+SBY  5:02:18 [replay_prove] engine_0.basecase: ##   0:00:08  Checking assertions in step 7..
+SBY  5:02:20 [replay_prove] engine_0.basecase: ##   0:00:11  Checking assumptions in step 8..
+SBY  5:02:20 [replay_prove] engine_0.basecase: ##   0:00:11  Checking assertions in step 8..
+SBY  5:02:22 [replay_prove] engine_0.basecase: ##   0:00:13  Checking assumptions in step 9..
+SBY  5:02:22 [replay_prove] engine_0.basecase: ##   0:00:13  Checking assertions in step 9..
+SBY  5:02:24 [replay_prove] engine_0.basecase: ##   0:00:14  Checking assumptions in step 10..
+SBY  5:02:24 [replay_prove] engine_0.basecase: ##   0:00:15  Checking assertions in step 10..
+SBY  5:02:26 [replay_prove] engine_0.basecase: ##   0:00:17  Checking assumptions in step 11..
+SBY  5:02:27 [replay_prove] engine_0.basecase: ##   0:00:17  Checking assertions in step 11..
+SBY  5:02:32 [replay_prove] engine_0.basecase: ##   0:00:23  Checking assumptions in step 12..
+SBY  5:02:33 [replay_prove] engine_0.basecase: ##   0:00:23  Checking assertions in step 12..
+SBY  5:02:35 [replay_prove] engine_0.basecase: ##   0:00:25  Checking assumptions in step 13..
+SBY  5:02:35 [replay_prove] engine_0.basecase: ##   0:00:26  Checking assertions in step 13..
+SBY  5:02:38 [replay_prove] engine_0.basecase: ##   0:00:29  Checking assumptions in step 14..
+SBY  5:02:39 [replay_prove] engine_0.basecase: ##   0:00:29  Checking assertions in step 14..
+SBY  5:02:41 [replay_prove] engine_0.basecase: ##   0:00:32  Checking assumptions in step 15..
+SBY  5:02:42 [replay_prove] engine_0.basecase: ##   0:00:33  Checking assertions in step 15..
+SBY  5:02:45 [replay_prove] engine_0.basecase: ##   0:00:35  Checking assumptions in step 16..
+SBY  5:02:45 [replay_prove] engine_0.basecase: ##   0:00:36  Checking assertions in step 16..
+SBY  5:02:48 [replay_prove] engine_0.basecase: ##   0:00:38  Checking assumptions in step 17..
+SBY  5:02:49 [replay_prove] engine_0.basecase: ##   0:00:39  Checking assertions in step 17..
+SBY  5:02:50 [replay_prove] engine_0.basecase: ##   0:00:41  Checking assumptions in step 18..
+SBY  5:02:53 [replay_prove] engine_0.basecase: ##   0:00:43  Checking assertions in step 18..
+SBY  5:02:55 [replay_prove] engine_0.basecase: ##   0:00:46  Checking assumptions in step 19..
+SBY  5:02:56 [replay_prove] engine_0.basecase: ##   0:00:47  Checking assertions in step 19..
+SBY  5:02:58 [replay_prove] engine_0.basecase: ##   0:00:49  Status: passed
+SBY  5:02:58 [replay_prove] engine_0.basecase: finished (returncode=0)
+SBY  5:02:58 [replay_prove] engine_0.basecase: Status returned by engine for basecase: pass
+SBY  5:02:58 [replay_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:53 (53)
+SBY  5:02:58 [replay_prove] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:54 (54)
+SBY  5:02:58 [replay_prove] summary: engine_0 (smtbmc z3) returned pass for basecase
+SBY  5:02:58 [replay_prove] summary: engine_0 (smtbmc z3) returned pass for induction
+SBY  5:02:58 [replay_prove] summary: engine_0 did not produce any traces
+SBY  5:02:58 [replay_prove] summary: successful proof by k-induction.
+SBY  5:02:58 [replay_prove] DONE (PASS, rc=0)

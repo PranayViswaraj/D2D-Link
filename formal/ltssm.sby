@@ -1,0 +1,21 @@
+[tasks]
+bmc
+cover
+
+[options]
+bmc: mode bmc
+cover: mode cover
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+read_verilog -sv -formal -I. link_training_fsm.sv ltssm_props.sv
+prep -top ltssm_props
+
+[files]
+../rtl/d2d_checks.svh
+../rtl/d2d_defs.svh
+../rtl/link_training_fsm.sv
+ltssm_props.sv

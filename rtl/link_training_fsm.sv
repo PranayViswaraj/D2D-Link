@@ -140,4 +140,10 @@ module link_training_fsm #(
     end
   end
 `endif
+`ifdef FORMAL
+  // FAILED is entered only once the retry budget is exhausted
+  always_comb begin
+    if (rst_n && state_q != ST_FAILED && state_d == ST_FAILED) assert (attempts >= max_retrain);
+  end
+`endif
 endmodule

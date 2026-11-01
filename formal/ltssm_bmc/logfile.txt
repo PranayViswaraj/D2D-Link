@@ -1,0 +1,63 @@
+SBY  5:05:01 [ltssm_bmc] Removing directory '/work/formal/ltssm_bmc'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/ltssm_bmc/src/d2d_checks.svh'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/d2d_defs.svh' to '/work/formal/ltssm_bmc/src/d2d_defs.svh'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/rtl/link_training_fsm.sv' to '/work/formal/ltssm_bmc/src/link_training_fsm.sv'.
+SBY  5:05:01 [ltssm_bmc] Copy '/work/formal/ltssm_props.sv' to '/work/formal/ltssm_bmc/src/ltssm_props.sv'.
+SBY  5:05:01 [ltssm_bmc] engine_0: smtbmc z3
+SBY  5:05:02 [ltssm_bmc] base: starting process "cd ltssm_bmc/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:05:03 [ltssm_bmc] base: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] prep: starting process "cd ltssm_bmc/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:05:03 [ltssm_bmc] prep: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] smt2: starting process "cd ltssm_bmc/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:05:03 [ltssm_bmc] smt2: finished (returncode=0)
+SBY  5:05:03 [ltssm_bmc] engine_0: starting process "cd ltssm_bmc; yosys-smtbmc -s z3 --presat --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY  5:05:04 [ltssm_bmc] engine_0: ##   0:00:00  Solver: z3
+SBY  5:05:04 [ltssm_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY  5:06:04 [ltssm_bmc] engine_0: ##   0:01:00  waiting for solver (1 minute)
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 0..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 1..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 1..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 2..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 2..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 3..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 3..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 4..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 4..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 5..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 5..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 6..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 6..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 7..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 7..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 8..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 8..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 9..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 9..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 10..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 10..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 11..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 11..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 12..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 12..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 13..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 13..
+SBY  5:09:18 [ltssm_bmc] engine_0: ##   0:04:14  Checking assumptions in step 14..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:14  Checking assertions in step 14..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 15..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 15..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 16..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 16..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 17..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 17..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 18..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 18..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assumptions in step 19..
+SBY  5:09:19 [ltssm_bmc] engine_0: ##   0:04:15  Checking assertions in step 19..
+SBY  5:09:23 [ltssm_bmc] engine_0: ##   0:04:18  Status: passed
+SBY  5:09:24 [ltssm_bmc] engine_0: finished (returncode=0)
+SBY  5:09:24 [ltssm_bmc] engine_0: Status returned by engine: pass
+SBY  5:09:24 [ltssm_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:04:23 (263)
+SBY  5:09:24 [ltssm_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:04:17 (257)
+SBY  5:09:24 [ltssm_bmc] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:09:24 [ltssm_bmc] summary: engine_0 did not produce any traces
+SBY  5:09:24 [ltssm_bmc] DONE (PASS, rc=0)

@@ -1,0 +1,4 @@
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---------------- generated xml file: /work/logs/unit_junit.xml -----------------
+9 passed, 1 warning in 654.54s (0:10:54)
+unit wall 667 s

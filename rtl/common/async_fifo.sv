@@ -36,6 +36,8 @@ module async_fifo #(
     gray2bin = b;
   endfunction
 
+  // [0:N-1] kept for Yosys 0.33 compatibility
+  // verilog_lint: waive unpacked-dimensions-range-ordering
   logic [W-1:0] mem[0:DEPTH-1];
 
   // ---------------- write domain ----------------
@@ -93,8 +95,29 @@ module async_fifo #(
       .clk(rclk), .rst_n(rrst_n), .d(wgray), .q(rq2_wgray)
   );
 
-`ifdef D2D_CHECKS
+`ifdef FORMAL
+  // True occupancy (both domains' binary pointers) never exceeds DEPTH and never
+  // underflows; each gray pointer changes by at most one bit per own-clock edge;
+  // the (pessimistic) empty flag never claims data that is not there.
+  logic [AW:0] f_wg_prev, f_rg_prev, f_occ, f_wd, f_rd;
+  always_ff @(posedge wclk) f_wg_prev <= wrst_n ? wgray : '0;
+  always_ff @(posedge rclk) f_rg_prev <= rrst_n ? rgray : '0;
+  assign f_occ = wbin - rbin;
+  assign f_wd  = wgray ^ f_wg_prev;
+  assign f_rd  = rgray ^ f_rg_prev;
+  always_comb begin
+    if (wrst_n && rrst_n) begin
+      assert (f_occ <= DEPTH);
+      assert ((f_wd & (f_wd - 1'b1)) == '0);
+      assert ((f_rd & (f_rd - 1'b1)) == '0);
+      if (!empty) assert (f_occ != '0);
+    end
+  end
+`endif
+
+`ifdef SIM
   // Usage contract: callers must never push when full or pop when empty.
+  // (Checked in simulation on the real callers; assumed by the formal wrapper.)
   always_ff @(posedge wclk) if (wrst_n) assert (!(wr_en && full));
   always_ff @(posedge rclk) if (rrst_n) assert (!(rd_en && empty));
 `endif

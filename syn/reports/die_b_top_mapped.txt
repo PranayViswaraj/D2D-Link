@@ -1,0 +1,67 @@
+25. Printing statistics.
+
+=== die_b_top ===
+
+   Number of wires:              18558
+   Number of wire bits:          26946
+   Number of public wires:         510
+   Number of public wire bits:    8898
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              22431
+     sky130_fd_sc_hd__a2111o_1       1
+     sky130_fd_sc_hd__a2111oi_0      1
+     sky130_fd_sc_hd__a211oi_1      97
+     sky130_fd_sc_hd__a21o_2         3
+     sky130_fd_sc_hd__a21oi_1     1421
+     sky130_fd_sc_hd__a221o_2        2
+     sky130_fd_sc_hd__a221oi_1      61
+     sky130_fd_sc_hd__a22o_2         5
+     sky130_fd_sc_hd__a22oi_1       87
+     sky130_fd_sc_hd__a311oi_1       1
+     sky130_fd_sc_hd__a31o_2         1
+     sky130_fd_sc_hd__a31oi_1      217
+     sky130_fd_sc_hd__a32o_1        98
+     sky130_fd_sc_hd__a32oi_1      125
+     sky130_fd_sc_hd__a41oi_1       14
+     sky130_fd_sc_hd__and2_2         8
+     sky130_fd_sc_hd__and3_2         6
+     sky130_fd_sc_hd__and3b_2        1
+     sky130_fd_sc_hd__clkinv_1     999
+     sky130_fd_sc_hd__dfrtp_1        4
+     sky130_fd_sc_hd__dfxtp_1     4250
+     sky130_fd_sc_hd__maj3_1         6
+     sky130_fd_sc_hd__mux2_2        28
+     sky130_fd_sc_hd__mux2i_1       20
+     sky130_fd_sc_hd__nand2_1     6766
+     sky130_fd_sc_hd__nand3_1      351
+     sky130_fd_sc_hd__nand3b_1      14
+     sky130_fd_sc_hd__nand4_1      106
+     sky130_fd_sc_hd__nor2_1      2522
+     sky130_fd_sc_hd__nor3_1       116
+     sky130_fd_sc_hd__nor3b_1        5
+     sky130_fd_sc_hd__nor4_1        45
+     sky130_fd_sc_hd__nor4b_1        6
+     sky130_fd_sc_hd__o2111a_1       2
+     sky130_fd_sc_hd__o2111ai_1      4
+     sky130_fd_sc_hd__o211a_1        5
+     sky130_fd_sc_hd__o211ai_1     133
+     sky130_fd_sc_hd__o21a_1        89
+     sky130_fd_sc_hd__o21ai_0     3918
+     sky130_fd_sc_hd__o21bai_1       4
+     sky130_fd_sc_hd__o221ai_1       2
+     sky130_fd_sc_hd__o22ai_1        7
+     sky130_fd_sc_hd__o2bb2ai_1     10
+     sky130_fd_sc_hd__o311ai_0      73
+     sky130_fd_sc_hd__o31a_2         1
+     sky130_fd_sc_hd__o31ai_1       29
+     sky130_fd_sc_hd__o41ai_1        1
+     sky130_fd_sc_hd__or2_2         20
+     sky130_fd_sc_hd__xnor2_1      102
+     sky130_fd_sc_hd__xnor3_4      132
+     sky130_fd_sc_hd__xor2_1       313
+     sky130_fd_sc_hd__xor3_4       199
+
+   Chip area for module '\die_b_top': 175826.131200
+

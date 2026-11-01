@@ -110,7 +110,11 @@ module d2d_system_top #(
 
   reset_sync u_rs_link (.clk(clk_link), .rst_in_n(rst_n), .rst_out_n(rl_n));
 
-  die_a_top #(.REPLAY_DEPTH(REPLAY_DEPTH), .CREDITS_REQ(CREDITS_REQ), .CREDITS_RSP(CREDITS_RSP), .TX_FIFO_DEPTH(TX_FIFO_DEPTH), .REPLAY_TIMEOUT(REPLAY_TIMEOUT), .TRAIN_GOOD(TRAIN_GOOD), .TRAIN_TIMEOUT(TRAIN_TIMEOUT), .STABLE_CYCLES(STABLE_CYCLES)) u_die_a (
+  die_a_top #(
+      .REPLAY_DEPTH(REPLAY_DEPTH), .CREDITS_REQ(CREDITS_REQ), .CREDITS_RSP(CREDITS_RSP),
+      .TX_FIFO_DEPTH(TX_FIFO_DEPTH), .REPLAY_TIMEOUT(REPLAY_TIMEOUT), .TRAIN_GOOD(TRAIN_GOOD),
+      .TRAIN_TIMEOUT(TRAIN_TIMEOUT), .STABLE_CYCLES(STABLE_CYCLES)
+  ) u_die_a (
       .clk_axi(clk_axi_a),
       .rst_axi_n(rst_n),
       .clk_link(clk_link),
@@ -161,7 +165,11 @@ module d2d_system_top #(
       .lane_rx_sof(a_rx_sof)
   );
 
-  die_b_top #(.REPLAY_DEPTH(REPLAY_DEPTH), .CREDITS_REQ(CREDITS_REQ), .CREDITS_RSP(CREDITS_RSP), .TX_FIFO_DEPTH(TX_FIFO_DEPTH), .REPLAY_TIMEOUT(REPLAY_TIMEOUT), .TRAIN_GOOD(TRAIN_GOOD), .TRAIN_TIMEOUT(TRAIN_TIMEOUT), .STABLE_CYCLES(STABLE_CYCLES)) u_die_b (
+  die_b_top #(
+      .REPLAY_DEPTH(REPLAY_DEPTH), .CREDITS_REQ(CREDITS_REQ), .CREDITS_RSP(CREDITS_RSP),
+      .TX_FIFO_DEPTH(TX_FIFO_DEPTH), .REPLAY_TIMEOUT(REPLAY_TIMEOUT), .TRAIN_GOOD(TRAIN_GOOD),
+      .TRAIN_TIMEOUT(TRAIN_TIMEOUT), .STABLE_CYCLES(STABLE_CYCLES)
+  ) u_die_b (
       .clk_axi(clk_axi_b),
       .rst_axi_n(rst_n),
       .clk_link(clk_link),

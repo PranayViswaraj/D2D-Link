@@ -3,10 +3,13 @@ __pycache__/
 *.vcd
 *.fst
 results.xml
-formal/*/
-!formal/*.sby
+formal/*_*/*
+!formal/*_*/logfile.txt
 logs/tmp/
 .vscode/
 docker/local-ca.crt
 *.None
 tb/**/*.xml
+syn/lib/*.lib
+logs/docker_build*.log
+.pytest_cache/

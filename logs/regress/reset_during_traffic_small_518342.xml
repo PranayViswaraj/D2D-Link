@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="518342" />
+    <testcase name="reset_during_traffic" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="21.61295986175537" sim_time_ns="7608.001" ratio_time="352.011064132985" />
+  </testsuite>
+</testsuites>

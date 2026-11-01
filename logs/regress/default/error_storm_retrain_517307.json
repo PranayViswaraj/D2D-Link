@@ -1,0 +1,81 @@
+{
+ "test": "error_storm_retrain",
+ "seed": 517307,
+ "transactions": 150,
+ "responses": 150,
+ "flushed_by_reset": 0,
+ "b_requests": 150,
+ "errors": 0,
+ "faults_a2b": {
+  "single": 27,
+  "multi": 17,
+  "beat": 13,
+  "burst": 22,
+  "drop": 21
+ },
+ "faults_b2a": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 0
+ },
+ "faults_total": 100,
+ "counters_a": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 0,
+  "replay_cnt": 2,
+  "timeout_cnt": 0,
+  "retrain_cnt": 1
+ },
+ "counters_b": {
+  "crc_err_cnt": 79,
+  "nak_cnt": 1,
+  "replay_cnt": 1,
+  "timeout_cnt": 0,
+  "retrain_cnt": 1
+ },
+ "ltssm_arcs": [
+  [
+   "a",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "a",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "a",
+   "RETRAIN",
+   "ACTIVE"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "ACTIVE"
+  ],
+  [
+   "b",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "b",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "b",
+   "RETRAIN",
+   "ACTIVE"
+  ],
+  [
+   "b",
+   "TRAIN",
+   "ACTIVE"
+  ]
+ ],
+ "sim_time_ns": 5387.0
+}

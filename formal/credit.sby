@@ -1,0 +1,21 @@
+[tasks]
+prove
+cover
+
+[options]
+prove: mode prove
+cover: mode cover
+depth 20
+
+[engines]
+prove: abc pdr
+cover: smtbmc z3
+
+[script]
+read_verilog -sv -formal -I. credit_counter.sv credit_props.sv
+prep -top credit_props
+
+[files]
+../rtl/d2d_checks.svh
+../rtl/common/credit_counter.sv
+credit_props.sv

@@ -1,0 +1,17 @@
+
+20. Printing statistics.
+
+=== crc16 ===
+
+   Number of wires:                313
+   Number of wire bits:            450
+   Number of public wires:           4
+   Number of public wire bits:     141
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                325
+     $_NOT_                          4
+     $_XNOR_                        18
+     $_XOR_                        303
+

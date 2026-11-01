@@ -1,0 +1,63 @@
+25. Printing statistics.
+
+=== link_layer ===
+
+   Number of wires:               9383
+   Number of wire bits:          12432
+   Number of public wires:         209
+   Number of public wire bits:    3258
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              11105
+     sky130_fd_sc_hd__a2111oi_0      4
+     sky130_fd_sc_hd__a211oi_1       5
+     sky130_fd_sc_hd__a21boi_0       5
+     sky130_fd_sc_hd__a21o_2         4
+     sky130_fd_sc_hd__a21oi_1     1845
+     sky130_fd_sc_hd__a221o_2        1
+     sky130_fd_sc_hd__a221oi_1       4
+     sky130_fd_sc_hd__a22oi_1        7
+     sky130_fd_sc_hd__a31oi_1       58
+     sky130_fd_sc_hd__a32o_1         2
+     sky130_fd_sc_hd__a32oi_1       10
+     sky130_fd_sc_hd__and2_2         5
+     sky130_fd_sc_hd__and3_2         7
+     sky130_fd_sc_hd__clkinv_1     434
+     sky130_fd_sc_hd__dfxtp_1     1894
+     sky130_fd_sc_hd__lpflow_inputiso0p_1      2
+     sky130_fd_sc_hd__maj3_1         8
+     sky130_fd_sc_hd__mux2i_1       79
+     sky130_fd_sc_hd__nand2_1     1429
+     sky130_fd_sc_hd__nand3_1      237
+     sky130_fd_sc_hd__nand3b_1       9
+     sky130_fd_sc_hd__nand4_1      124
+     sky130_fd_sc_hd__nor2_1      2817
+     sky130_fd_sc_hd__nor3_1        98
+     sky130_fd_sc_hd__nor3b_1        8
+     sky130_fd_sc_hd__nor4_1        33
+     sky130_fd_sc_hd__nor4b_1        2
+     sky130_fd_sc_hd__o2111a_1       1
+     sky130_fd_sc_hd__o2111ai_1      1
+     sky130_fd_sc_hd__o211a_1        1
+     sky130_fd_sc_hd__o211ai_1       4
+     sky130_fd_sc_hd__o21a_1        41
+     sky130_fd_sc_hd__o21ai_0     1137
+     sky130_fd_sc_hd__o21ba_2        1
+     sky130_fd_sc_hd__o21bai_1       6
+     sky130_fd_sc_hd__o221ai_1       6
+     sky130_fd_sc_hd__o22ai_1        8
+     sky130_fd_sc_hd__o2bb2ai_1     15
+     sky130_fd_sc_hd__o31ai_1        5
+     sky130_fd_sc_hd__o41ai_1        4
+     sky130_fd_sc_hd__or2_2         25
+     sky130_fd_sc_hd__or3_2          1
+     sky130_fd_sc_hd__or3b_2         1
+     sky130_fd_sc_hd__or4_2          2
+     sky130_fd_sc_hd__xnor2_1      101
+     sky130_fd_sc_hd__xnor3_4      206
+     sky130_fd_sc_hd__xor2_1       216
+     sky130_fd_sc_hd__xor3_4       192
+
+   Chip area for module '\link_layer': 89295.641600
+

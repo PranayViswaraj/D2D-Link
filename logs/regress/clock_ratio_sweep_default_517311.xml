@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="517311" />
+    <testcase name="clock_ratio_sweep" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="36.018397092819214" sim_time_ns="13191.601" ratio_time="366.24619818603577" />
+  </testsuite>
+</testsuites>

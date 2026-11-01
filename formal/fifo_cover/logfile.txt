@@ -1,0 +1,41 @@
+SBY  4:57:47 [fifo_prove] Removing directory '/work/formal/fifo_prove'.
+SBY  4:57:49 [fifo_cover] Removing directory '/work/formal/fifo_cover'.
+SBY  4:57:49 [fifo_cover] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/fifo_cover/src/d2d_checks.svh'.
+SBY  4:57:49 [fifo_cover] Copy '/work/rtl/common/sync_2ff.sv' to '/work/formal/fifo_cover/src/sync_2ff.sv'.
+SBY  4:57:49 [fifo_cover] Copy '/work/rtl/common/async_fifo.sv' to '/work/formal/fifo_cover/src/async_fifo.sv'.
+SBY  4:57:49 [fifo_cover] Copy '/work/formal/fifo_props.sv' to '/work/formal/fifo_cover/src/fifo_props.sv'.
+SBY  4:57:49 [fifo_cover] engine_0: smtbmc z3
+SBY  4:57:49 [fifo_cover] base: starting process "cd fifo_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  4:57:51 [fifo_cover] base: finished (returncode=0)
+SBY  4:57:51 [fifo_cover] prep: starting process "cd fifo_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  4:57:52 [fifo_cover] prep: finished (returncode=0)
+SBY  4:57:52 [fifo_cover] smt2: starting process "cd fifo_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  4:57:53 [fifo_cover] smt2: finished (returncode=0)
+SBY  4:57:53 [fifo_cover] engine_0: starting process "cd fifo_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  4:57:53 [fifo_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  4:57:53 [fifo_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 1..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 2..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 3..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 4..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 5..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 6..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 7..
+SBY  4:57:55 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 8..
+SBY  4:57:56 [fifo_cover] engine_0: ##   0:00:02  Checking cover reachability in step 9..
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Reached cover statement at fifo_props.sv:46.20-47.28 ($cover$fifo_props.sv:46$124) in step 9.
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Reached cover statement at fifo_props.sv:45.42-46.19 ($cover$fifo_props.sv:45$123) in step 9.
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:03  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:04  Status: passed
+SBY  4:57:57 [fifo_cover] engine_0: finished (returncode=0)
+SBY  4:57:57 [fifo_cover] engine_0: Status returned by engine: pass
+SBY  4:57:57 [fifo_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:08 (8)
+SBY  4:57:57 [fifo_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:06 (6)
+SBY  4:57:57 [fifo_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  4:57:57 [fifo_cover] summary: cover trace: fifo_cover/engine_0/trace0.vcd
+SBY  4:57:57 [fifo_cover] summary:   reached cover statement fifo_props.$cover$fifo_props.sv:45$123 at fifo_props.sv:45.42-46.19 in step 9
+SBY  4:57:57 [fifo_cover] summary:   reached cover statement fifo_props.$cover$fifo_props.sv:46$124 at fifo_props.sv:46.20-47.28 in step 9
+SBY  4:57:57 [fifo_cover] DONE (PASS, rc=0)

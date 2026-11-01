@@ -1,0 +1,12 @@
+async_fifo           generic_cells=2631   sky130_area_um2=52576.675200 flops=1320   abc_comb_delay_ps=14780.67
+crc16                generic_cells=325    sky130_area_um2=7534.726400  flops=0      abc_comb_delay_ps=9025.16
+replay_buffer        generic_cells=2935   sky130_area_um2=50064.265600 flops=1304   abc_comb_delay_ps=11038.33
+flit_tx              generic_cells=1027   sky130_area_um2=13319.024000 flops=155    abc_comb_delay_ps=11163.27
+flit_rx              generic_cells=791    sky130_area_um2=17401.689600 flops=238    abc_comb_delay_ps=10746.34
+link_training_fsm    generic_cells=450    sky130_area_um2=3762.358400  flops=60     abc_comb_delay_ps=2698.10
+link_layer           generic_cells=7188   sky130_area_um2=89295.641600 flops=1894   abc_comb_delay_ps=20827.49
+axi_slave_adapter    generic_cells=242    sky130_area_um2=1695.376000  flops=12     abc_comb_delay_ps=3377.69
+axi_master_adapter   generic_cells=200    sky130_area_um2=2566.211200  flops=55     abc_comb_delay_ps=3072.39
+apb_csr              generic_cells=580    sky130_area_um2=5671.689600  flops=120    abc_comb_delay_ps=4616.98
+die_a_top            generic_cells=12126  sky130_area_um2=179397.056000 flops=4309   abc_comb_delay_ps=20373.27
+die_b_top            generic_cells=12499  sky130_area_um2=175826.131200 flops=4254   abc_comb_delay_ps=20078.45

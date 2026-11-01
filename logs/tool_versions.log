@@ -1,0 +1,13 @@
+Verilator 5.020 2024-01-01 rev (Debian 5.020-1)
+Yosys 0.33 (git sha1 2584903a060)
+/usr/local/bin/sby
+/usr/bin/yosys-smtbmc
+Z3 version 4.8.12 - 64 bit
+1.5.118
+Version	v0.0-4298-g085eef05
+Python 3.12.3
+cocotb            1.9.2
+cocotb-coverage   1.2.0
+pytest            8.3.4
+pyuvm             3.0.0
+4

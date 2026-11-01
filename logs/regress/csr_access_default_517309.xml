@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="517309" />
+    <testcase name="csr_access" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="5.333468914031982" sim_time_ns="1709.001" ratio_time="320.42954173853684" />
+  </testsuite>
+</testsuites>

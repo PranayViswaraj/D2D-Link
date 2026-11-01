@@ -1,0 +1,34 @@
+SBY  5:01:48 [credit_prove] Removing directory '/work/formal/credit_prove'.
+SBY  5:01:48 [credit_cover] Removing directory '/work/formal/credit_cover'.
+SBY  5:01:48 [credit_cover] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/credit_cover/src/d2d_checks.svh'.
+SBY  5:01:48 [credit_cover] Copy '/work/rtl/common/credit_counter.sv' to '/work/formal/credit_cover/src/credit_counter.sv'.
+SBY  5:01:49 [credit_cover] Copy '/work/formal/credit_props.sv' to '/work/formal/credit_cover/src/credit_props.sv'.
+SBY  5:01:49 [credit_cover] engine_0: smtbmc z3
+SBY  5:01:49 [credit_cover] base: starting process "cd credit_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:01:50 [credit_cover] base: finished (returncode=0)
+SBY  5:01:50 [credit_cover] prep: starting process "cd credit_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:01:50 [credit_cover] prep: finished (returncode=0)
+SBY  5:01:50 [credit_cover] smt2: starting process "cd credit_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:01:50 [credit_cover] smt2: finished (returncode=0)
+SBY  5:01:50 [credit_cover] engine_0: starting process "cd credit_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Reached cover statement at credit_props.sv:49.81-50.39 ($cover$credit_props.sv:49$78) in step 5.
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Status: passed
+SBY  5:01:51 [credit_cover] engine_0: finished (returncode=0)
+SBY  5:01:51 [credit_cover] engine_0: Status returned by engine: pass
+SBY  5:01:51 [credit_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY  5:01:51 [credit_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  5:01:51 [credit_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:01:51 [credit_cover] summary: cover trace: credit_cover/engine_0/trace0.vcd
+SBY  5:01:51 [credit_cover] summary:   reached cover statement credit_props.$cover$credit_props.sv:49$78 at credit_props.sv:49.81-50.39 in step 5
+SBY  5:01:51 [credit_cover] DONE (PASS, rc=0)

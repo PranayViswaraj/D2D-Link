@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="517307" />
+    <testcase name="error_storm_retrain" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="18.582406997680664" sim_time_ns="5387.001" ratio_time="289.8979126155385" />
+  </testsuite>
+</testsuites>

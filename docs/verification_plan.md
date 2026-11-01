@@ -72,19 +72,25 @@ d2d_test_base
 | error_storm_retrain | Burst of heavy corruption → RETRAIN, then clean | RETRAIN ≥ 1, traffic completes, no loss |
 | link_fail_and_recover | Corrupt everything until FAILED, then ENABLE toggle via APB | state FAILED seen, IRQ, recovery, no loss |
 | csr_access | Reset values, RW/RO/W1C, unmapped → PSLVERR, force retrain | all checks |
+| ltssm_arcs | Directed FSM corners via CSRs: ACTIVE->FAILED (zero retry budget), RETRAIN->RESET, TRAIN->RESET, TRAIN->FAILED (peer disabled) | each arc observed, link recovers, traffic clean |
 | clock_ratio_sweep | Several unrelated clock period triples | clean for every ratio |
 | reset_during_traffic | Assert reset mid-burst, re-train, new traffic | post-reset traffic clean |
 
 ## 5. Coverage goals
 Functional coverage target: 100% of the bins defined in §3. Any bins not hit are listed with
-the reason in `coverage_report.md`. Code coverage (Verilator `--coverage`) is collected for
-information only.
+the reason in `coverage_report.md`. Code coverage (Verilator `--coverage`) was not collected in
+this time box.
 
-## 6. Formal goals (small config, BMC depth 20–30, ≤ 5 min each)
-| Job | Properties |
-|-----|------------|
-| fifo | !(push && full) never changes state; occupancy ≤ DEPTH; `$countones(g ^ $past(g)) ≤ 1` for both gray pointers; empty ⇔ occupancy==0 in the read domain view |
-| credit | 0 ≤ credits ≤ MAX under arbitrary consume/return, given the environment assumption that returns never exceed what was consumed |
-| replay | ack ≤ rd ≤ wr; wr - ack ≤ DEPTH; no enqueue when full; NAK/timeout rewinds stay in window |
-| retry | Reduced model: replay_buffer + seq-check receiver over a lossy channel (any flit may be dropped/corrupted). Delivered SEQ stream is exactly 0,1,2,… (in order, no loss, no duplication). Cover: replay happens |
-| ltssm | State ∈ {0..4}; FAILED only via the attempt limit; cover RETRAIN→ACTIVE |
+## 6. Formal (small config, ≤ 5 min per task, `scripts/run_formal.sh`)
+
+Solvers: the Ubuntu `boolector` package (1.5.x) is too old for yosys-smtbmc, and yices is not
+packaged, so the jobs use **z3 4.8.12** (BMC/cover) and Yosys' built-in **ABC PDR** (unbounded
+proofs). Results: `logs/formal_summary.txt` and `formal/<job>_<task>/logfile.txt`.
+
+| Job | Mode | Properties | Environment assumptions |
+|-----|------|------------|-------------------------|
+| fifo | prove (PDR), cover | true occupancy ≤ DEPTH (no overflow / underflow); each gray pointer changes ≤ 1 bit per own-clock edge; `!empty ⇒ occupancy ≠ 0`; popped data = oldest pushed (no loss, duplication or reordering). Two unconstrained, unrelated clocks (`multiclock on`) | both domains reset together and never re-reset; callers never push when full or pop when empty (this contract is asserted in simulation on the real callers) |
+| credit | prove (PDR), cover | credits ∈ [0, MAX]; receiver buffer never overflows; conservation: credits + buffer occupancy + unreturned frees == MAX, with the **cumulative** freed count delivered late or not at all | carried freed count is some earlier value of the receiver's counter |
+| replay | prove (k-induction), cover | ack ≤ rd ≤ wr; wr − ack ≤ DEPTH; full never accepts; rewind lands on ack_seq; arbitrary (even out-of-window) ACK inputs | none beyond reset |
+| retry | prove (PDR), cover | Reduced Go-Back-N link: replay_buffer → channel that may drop/corrupt any flit → seq-check receiver → lossy ACK/NAK path + arbitrary timeouts. Delivered stream is exactly 0,1,2,…; never delivers an unsent flit; receiver ACK always in window. Covers: a replay happens and the stream continues past it | none beyond reset |
+| ltssm | BMC depth 30, cover | state ∈ {0..4}; ACTIVE entered only from TRAIN/RETRAIN with a lock; FAILED only once the attempt budget is used up; FAILED sticky while enabled. Covers: ACTIVE, RETRAIN→ACTIVE, FAILED | receive events mutually exclusive as produced by flit_rx; max_retrain ≤ 2 |

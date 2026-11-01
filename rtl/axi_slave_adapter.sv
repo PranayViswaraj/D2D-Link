@@ -66,13 +66,15 @@ module axi_slave_adapter #(
   logic          wr_ok, rd_ok, take_aw, take_ar, w_hs, w_last, b_hs, r_hs, r_done;
 
   // ---------------- request path ----------------
-  assign wr_ok   = !in_wdata && s_axi_awvalid && (wr_out != MAXO) && !req_full;
-  assign rd_ok   = !in_wdata && s_axi_arvalid && (rd_out != MAXO) && !req_full;
+  // READY is gated with the synchronized reset: the pin reset deasserts 2 clocks
+  // before rst_n, and a handshake accepted in that window would be lost (bug_log #1).
+  assign wr_ok   = rst_n && !in_wdata && s_axi_awvalid && (wr_out != MAXO) && !req_full;
+  assign rd_ok   = rst_n && !in_wdata && s_axi_arvalid && (rd_out != MAXO) && !req_full;
   assign take_aw = wr_ok && (!rd_ok || !prio_rd);
   assign take_ar = rd_ok && !take_aw;
   assign s_axi_awready = take_aw;
   assign s_axi_arready = take_ar;
-  assign s_axi_wready  = in_wdata && !req_full;
+  assign s_axi_wready  = rst_n && in_wdata && !req_full;
   assign w_hs   = s_axi_wvalid && s_axi_wready;
   assign w_last = (beats_left == 4'd0);
 
@@ -146,7 +148,8 @@ module axi_slave_adapter #(
   // Lint waiver (docs/lint_waivers.md): AxLEN limited to 16 beats (spec 5.3); WLAST is regenerated from the beat counter and only checked by an assertion; reserved RSP bits
   /* verilator lint_off UNUSEDSIGNAL */
   logic unused_ok;
-  assign unused_ok = ^{s_axi_awlen[7:4], s_axi_arlen[7:4], s_axi_wlast, rsp_rdata[75:73], rsp_rdata[1:0]};
+  assign unused_ok = ^{s_axi_awlen[7:4], s_axi_arlen[7:4], s_axi_wlast,
+                       rsp_rdata[75:73], rsp_rdata[1:0]};
   /* verilator lint_on UNUSEDSIGNAL */
 
 `ifdef D2D_CHECKS

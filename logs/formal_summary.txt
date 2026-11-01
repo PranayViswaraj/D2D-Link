@@ -1,0 +1,27 @@
+fifo: SBY  4:57:57 [fifo_cover] engine_0: ##   0:00:04  Status: passed
+fifo: SBY  4:57:57 [fifo_cover] DONE (PASS, rc=0)
+fifo: SBY  5:01:47 [fifo_prove] summary: engine_0 (abc pdr) returned PASS
+fifo: SBY  5:01:47 [fifo_prove] DONE (PASS, rc=0)
+fifo: wall 240 s
+credit: SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Status: passed
+credit: SBY  5:01:51 [credit_cover] DONE (PASS, rc=0)
+credit: SBY  5:02:04 [credit_prove] summary: engine_0 (abc pdr) returned PASS
+credit: SBY  5:02:04 [credit_prove] DONE (PASS, rc=0)
+credit: wall 17 s
+replay: SBY  5:02:10 [replay_cover] engine_0: ##   0:00:00  Status: passed
+replay: SBY  5:02:10 [replay_cover] DONE (PASS, rc=0)
+replay: SBY  5:02:12 [replay_prove] engine_0.induction: ##   0:00:03  Status: passed
+replay: SBY  5:02:58 [replay_prove] engine_0.basecase: ##   0:00:49  Status: passed
+replay: SBY  5:02:58 [replay_prove] DONE (PASS, rc=0)
+replay: wall 54 s
+retry: SBY  5:03:06 [retry_cover] engine_0: ##   0:00:02  Status: passed
+retry: SBY  5:03:06 [retry_cover] DONE (PASS, rc=0)
+retry: SBY  5:05:00 [retry_prove] summary: engine_0 (abc pdr) returned PASS
+retry: SBY  5:05:00 [retry_prove] DONE (PASS, rc=0)
+retry: wall 121 s
+ltssm: SBY  5:09:23 [ltssm_bmc] engine_0: ##   0:04:18  Status: passed
+ltssm: SBY  5:09:24 [ltssm_bmc] DONE (PASS, rc=0)
+ltssm: SBY  5:09:25 [ltssm_cover] engine_0: ##   0:04:21  Status: passed
+ltssm: SBY  5:09:26 [ltssm_cover] DONE (PASS, rc=0)
+ltssm: wall 268 s
+formal total wall 709 s

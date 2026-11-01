@@ -1,0 +1,61 @@
+{
+ "test": "credit_starvation",
+ "seed": 517303,
+ "transactions": 120,
+ "responses": 120,
+ "flushed_by_reset": 0,
+ "b_requests": 120,
+ "errors": 0,
+ "faults_a2b": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 0
+ },
+ "faults_b2a": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 0
+ },
+ "faults_total": 0,
+ "counters_a": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 0,
+  "replay_cnt": 0,
+  "timeout_cnt": 0,
+  "retrain_cnt": 0
+ },
+ "counters_b": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 0,
+  "replay_cnt": 0,
+  "timeout_cnt": 0,
+  "retrain_cnt": 0
+ },
+ "ltssm_arcs": [
+  [
+   "a",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "ACTIVE"
+  ],
+  [
+   "b",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "b",
+   "TRAIN",
+   "ACTIVE"
+  ]
+ ],
+ "sim_time_ns": 18929.0
+}

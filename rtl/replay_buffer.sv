@@ -41,6 +41,8 @@ module replay_buffer #(
   localparam integer IW = $clog2(DEPTH);
   localparam logic [7:0] DEPTH8 = DEPTH[7:0];
 
+  // [0:N-1] kept for Yosys 0.33 compatibility
+  // verilog_lint: waive unpacked-dimensions-range-ordering
   logic [BW-1:0] mem[0:DEPTH-1];
   logic [7:0] wr_q, rd_q, ack_q;
   logic [7:0] outstanding, ack_dist, ack_next, rd_adv, rd_floor, rd_next;

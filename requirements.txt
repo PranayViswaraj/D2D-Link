@@ -3,3 +3,4 @@ pyuvm==3.0.0
 cocotb-coverage==1.2.0
 pytest==8.3.4
 find_libpython==0.4.0
+click==8.1.7

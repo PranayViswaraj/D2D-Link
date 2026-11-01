@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="517306" />
+    <testcase name="flit_drop_timeout" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="30.7643563747406" sim_time_ns="9275.001" ratio_time="301.48529314318233" />
+  </testsuite>
+</testsuites>

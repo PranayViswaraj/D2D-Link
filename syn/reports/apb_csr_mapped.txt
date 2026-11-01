@@ -1,0 +1,42 @@
+25. Printing statistics.
+
+=== apb_csr ===
+
+   Number of wires:                651
+   Number of wire bits:            996
+   Number of public wires:          37
+   Number of public wire bits:     382
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                786
+     sky130_fd_sc_hd__a21oi_1      113
+     sky130_fd_sc_hd__a221oi_1       2
+     sky130_fd_sc_hd__a22oi_1       54
+     sky130_fd_sc_hd__a2bb2oi_1      4
+     sky130_fd_sc_hd__a31oi_1        9
+     sky130_fd_sc_hd__a41oi_1       11
+     sky130_fd_sc_hd__and2_2         7
+     sky130_fd_sc_hd__and2b_2        2
+     sky130_fd_sc_hd__and3_2         1
+     sky130_fd_sc_hd__clkinv_1      37
+     sky130_fd_sc_hd__dfxtp_1      120
+     sky130_fd_sc_hd__nand2_1      286
+     sky130_fd_sc_hd__nand3_1        7
+     sky130_fd_sc_hd__nand4_1       47
+     sky130_fd_sc_hd__nor2_1        36
+     sky130_fd_sc_hd__nor3_1         2
+     sky130_fd_sc_hd__nor4_1         2
+     sky130_fd_sc_hd__nor4b_1        2
+     sky130_fd_sc_hd__o2111a_1       2
+     sky130_fd_sc_hd__o211a_1        2
+     sky130_fd_sc_hd__o211ai_1       4
+     sky130_fd_sc_hd__o21ai_0       10
+     sky130_fd_sc_hd__o2bb2ai_1      2
+     sky130_fd_sc_hd__o311ai_0       1
+     sky130_fd_sc_hd__o31ai_1        1
+     sky130_fd_sc_hd__or2_2         20
+     sky130_fd_sc_hd__xor2_1         2
+
+   Chip area for module '\apb_csr': 5671.689600
+

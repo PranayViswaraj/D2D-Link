@@ -1,0 +1,25 @@
+
+20. Printing statistics.
+
+=== axi_slave_adapter ===
+
+   Number of wires:                191
+   Number of wire bits:            596
+   Number of public wires:          45
+   Number of public wire bits:     442
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                242
+     $_ANDNOT_                      17
+     $_MUX_                        103
+     $_NAND_                        29
+     $_NOR_                         29
+     $_NOT_                          8
+     $_ORNOT_                        9
+     $_OR_                          20
+     $_SDFFE_PN0P_                   1
+     $_SDFF_PN0_                    11
+     $_XNOR_                         4
+     $_XOR_                         11
+

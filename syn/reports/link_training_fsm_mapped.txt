@@ -1,0 +1,44 @@
+25. Printing statistics.
+
+=== link_training_fsm ===
+
+   Number of wires:                503
+   Number of wire bits:            582
+   Number of public wires:          24
+   Number of public wire bits:     103
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                542
+     sky130_fd_sc_hd__a211oi_1       2
+     sky130_fd_sc_hd__a21boi_0       2
+     sky130_fd_sc_hd__a21o_2         2
+     sky130_fd_sc_hd__a21oi_1       44
+     sky130_fd_sc_hd__a22oi_1        3
+     sky130_fd_sc_hd__a31oi_1        6
+     sky130_fd_sc_hd__a41oi_1        1
+     sky130_fd_sc_hd__and2_2         2
+     sky130_fd_sc_hd__clkinv_1      75
+     sky130_fd_sc_hd__dfxtp_1       60
+     sky130_fd_sc_hd__nand2_1       98
+     sky130_fd_sc_hd__nand3_1       33
+     sky130_fd_sc_hd__nand3b_1       9
+     sky130_fd_sc_hd__nand4_1       25
+     sky130_fd_sc_hd__nor2_1        61
+     sky130_fd_sc_hd__nor3_1        41
+     sky130_fd_sc_hd__nor3b_1        1
+     sky130_fd_sc_hd__nor4_1         5
+     sky130_fd_sc_hd__o211a_1        1
+     sky130_fd_sc_hd__o211ai_1       5
+     sky130_fd_sc_hd__o21ai_0       26
+     sky130_fd_sc_hd__o21bai_1       4
+     sky130_fd_sc_hd__o22ai_1        2
+     sky130_fd_sc_hd__o31a_2         1
+     sky130_fd_sc_hd__or2_2          6
+     sky130_fd_sc_hd__xnor2_1        5
+     sky130_fd_sc_hd__xnor3_4       10
+     sky130_fd_sc_hd__xor2_1        11
+     sky130_fd_sc_hd__xor3_4         1
+
+   Chip area for module '\link_training_fsm': 3762.358400
+

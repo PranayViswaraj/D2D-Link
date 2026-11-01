@@ -1,0 +1,111 @@
+{
+ "test": "ltssm_arcs",
+ "seed": 517310,
+ "transactions": 40,
+ "responses": 40,
+ "flushed_by_reset": 0,
+ "b_requests": 40,
+ "errors": 0,
+ "faults_a2b": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 0
+ },
+ "faults_b2a": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 0
+ },
+ "faults_total": 0,
+ "counters_a": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 0,
+  "replay_cnt": 0,
+  "timeout_cnt": 0,
+  "retrain_cnt": 1
+ },
+ "counters_b": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 0,
+  "replay_cnt": 0,
+  "timeout_cnt": 0,
+  "retrain_cnt": 2
+ },
+ "ltssm_arcs": [
+  [
+   "a",
+   "ACTIVE",
+   "FAILED"
+  ],
+  [
+   "a",
+   "ACTIVE",
+   "RESET"
+  ],
+  [
+   "a",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "a",
+   "FAILED",
+   "RESET"
+  ],
+  [
+   "a",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "a",
+   "RETRAIN",
+   "RESET"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "ACTIVE"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "FAILED"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "RESET"
+  ],
+  [
+   "b",
+   "ACTIVE",
+   "RESET"
+  ],
+  [
+   "b",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "b",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "b",
+   "RETRAIN",
+   "RESET"
+  ],
+  [
+   "b",
+   "TRAIN",
+   "ACTIVE"
+  ]
+ ],
+ "sim_time_ns": 4293.0
+}

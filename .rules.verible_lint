@@ -1,0 +1,2 @@
+# Project convention: localparams are ALL_CAPS (e.g. FT_REQ_HDR, ST_ACTIVE)
+parameter-name-style=localparam_style:ALL_CAPS

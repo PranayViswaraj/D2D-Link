@@ -1,0 +1,61 @@
+{
+ "test": "flit_drop_timeout",
+ "seed": 517306,
+ "transactions": 140,
+ "responses": 140,
+ "flushed_by_reset": 0,
+ "b_requests": 140,
+ "errors": 0,
+ "faults_a2b": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 263
+ },
+ "faults_b2a": {
+  "single": 0,
+  "multi": 0,
+  "beat": 0,
+  "burst": 0,
+  "drop": 261
+ },
+ "faults_total": 524,
+ "counters_a": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 27,
+  "replay_cnt": 30,
+  "timeout_cnt": 10,
+  "retrain_cnt": 0
+ },
+ "counters_b": {
+  "crc_err_cnt": 0,
+  "nak_cnt": 23,
+  "replay_cnt": 32,
+  "timeout_cnt": 10,
+  "retrain_cnt": 0
+ },
+ "ltssm_arcs": [
+  [
+   "a",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "ACTIVE"
+  ],
+  [
+   "b",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "b",
+   "TRAIN",
+   "ACTIVE"
+  ]
+ ],
+ "sim_time_ns": 9275.0
+}

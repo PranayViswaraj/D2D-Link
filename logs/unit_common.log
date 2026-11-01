@@ -1,0 +1,61 @@
+     0.00ns INFO     cocotb                             Seeding Python random module with 1793500644
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_common.crc16_vs_model
+     0.00ns INFO     cocotb.regression                  running crc16_vs_model (1/1)
+  1004.00ns INFO     cocotb.crc16                       crc16: 1004 vectors matched
+  1004.00ns INFO     cocotb.regression                  crc16_vs_model passed
+  1004.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0               1004.00           1.37        732.28  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/crc16_d75171 -DCOCOTB_SIM=1 --top-module crc16 --vpi --public-flat-rw --prefix Vtop -o crc16 -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/crc16.sv in directory /tmp/sim_build/crc16_d75171
+     0.00ns INFO     cocotb                             Seeding Python random module with 1793500693
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_random_clocks
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_fast_write_slow_read
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_slow_write_fast_read
+     0.00ns INFO     cocotb.regression                  running fifo_random_clocks (1/3)
+ 33598.80ns INFO     cocotb.async_fifo                  fifo w=8784ps r=4640ps: 2000 words in order, max_occ=4 saw_full=True
+ 33598.80ns INFO     cocotb.regression                  fifo_random_clocks passed
+ 33598.80ns INFO     cocotb.regression                  running fifo_fast_write_slow_read (2/3)
+ 41426.88ns INFO     cocotb.async_fifo                  fifo w=1014ps r=6998ps: 1000 words in order, max_occ=4 saw_full=True
+ 41426.88ns INFO     cocotb.regression                  fifo_fast_write_slow_read passed
+ 41426.88ns INFO     cocotb.regression                  running fifo_slow_write_fast_read (3/3)
+ 50477.16ns INFO     cocotb.async_fifo                  fifo w=7918ps r=1010ps: 1000 words in order, max_occ=1 saw_full=False
+ 50477.16ns INFO     cocotb.regression                  fifo_slow_write_fast_read passed
+ 50477.16ns INFO     cocotb.regression                  ***********************************************************************************************
+                                                        ** TESTS=3 PASS=3 FAIL=0 SKIP=0                       50477.16          18.65       2706.50  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/async_fifo_b07754 -DCOCOTB_SIM=1 --top-module async_fifo --vpi --public-flat-rw --prefix Vtop -o async_fifo -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GW=16 -GDEPTH=4 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/sync_2ff.sv /work/rtl/common/async_fifo.sv in directory /tmp/sim_build/async_fifo_b07754
+     0.00ns INFO     cocotb                             Seeding Python random module with 1793500762
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_random_clocks
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_fast_write_slow_read
+     0.00ns INFO     cocotb.regression                  Found test test_common.fifo_slow_write_fast_read
+     0.00ns INFO     cocotb.regression                  running fifo_random_clocks (1/3)
+ 15416.71ns INFO     cocotb.async_fifo                  fifo w=4638ps r=2724ps: 2000 words in order, max_occ=6 saw_full=False
+ 15416.71ns INFO     cocotb.regression                  fifo_random_clocks passed
+ 15416.71ns INFO     cocotb.regression                  running fifo_fast_write_slow_read (2/3)
+ 23279.27ns INFO     cocotb.async_fifo                  fifo w=1014ps r=6998ps: 1000 words in order, max_occ=16 saw_full=True
+ 23279.27ns INFO     cocotb.regression                  fifo_fast_write_slow_read passed
+ 23279.27ns INFO     cocotb.regression                  running fifo_slow_write_fast_read (3/3)
+ 32052.41ns INFO     cocotb.async_fifo                  fifo w=7918ps r=1010ps: 1000 words in order, max_occ=1 saw_full=False
+ 32052.42ns INFO     cocotb.regression                  fifo_slow_write_fast_read passed
+ 32052.42ns INFO     cocotb.regression                  ***********************************************************************************************
+                                                        ** TESTS=3 PASS=3 FAIL=0 SKIP=0                       32052.42          16.66       1923.46  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/async_fifo_11f290 -DCOCOTB_SIM=1 --top-module async_fifo --vpi --public-flat-rw --prefix Vtop -o async_fifo -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GW=80 -GDEPTH=16 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/sync_2ff.sv /work/rtl/common/async_fifo.sv in directory /tmp/sim_build/async_fifo_11f290
+     0.00ns INFO     cocotb                             Seeding Python random module with 1793500823
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_common.credit_random
+     0.00ns INFO     cocotb.regression                  running credit_random (1/1)
+  5000.50ns INFO     cocotb.credit_counter              credit_counter MAX=4: 5000 cycles, levels [0, 1, 2, 3, 4]
+  5000.50ns INFO     cocotb.regression                  credit_random passed
+  5000.50ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0               5000.50           2.93       1705.81  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/credit_counter_2c6ca9 -DCOCOTB_SIM=1 --top-module credit_counter --vpi --public-flat-rw --prefix Vtop -o credit_counter -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GMAX=4 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/credit_counter.sv in directory /tmp/sim_build/credit_counter_2c6ca9
+     0.00ns INFO     cocotb                             Seeding Python random module with 1793500871
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_common.sync_latency
+     0.00ns INFO     cocotb.regression                  running sync_latency (1/1)
+     8.50ns INFO     cocotb.regression                  sync_latency passed
+     8.50ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                  8.50           0.80         10.60  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/sync_wrap_d75171 -DCOCOTB_SIM=1 --top-module sync_wrap --vpi --public-flat-rw --prefix Vtop -o sync_wrap -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/sync_2ff.sv /work/rtl/common/reset_sync.sv /work/tb/unit/sync_wrap.sv in directory /tmp/sim_build/sync_wrap_d75171
+5 passed, 1 warning in 271.44s (0:04:31)

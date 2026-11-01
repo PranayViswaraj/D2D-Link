@@ -1,0 +1,26 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build EDA image
+        run: docker build -t d2d-eda -f docker/Dockerfile .
+      - name: Lint (Verilator -Wall + Verible)
+        run: scripts/dk.sh "scripts/run_lint.sh"
+      - name: Unit tests
+        run: scripts/dk.sh "cd tb/unit && timeout 900 python -m pytest -q test_common.py test_link_blocks.py --junitxml=../../logs/unit_junit.xml"
+      - name: Small-config regression
+        run: scripts/dk.sh "timeout 700 python scripts/run_regression.py --seeds 1 --configs small --cap-min 10"
+      - name: Formal
+        run: scripts/dk.sh "timeout 1200 scripts/run_formal.sh"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs
+          path: |
+            logs/
+            formal/*/logfile.txt

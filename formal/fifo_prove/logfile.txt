@@ -1,0 +1,104 @@
+SBY  4:57:47 [fifo_prove] Removing directory '/work/formal/fifo_prove'.
+SBY  4:57:48 [fifo_prove] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/fifo_prove/src/d2d_checks.svh'.
+SBY  4:57:48 [fifo_prove] Copy '/work/rtl/common/sync_2ff.sv' to '/work/formal/fifo_prove/src/sync_2ff.sv'.
+SBY  4:57:48 [fifo_prove] Copy '/work/rtl/common/async_fifo.sv' to '/work/formal/fifo_prove/src/async_fifo.sv'.
+SBY  4:57:48 [fifo_prove] Copy '/work/formal/fifo_props.sv' to '/work/formal/fifo_prove/src/fifo_props.sv'.
+SBY  4:57:48 [fifo_prove] engine_0: abc pdr
+SBY  4:57:49 [fifo_prove] base: starting process "cd fifo_prove/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  4:57:51 [fifo_prove] base: finished (returncode=0)
+SBY  4:57:51 [fifo_prove] prep: starting process "cd fifo_prove/model; yosys -ql design_prep.log design_prep.ys"
+SBY  4:57:52 [fifo_prove] prep: finished (returncode=0)
+SBY  4:57:52 [fifo_prove] aig: starting process "cd fifo_prove/model; yosys -ql design_aiger.log design_aiger.ys"
+SBY  4:57:54 [fifo_prove] aig: finished (returncode=0)
+SBY  4:57:54 [fifo_prove] engine_0: starting process "cd fifo_prove; yosys-abc -c 'read_aiger model/design_aiger.aig; fold; strash; pdr -v -I engine_0/invariants.pla; write_cex -a engine_0/trace.aiw'"
+SBY  4:57:54 [fifo_prove] engine_0: ABC command line: "read_aiger model/design_aiger.aig; fold; strash; pdr -v -I engine_0/invariants.pla; write_cex -a engine_0/trace.aiw".
+SBY  4:57:54 [fifo_prove] engine_0: Warning: The last 3 outputs are interpreted as constraints.
+SBY  4:57:54 [fifo_prove] engine_0: VarMax = 300. FrameMax = 10000. QueMax = 0. TimeMax = 0. MonoCNF = no. SkipGen = no. SolveAll = no.
+SBY  4:57:54 [fifo_prove] engine_0: Frame Clauses                                                     Max Queue Flops Cex      Time
+SBY  4:57:54 [fifo_prove] engine_0: 1 : 0 19                                                                1    21      0.02 sec
+SBY  4:57:54 [fifo_prove] engine_0: 2 : 0 5 50                                                              1    43      0.05 sec
+SBY  4:57:54 [fifo_prove] engine_0: 3 : 0 5 23 56                                                           3    52      0.10 sec
+SBY  4:57:54 [fifo_prove] engine_0: 4 : 0 4 18 13 75                                                        5    60      0.16 sec
+SBY  4:57:54 [fifo_prove] engine_0: 5 : 0 4 12 12 10 83                                                     5    66      0.23 sec
+SBY  4:57:54 [fifo_prove] engine_0: 6 : 0 4 10 10 8 13 87                                                   3    66      0.30 sec
+SBY  4:57:55 [fifo_prove] engine_0: 7 : 0 4 7 22 20 27 22 112                                              21    75      0.50 sec
+SBY  4:57:55 [fifo_prove] engine_0: 8 : 0 4 12 30 31 55 48 57 180                                          17    91      0.99 sec
+SBY  4:57:55 [fifo_prove] engine_0: 9 : 0 4 9 26 25 45 35 24 42 172                                         3    92      1.14 sec
+SBY  4:57:57 [fifo_prove] engine_0: 10 : 0 4 9 27 29 60 57 74 116 177 323                                   21   105      2.45 sec
+SBY  4:57:57 [fifo_prove] engine_0: 11 : 0 4 9 23 23 50 43 48 52 93 124 297                                  7   105      2.85 sec
+SBY  4:57:58 [fifo_prove] engine_0: 12 : 0 4 9 23 23 50 46 52 64 96 92 143 435                              17   109      3.91 sec
+SBY  4:57:59 [fifo_prove] engine_0: 13 : 0 4 9 23 23 50 43 51 52 77 39 80 162 385                            6   109      4.40 sec
+SBY  4:58:00 [fifo_prove] engine_0: 14 : 0 4 9 23 23 50 43 51 52 81 44 75 189 286 515                       22   113      6.02 sec
+SBY  4:58:01 [fifo_prove] engine_0: 15 : 0 4 9 23 23 50 43 51 48 74 30 40 34 42 73 660                       3   113      6.54 sec
+SBY  4:58:01 [fifo_prove] engine_0: 16 : 0 4 9 23 23 50 43 51 48 73 30 41 35 42 80 138 602                  12   113      7.05 sec
+SBY  4:58:02 [fifo_prove] engine_0: 17 : 0 4 9 23 23 50 43 51 48 73 26 38 28 34 46 116 220 497               3   113      7.60 sec
+SBY  4:58:03 [fifo_prove] engine_0: 18 : 0 4 9 23 23 50 43 51 48 73 28 39 29 34 49 103 193 284 574          20   113      8.98 sec
+SBY  4:58:05 [fifo_prove] engine_0: 19 : ... 4 9 23 23 50 43 51 48 73 26 38 29 36 49 73 102 157 181 687     25   113     10.28 sec
+SBY  4:58:06 [fifo_prove] engine_0: 20 : ... 9 23 23 50 43 51 48 73 26 38 29 36 46 72 59 122 142 228 679     9   113     11.53 sec
+SBY  4:58:09 [fifo_prove] engine_0: 21 : ... 23 50 43 51 48 73 26 38 29 36 46 72 59 125 107 275 315 863     26   113     14.63 sec
+SBY  4:58:11 [fifo_prove] engine_0: 22 : ... 50 43 51 48 73 26 38 29 35 43 71 46 108 69 158 153 330 843     14   113     16.37 sec
+SBY  4:58:14 [fifo_prove] engine_0: 23 : ... 43 51 48 73 26 38 29 35 43 71 46 107 66 140 136 330 486 836    35   113     19.42 sec
+SBY  4:58:17 [fifo_prove] engine_0: 24 : ... 48 73 26 38 29 35 42 72 46 106 64 111 76 134 286 350 1135      20   113     22.62 sec
+SBY  4:58:19 [fifo_prove] engine_0: 25 : ... 73 26 38 29 35 41 73 46 105 64 111 74 109 166 235 377 1057     12   113     24.70 sec
+SBY  4:58:23 [fifo_prove] engine_0: 26 : ... 26 38 29 35 35 77 48 105 64 111 74 106 148 168 325 444 1134    23   113     28.32 sec
+SBY  4:58:26 [fifo_prove] engine_0: 27 : ... 38 29 35 35 77 48 105 64 111 70 93 110 102 149 251 513 1155    14   113     31.72 sec
+SBY  4:58:29 [fifo_prove] engine_0: 28 : ... 29 35 35 77 48 105 64 111 70 92 104 83 139 102 321 509 1178    11   113     34.83 sec
+SBY  4:58:33 [fifo_prove] engine_0: 29 : ... 35 35 77 48 105 64 111 70 92 104 82 142 86 207 367 533 1162    36   113     38.31 sec
+SBY  4:58:37 [fifo_prove] engine_0: 30 : ... 76 49 106 63 111 70 92 104 75 132 67 155 179 293 499 1257      35   113     42.74 sec
+SBY  4:58:40 [fifo_prove] engine_0: 31 : ... 49 106 63 111 70 91 104 76 130 54 147 127 143 368 452 1155     17   113     45.38 sec
+SBY  4:58:47 [fifo_prove] engine_0: 32 : ... 106 63 111 70 91 104 77 132 55 149 131 139 396 554 798 1184    67   113     53.01 sec
+SBY  4:58:53 [fifo_prove] engine_0: 33 : ... 63 111 70 91 104 76 130 50 146 108 73 219 200 438 467 1645     25   113     59.06 sec
+SBY  4:58:58 [fifo_prove] engine_0: 34 : ... 111 70 91 104 76 130 50 146 102 67 183 144 236 234 544 1561    18   113     63.25 sec
+SBY  4:59:05 [fifo_prove] engine_0: 35 : ... 70 91 104 76 130 50 146 102 66 183 138 214 208 568 838 1462    34   113     70.92 sec
+SBY  4:59:12 [fifo_prove] engine_0: 36 : ... 104 77 130 50 146 102 66 183 138 193 110 257 402 534 1826      25   113     77.31 sec
+SBY  4:59:17 [fifo_prove] engine_0: 37 : ... 77 130 50 146 102 66 183 138 192 100 174 212 314 409 1959      22   113     82.49 sec
+SBY  4:59:25 [fifo_prove] engine_0: 38 : ... 130 50 146 102 66 179 127 195 100 161 179 263 490 666 1861     37   113     90.30 sec
+SBY  4:59:31 [fifo_prove] engine_0: 39 : ... 50 146 102 66 179 127 195 91 138 108 95 173 321 455 2074       19   113     95.97 sec
+SBY  4:59:36 [fifo_prove] engine_0: 40 : ... 50 146 102 66 179 127 181 85 139 97 63 116 99 136 121 2651     26   113    101.40 sec
+SBY  4:59:39 [fifo_prove] engine_0: 41 : ... 146 102 66 179 127 181 85 139 97 63 104 56 92 72 140 2589       3   113    104.65 sec
+SBY  4:59:44 [fifo_prove] engine_0: 42 : ... 102 66 179 127 181 85 139 97 64 107 60 95 76 175 202 2543      23   113    109.22 sec
+SBY  4:59:48 [fifo_prove] engine_0: 43 : ... 66 179 127 181 85 139 97 60 104 38 86 43 57 147 198 2613       20   113    113.86 sec
+SBY  4:59:52 [fifo_prove] engine_0: 44 : ... 66 179 127 181 85 139 97 60 104 37 85 43 49 68 83 119 2668      8   113    117.26 sec
+SBY  4:59:55 [fifo_prove] engine_0: 45 : ... 179 127 181 85 139 97 60 104 37 85 43 44 62 70 107 163 2568    10   113    120.72 sec
+SBY  5:00:01 [fifo_prove] engine_0: 46 : ... 127 181 85 139 97 60 104 37 85 43 44 62 62 98 179 279 2546     20   113    126.16 sec
+SBY  5:00:05 [fifo_prove] engine_0: 47 : ... 181 85 139 97 60 104 37 85 43 44 59 59 34 45 91 257 2643       18   113    130.66 sec
+SBY  5:00:09 [fifo_prove] engine_0: 48 : ... 85 139 97 60 104 37 85 43 44 59 58 28 38 64 135 258 2573       13   113    134.72 sec
+SBY  5:00:15 [fifo_prove] engine_0: 49 : ... 139 97 60 104 37 85 43 44 59 58 28 38 62 138 311 355 2425      41   113    140.28 sec
+SBY  5:00:24 [fifo_prove] engine_0: 50 : ... 97 60 104 37 85 43 44 46 52 28 38 61 120 228 279 431 2616      52   113    148.94 sec
+SBY  5:00:28 [fifo_prove] engine_0: 51 : ... 60 104 37 83 42 46 47 52 28 38 54 65 106 115 178 326 2671       9   113    153.52 sec
+SBY  5:00:34 [fifo_prove] engine_0: 52 : ... 104 37 83 42 46 47 52 28 38 54 65 106 116 174 371 489 2417     25   113    159.56 sec
+SBY  5:00:43 [fifo_prove] engine_0: 53 : ... 37 83 42 46 47 52 28 38 54 65 94 94 162 252 485 620 2357       50   113    168.91 sec
+SBY  5:00:50 [fifo_prove] engine_0: 54 : ... 83 42 46 47 52 28 38 54 65 94 91 110 108 165 247 330 2751      19   113    175.84 sec
+SBY  5:00:58 [fifo_prove] engine_0: 55 : ... 42 46 47 52 28 38 54 65 94 91 110 90 120 102 252 441 2745      18   113    183.10 sec
+SBY  5:01:04 [fifo_prove] engine_0: 56 : ... 82 42 46 47 52 28 38 54 65 94 91 110 87 94 61 44 48 64 3262    16   113    189.08 sec
+SBY  5:01:09 [fifo_prove] engine_0: 57 : ... 42 46 47 52 28 38 54 65 94 91 110 87 87 36 9 33 61 63 3349     11   113    194.27 sec
+SBY  5:01:14 [fifo_prove] engine_0: 58 : ... 46 47 52 28 38 54 65 94 91 110 87 87 36 9 19 26 37 38 3372      8   113    198.98 sec
+SBY  5:01:18 [fifo_prove] engine_0: 59 : ... 47 52 28 38 54 65 94 91 110 87 87 36 9 19 11 29 26 42 3345      1   113    203.27 sec
+SBY  5:01:23 [fifo_prove] engine_0: 60 : ... 52 28 38 54 65 94 91 110 87 87 36 9 20 12 35 33 58 75 3335     19   113    208.62 sec
+SBY  5:01:28 [fifo_prove] engine_0: 61 : ... 52 28 38 54 65 94 91 110 87 87 36 9 19 9 23 7 2 15 11 3428      5   113    213.57 sec
+SBY  5:01:32 [fifo_prove] engine_0: 62 : ... 52 28 38 54 65 94 91 110 87 87 36 9 19 9 23 7 2 3 6 6 3430      0   113    217.59 sec
+SBY  5:01:37 [fifo_prove] engine_0: 63 : ... 28 38 54 65 94 91 110 87 87 36 9 19 9 23 7 2 3 6 6 8 3420       0   113    221.78 sec
+SBY  5:01:41 [fifo_prove] engine_0: 64 : ... 28 38 54 65 94 91 110 87 87 36 9 19 9 23 7 2 3 6 6 9 4 3424     6   113    226.33 sec
+SBY  5:01:45 [fifo_prove] engine_0: 65 : ... 38 54 65 94 91 110 87 87 36 9 19 9 23 7 2 3 6 0 0 0 0 3440      0   113    230.59 sec
+SBY  5:01:47 [fifo_prove] engine_0: Invariant F[61] : 3440 clauses with 113 flops (out of 113) (cex = 0, ave = 17.57)
+SBY  5:01:47 [fifo_prove] engine_0: Verification of invariant with 3440 clauses was successful.  Time =     1.10 sec
+SBY  5:01:47 [fifo_prove] engine_0: Block = 1618  Oblig = 21786  Clause = 13949  Call =448925 (sat=56.4%)  Cex =   0  Start =1457
+SBY  5:01:47 [fifo_prove] engine_0: SAT solving =   171.85 sec ( 74.16 %)
+SBY  5:01:47 [fifo_prove] engine_0: unsat     =    61.87 sec ( 26.70 %)
+SBY  5:01:47 [fifo_prove] engine_0: sat       =   109.98 sec ( 47.46 %)
+SBY  5:01:47 [fifo_prove] engine_0: Generalize  =    60.47 sec ( 26.09 %)
+SBY  5:01:47 [fifo_prove] engine_0: Push clause =   146.36 sec ( 63.16 %)
+SBY  5:01:47 [fifo_prove] engine_0: Ternary sim =     1.33 sec (  0.57 %)
+SBY  5:01:47 [fifo_prove] engine_0: Containment =     3.15 sec (  1.36 %)
+SBY  5:01:47 [fifo_prove] engine_0: CNF compute =    14.02 sec (  6.05 %)
+SBY  5:01:47 [fifo_prove] engine_0: Refinement  =     0.00 sec (  0.00 %)
+SBY  5:01:47 [fifo_prove] engine_0: TOTAL       =   231.73 sec (100.00 %)
+SBY  5:01:47 [fifo_prove] engine_0: Property proved.  Time =   232.13 sec
+SBY  5:01:47 [fifo_prove] engine_0: Counter-example is not available.
+SBY  5:01:47 [fifo_prove] engine_0: finished (returncode=0)
+SBY  5:01:47 [fifo_prove] engine_0: Status returned by engine: PASS
+SBY  5:01:47 [fifo_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:03:59 (239)
+SBY  5:01:47 [fifo_prove] summary: Elapsed process time [H:MM:SS (secs)]: 0:03:58 (238)
+SBY  5:01:47 [fifo_prove] summary: engine_0 (abc pdr) returned PASS
+SBY  5:01:47 [fifo_prove] summary: engine_0 did not produce any traces
+SBY  5:01:47 [fifo_prove] DONE (PASS, rc=0)

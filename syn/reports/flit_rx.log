@@ -1,0 +1,2275 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog -sv -Irtl rtl/common/sync_2ff.sv rtl/common/reset_sync.sv rtl/common/async_fifo.sv rtl/common/crc16.sv rtl/common/credit_counter.sv rtl/replay_buffer.sv rtl/flit_tx.sv rtl/flit_rx.sv rtl/link_training_fsm.sv rtl/link_layer.sv rtl/csr_link_sync.sv rtl/apb_csr.sv rtl/axi_slave_adapter.sv rtl/axi_master_adapter.sv rtl/die_a_top.sv rtl/die_b_top.sv rtl/lane_fault_inj.sv rtl/d2d_system_top.sv ;  synth -flatten -top flit_rx; select -assert-none t:$dlatch; tee -o syn/reports/flit_rx_generic.txt stat; dfflibmap -liberty syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib; abc -liberty syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib -script +strash;dch,-f;map;topo;stime,-p; opt_clean; stat -liberty syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib; tee -o syn/reports/flit_rx_mapped.txt stat -liberty syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib' --
+
+1. Executing Verilog-2005 frontend: rtl/common/sync_2ff.sv
+Parsing SystemVerilog input from `rtl/common/sync_2ff.sv' to AST representation.
+Generating RTLIL representation for module `\sync_2ff'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/common/reset_sync.sv
+Parsing SystemVerilog input from `rtl/common/reset_sync.sv' to AST representation.
+Generating RTLIL representation for module `\reset_sync'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/common/async_fifo.sv
+Parsing SystemVerilog input from `rtl/common/async_fifo.sv' to AST representation.
+Generating RTLIL representation for module `\async_fifo'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/common/crc16.sv
+Parsing SystemVerilog input from `rtl/common/crc16.sv' to AST representation.
+Generating RTLIL representation for module `\crc16'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/common/credit_counter.sv
+Parsing SystemVerilog input from `rtl/common/credit_counter.sv' to AST representation.
+Generating RTLIL representation for module `\credit_counter'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/replay_buffer.sv
+Parsing SystemVerilog input from `rtl/replay_buffer.sv' to AST representation.
+Generating RTLIL representation for module `\replay_buffer'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/flit_tx.sv
+Parsing SystemVerilog input from `rtl/flit_tx.sv' to AST representation.
+Generating RTLIL representation for module `\flit_tx'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/flit_rx.sv
+Parsing SystemVerilog input from `rtl/flit_rx.sv' to AST representation.
+Generating RTLIL representation for module `\flit_rx'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/link_training_fsm.sv
+Parsing SystemVerilog input from `rtl/link_training_fsm.sv' to AST representation.
+Generating RTLIL representation for module `\link_training_fsm'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: rtl/link_layer.sv
+Parsing SystemVerilog input from `rtl/link_layer.sv' to AST representation.
+Generating RTLIL representation for module `\link_layer'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: rtl/csr_link_sync.sv
+Parsing SystemVerilog input from `rtl/csr_link_sync.sv' to AST representation.
+Generating RTLIL representation for module `\csr_link_sync'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: rtl/apb_csr.sv
+Parsing SystemVerilog input from `rtl/apb_csr.sv' to AST representation.
+Generating RTLIL representation for module `\apb_csr'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: rtl/axi_slave_adapter.sv
+Parsing SystemVerilog input from `rtl/axi_slave_adapter.sv' to AST representation.
+Generating RTLIL representation for module `\axi_slave_adapter'.
+Successfully finished Verilog frontend.
+
+14. Executing Verilog-2005 frontend: rtl/axi_master_adapter.sv
+Parsing SystemVerilog input from `rtl/axi_master_adapter.sv' to AST representation.
+Generating RTLIL representation for module `\axi_master_adapter'.
+Successfully finished Verilog frontend.
+
+15. Executing Verilog-2005 frontend: rtl/die_a_top.sv
+Parsing SystemVerilog input from `rtl/die_a_top.sv' to AST representation.
+Generating RTLIL representation for module `\die_a_top'.
+Successfully finished Verilog frontend.
+
+16. Executing Verilog-2005 frontend: rtl/die_b_top.sv
+Parsing SystemVerilog input from `rtl/die_b_top.sv' to AST representation.
+Generating RTLIL representation for module `\die_b_top'.
+Successfully finished Verilog frontend.
+
+17. Executing Verilog-2005 frontend: rtl/lane_fault_inj.sv
+Parsing SystemVerilog input from `rtl/lane_fault_inj.sv' to AST representation.
+Generating RTLIL representation for module `\lane_fault_inj'.
+Successfully finished Verilog frontend.
+
+18. Executing Verilog-2005 frontend: rtl/d2d_system_top.sv
+Parsing SystemVerilog input from `rtl/d2d_system_top.sv' to AST representation.
+Generating RTLIL representation for module `\d2d_system_top'.
+Successfully finished Verilog frontend.
+
+19. Executing SYNTH pass.
+
+19.1. Executing HIERARCHY pass (managing design hierarchy).
+
+19.1.1. Analyzing design hierarchy..
+Top module:  \flit_rx
+Used module:     \crc16
+Parameter \N = 112
+
+19.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\crc16'.
+Parameter \N = 112
+Generating RTLIL representation for module `$paramod\crc16\N=s32'00000000000000000000000001110000'.
+
+19.1.3. Analyzing design hierarchy..
+Top module:  \flit_rx
+Used module:     $paramod\crc16\N=s32'00000000000000000000000001110000
+
+19.1.4. Analyzing design hierarchy..
+Top module:  \flit_rx
+Used module:     $paramod\crc16\N=s32'00000000000000000000000001110000
+Removing unused module `\d2d_system_top'.
+Removing unused module `\lane_fault_inj'.
+Removing unused module `\die_b_top'.
+Removing unused module `\die_a_top'.
+Removing unused module `\axi_master_adapter'.
+Removing unused module `\axi_slave_adapter'.
+Removing unused module `\apb_csr'.
+Removing unused module `\csr_link_sync'.
+Removing unused module `\link_layer'.
+Removing unused module `\link_training_fsm'.
+Removing unused module `\flit_tx'.
+Removing unused module `\replay_buffer'.
+Removing unused module `\credit_counter'.
+Removing unused module `\crc16'.
+Removing unused module `\async_fifo'.
+Removing unused module `\reset_sync'.
+Removing unused module `\sync_2ff'.
+Removed 17 unused modules.
+
+19.2. Executing PROC pass (convert processes to netlists).
+
+19.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+19.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$rtl/flit_rx.sv:126$497 in module flit_rx.
+Marked 4 switch rules as full_case in process $proc$rtl/flit_rx.sv:50$442 in module flit_rx.
+Removed a total of 0 dead cases.
+
+19.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 4 assignments to connections.
+
+19.2.4. Executing PROC_INIT pass (extract init attributes).
+
+19.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+19.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~9 debug messages>
+
+19.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\flit_rx.$proc$rtl/flit_rx.sv:126$497'.
+     1/2: $0\nak_out[0:0]
+     2/2: $0\exp_q[7:0]
+Creating decoders for process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+     1/8: $0\sh[95:0] [63:32]
+     2/8: $0\sh[95:0] [31:0]
+     3/8: $0\sh[95:0] [95:64]
+     4/8: $0\done_q[0:0]
+     5/8: $0\fq[127:0]
+     6/8: $0\in_frame[0:0]
+     7/8: $0\cnt[1:0]
+     8/8: $0\ferr_q[0:0]
+Creating decoders for process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+
+19.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod\crc16\N=s32'00000000000000000000000001110000.\crc' from process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+No latch inferred for signal `$paramod\crc16\N=s32'00000000000000000000000001110000.\p_crc.c' from process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+No latch inferred for signal `$paramod\crc16\N=s32'00000000000000000000000001110000.\p_crc.fb' from process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+No latch inferred for signal `$paramod\crc16\N=s32'00000000000000000000000001110000.\p_crc.$fordecl_block$44.i' from process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+
+19.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\flit_rx.\exp_q' using process `\flit_rx.$proc$rtl/flit_rx.sv:126$497'.
+  created $dff cell `$procdff$1258' with positive edge clock.
+Creating register for signal `\flit_rx.\nak_out' using process `\flit_rx.$proc$rtl/flit_rx.sv:126$497'.
+  created $dff cell `$procdff$1259' with positive edge clock.
+Creating register for signal `\flit_rx.\sh' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1260' with positive edge clock.
+Creating register for signal `\flit_rx.\cnt' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1261' with positive edge clock.
+Creating register for signal `\flit_rx.\in_frame' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1262' with positive edge clock.
+Creating register for signal `\flit_rx.\fq' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1263' with positive edge clock.
+Creating register for signal `\flit_rx.\done_q' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1264' with positive edge clock.
+Creating register for signal `\flit_rx.\ferr_q' using process `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+  created $dff cell `$procdff$1265' with positive edge clock.
+
+19.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+19.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 4 empty switches in `\flit_rx.$proc$rtl/flit_rx.sv:126$497'.
+Removing empty process `flit_rx.$proc$rtl/flit_rx.sv:126$497'.
+Found and cleaned up 5 empty switches in `\flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+Removing empty process `flit_rx.$proc$rtl/flit_rx.sv:50$442'.
+Removing empty process `$paramod\crc16\N=s32'00000000000000000000000001110000.$proc$rtl/common/crc16.sv:0$813'.
+Cleaned up 9 empty switches.
+
+19.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~10 debug messages>
+Optimizing module $paramod\crc16\N=s32'00000000000000000000000001110000.
+<suppressed ~3 debug messages>
+
+19.3. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod\crc16\N=s32'00000000000000000000000001110000.
+<suppressed ~1 debug messages>
+
+19.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 3 unused cells and 72 unused wires.
+<suppressed ~4 debug messages>
+
+19.6. Executing CHECK pass (checking for obvious problems).
+Checking module flit_rx...
+Found and reported 0 problems.
+
+19.7. Executing OPT pass (performing simple optimizations).
+
+19.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+19.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~123 debug messages>
+
+19.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+    New ctrl vector for $pmux cell $procmux$1197: $auto$opt_reduce.cc:134:opt_pmux$1271
+    New ctrl vector for $pmux cell $procmux$1210: $auto$opt_reduce.cc:134:opt_pmux$1273
+    New ctrl vector for $pmux cell $procmux$1225: $auto$opt_reduce.cc:134:opt_pmux$1275
+  Optimizing cells in module \flit_rx.
+Performed a total of 3 changes.
+
+19.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+19.7.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.7.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+19.7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.7.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.7.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~123 debug messages>
+
+19.7.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.7.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.7.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.7.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.7.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.7.16. Finished OPT passes. (There is nothing left to do.)
+
+19.8. Executing FSM pass (extract and optimize FSM).
+
+19.8.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+19.8.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+19.8.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+19.8.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.8.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+19.8.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+19.8.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+19.8.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+19.9. Executing OPT pass (performing simple optimizations).
+
+19.9.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.9.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~123 debug messages>
+
+19.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.9.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.9.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$1265 ($dff) from module flit_rx (D = $procmux$1253_Y, Q = \ferr_q, rval = 1'0).
+Adding SRST signal on $procdff$1264 ($dff) from module flit_rx (D = $procmux$1197_Y, Q = \done_q, rval = 1'0).
+Adding SRST signal on $procdff$1263 ($dff) from module flit_rx (D = $procmux$1216_Y, Q = \fq, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$1284 ($sdff) from module flit_rx (D = { \sh \lane_data }, Q = \fq).
+Adding SRST signal on $procdff$1262 ($dff) from module flit_rx (D = $procmux$1231_Y, Q = \in_frame, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1292 ($sdff) from module flit_rx (D = $procmux$1231_Y, Q = \in_frame).
+Adding SRST signal on $procdff$1261 ($dff) from module flit_rx (D = $procmux$1242_Y [0], Q = \cnt [0], rval = 1'0).
+Adding SRST signal on $procdff$1261 ($dff) from module flit_rx (D = $procmux$1239_Y [1], Q = \cnt [1], rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1301 ($sdff) from module flit_rx (D = $procmux$1239_Y [1], Q = \cnt [1]).
+Adding EN signal on $auto$ff.cc:266:slice$1300 ($sdff) from module flit_rx (D = $procmux$1242_Y [0], Q = \cnt [0]).
+Adding SRST signal on $procdff$1260 ($dff) from module flit_rx (D = { $procmux$1190_Y $procmux$1172_Y $procmux$1184_Y }, Q = \sh, rval = 96'000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding EN signal on $auto$ff.cc:266:slice$1312 ($sdff) from module flit_rx (D = \lane_data, Q = \sh [63:32]).
+Adding EN signal on $auto$ff.cc:266:slice$1312 ($sdff) from module flit_rx (D = \lane_data, Q = \sh [31:0]).
+Adding EN signal on $auto$ff.cc:266:slice$1312 ($sdff) from module flit_rx (D = \lane_data, Q = \sh [95:64]).
+Adding SRST signal on $procdff$1259 ($dff) from module flit_rx (D = $procmux$1151_Y, Q = \nak_out, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$1324 ($sdff) from module flit_rx (D = 1'1, Q = \nak_out).
+Adding SRST signal on $procdff$1258 ($dff) from module flit_rx (D = $procmux$1159_Y, Q = \exp_q, rval = 8'00000000).
+Adding EN signal on $auto$ff.cc:266:slice$1330 ($sdff) from module flit_rx (D = $add$rtl/flit_rx.sv:131$499_Y, Q = \exp_q).
+
+19.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 25 unused cells and 23 unused wires.
+<suppressed ~26 debug messages>
+
+19.9.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~3 debug messages>
+
+19.9.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.9.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~118 debug messages>
+
+19.9.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.9.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+19.9.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.9.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+19.9.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.9.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.9.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~118 debug messages>
+
+19.9.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.9.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.9.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.9.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.9.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.9.23. Finished OPT passes. (There is nothing left to do.)
+
+19.10. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell flit_rx.$procmux$1168_CMP0 ($eq).
+Removed top 1 bits (of 2) from mux cell flit_rx.$procmux$1242 ($mux).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$837 ($mux).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$840 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$841 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$843 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$844 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$846 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$847 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$849 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$850 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$852 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$853 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$855 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$856 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$858 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$859 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$861 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$862 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$864 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$865 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$867 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$868 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$870 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$871 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$873 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$874 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$876 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$877 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$879 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$880 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$882 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$883 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$885 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$886 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$888 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$889 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$891 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$892 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$894 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$895 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$897 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$898 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$900 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$901 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$903 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$904 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$906 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$907 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$909 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$910 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$912 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$913 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$915 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$916 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$918 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$919 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$921 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$922 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$924 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$925 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$927 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$928 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$930 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$931 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$933 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$934 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$936 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$937 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$939 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$940 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$942 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$943 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$945 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$946 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$948 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$949 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$951 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$952 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$954 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$955 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$957 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$958 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$960 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$961 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$963 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$964 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$966 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$967 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$969 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$970 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$972 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$973 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$975 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$976 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$978 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$979 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$981 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$982 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$984 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$985 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$987 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$988 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$990 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$991 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$993 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$994 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$996 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$997 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$999 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1000 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1002 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1003 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1005 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1006 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1008 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1009 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1011 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1012 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1014 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1015 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1017 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1018 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1020 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1021 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1023 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1024 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1026 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1027 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1029 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1030 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1032 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1033 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1035 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1036 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1038 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1039 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1041 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1042 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1044 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1045 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1047 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1048 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1050 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1051 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1053 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1054 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1056 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1057 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1059 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1060 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1062 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1063 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1065 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1066 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1068 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1069 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1071 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1072 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1074 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1075 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1077 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1078 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1080 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1081 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1083 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1084 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1086 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1087 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1089 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1090 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1092 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1093 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1095 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1096 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1098 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1099 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1101 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1102 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1104 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1105 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1107 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1108 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1110 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1111 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1113 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1114 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1116 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1117 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1119 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1120 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1122 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1123 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1125 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1126 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1128 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1129 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1131 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1132 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1134 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1135 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1137 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1138 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1140 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1141 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1143 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1144 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1146 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1147 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1149 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1150 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$825 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$826 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$828 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$829 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$816 ($mux).
+Removed top 3 bits (of 15) from port A of cell flit_rx.$flatten\u_crc.$auto$opt_expr.cc:706:replace_const_cells$1268 ($not).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$819 ($mux).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$831 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$820 ($xor).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$832 ($xor).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$834 ($mux).
+Removed top 3 bits (of 16) from mux cell flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$822 ($mux).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$835 ($xor).
+Removed top 3 bits (of 16) from port B of cell flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$823 ($xor).
+Removed top 1 bits (of 2) from port B of cell flit_rx.$add$rtl/flit_rx.sv:76$447 ($add).
+Removed top 1 bits (of 4) from port B of cell flit_rx.$eq$rtl/flit_rx.sv:109$468 ($eq).
+Removed top 3 bits (of 4) from port B of cell flit_rx.$ge$rtl/flit_rx.sv:111$470 ($ge).
+Removed top 1 bits (of 4) from port B of cell flit_rx.$le$rtl/flit_rx.sv:111$471 ($le).
+Removed top 3 bits (of 4) from port B of cell flit_rx.$eq$rtl/flit_rx.sv:112$473 ($eq).
+Removed top 2 bits (of 4) from port B of cell flit_rx.$eq$rtl/flit_rx.sv:112$474 ($eq).
+Removed top 7 bits (of 8) from port B of cell flit_rx.$add$rtl/flit_rx.sv:131$499 ($add).
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1002_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1005_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1008_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1011_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1014_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1017_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1020_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1023_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1026_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1029_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1032_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1035_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1038_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1041_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1044_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1047_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1050_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1053_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1056_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1059_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1062_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1065_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1068_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1071_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1074_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1077_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1080_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1083_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1086_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1089_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1092_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1095_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1098_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1101_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1104_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1107_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1110_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1113_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1116_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1119_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1122_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1125_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1128_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1131_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1134_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1137_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1140_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1143_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1146_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1149_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$816_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$819_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$822_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$825_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$828_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$831_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$834_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$837_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$840_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$843_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$846_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$849_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$852_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$855_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$858_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$861_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$864_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$867_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$870_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$873_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$876_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$879_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$882_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$885_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$888_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$891_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$894_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$897_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$900_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$903_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$906_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$909_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$912_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$915_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$918_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$921_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$924_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$927_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$930_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$933_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$936_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$939_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$942_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$945_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$948_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$951_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$954_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$957_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$960_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$963_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$966_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$969_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$972_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$975_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$978_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$981_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$984_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$987_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$990_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$993_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$996_Y.
+Removed top 3 bits (of 16) from wire flit_rx.$flatten\u_crc.$ternary$rtl/common/crc16.sv:18$999_Y.
+Removed top 6 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1006_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1015_Y.
+Removed top 7 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1021_Y.
+Removed top 4 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1024_Y.
+Removed top 6 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1054_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1063_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1087_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1111_Y.
+Removed top 6 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1114_Y.
+Removed top 4 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1120_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1135_Y.
+Removed top 6 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1138_Y.
+Removed top 4 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$1144_Y.
+Removed top 4 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$829_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$832_Y.
+Removed top 6 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$835_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$844_Y.
+Removed top 5 bits (of 16) from wire flit_rx.$flatten\u_crc.$xor$rtl/common/crc16.sv:18$868_Y.
+Removed top 1 bits (of 2) from wire flit_rx.$procmux$1242_Y.
+Removed top 4 bits (of 16) from wire flit_rx.crc.
+
+19.11. Executing PEEPOPT pass (run peephole optimizers).
+
+19.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 132 unused wires.
+<suppressed ~1 debug messages>
+
+19.13. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module flit_rx:
+  creating $macc model for $add$rtl/flit_rx.sv:131$499 ($add).
+  creating $macc model for $add$rtl/flit_rx.sv:76$447 ($add).
+  creating $macc model for $sub$rtl/flit_rx.sv:114$477 ($sub).
+  creating $alu model for $macc $sub$rtl/flit_rx.sv:114$477.
+  creating $alu model for $macc $add$rtl/flit_rx.sv:76$447.
+  creating $alu model for $macc $add$rtl/flit_rx.sv:131$499.
+  creating $alu model for $ge$rtl/flit_rx.sv:111$470 ($ge): new $alu
+  creating $alu model for $le$rtl/flit_rx.sv:111$471 ($le): new $alu
+  creating $alu model for $le$rtl/flit_rx.sv:96$452 ($le): new $alu
+  creating $alu model for $lt$rtl/flit_rx.sv:118$486 ($lt): new $alu
+  creating $alu model for $eq$rtl/flit_rx.sv:101$463 ($eq): merged with $le$rtl/flit_rx.sv:96$452.
+  creating $alu model for $eq$rtl/flit_rx.sv:112$473 ($eq): merged with $ge$rtl/flit_rx.sv:111$470.
+  creating $alu model for $ne$rtl/flit_rx.sv:103$465 ($ne): merged with $le$rtl/flit_rx.sv:96$452.
+  creating $alu cell for $lt$rtl/flit_rx.sv:118$486: $auto$alumacc.cc:485:replace_alu$1468
+  creating $alu cell for $le$rtl/flit_rx.sv:96$452, $eq$rtl/flit_rx.sv:101$463, $ne$rtl/flit_rx.sv:103$465: $auto$alumacc.cc:485:replace_alu$1473
+  creating $alu cell for $le$rtl/flit_rx.sv:111$471: $auto$alumacc.cc:485:replace_alu$1484
+  creating $alu cell for $ge$rtl/flit_rx.sv:111$470, $eq$rtl/flit_rx.sv:112$473: $auto$alumacc.cc:485:replace_alu$1497
+  creating $alu cell for $add$rtl/flit_rx.sv:131$499: $auto$alumacc.cc:485:replace_alu$1506
+  creating $alu cell for $add$rtl/flit_rx.sv:76$447: $auto$alumacc.cc:485:replace_alu$1509
+  creating $alu cell for $sub$rtl/flit_rx.sv:114$477: $auto$alumacc.cc:485:replace_alu$1512
+  created 7 $alu and 0 $macc cells.
+
+19.14. Executing SHARE pass (SAT-based resource sharing).
+
+19.15. Executing OPT pass (performing simple optimizations).
+
+19.15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~118 debug messages>
+
+19.15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 7 unused wires.
+<suppressed ~1 debug messages>
+
+19.15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~118 debug messages>
+
+19.15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.15.16. Finished OPT passes. (There is nothing left to do.)
+
+19.16. Executing MEMORY pass.
+
+19.16.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+19.16.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+19.16.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+19.16.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+19.16.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+19.16.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.16.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+19.16.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+19.16.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.16.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+19.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.18. Executing OPT pass (performing simple optimizations).
+
+19.18.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~579 debug messages>
+
+19.18.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+19.18.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 7 unused cells and 138 unused wires.
+<suppressed ~8 debug messages>
+
+19.18.5. Finished fast OPT passes.
+
+19.19. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+19.20. Executing OPT pass (performing simple optimizations).
+
+19.20.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.20.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.20.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~115 debug messages>
+
+19.20.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1002:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1332 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1710 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1710 [0]
+      New connections: $auto$wreduce.cc:461:run$1332 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1710 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1710 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1005:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1333 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1713 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1713 [3]
+      New connections: $auto$wreduce.cc:461:run$1333 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1713 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1713 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1008:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1334 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1716 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1716 [0]
+      New connections: $auto$wreduce.cc:461:run$1334 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1716 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1716 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1011:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1335 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1719 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1719 [0]
+      New connections: $auto$wreduce.cc:461:run$1335 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1719 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1719 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1014:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1336 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1722 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1722 [0]
+      New connections: $auto$wreduce.cc:461:run$1336 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1722 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1722 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1017:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1337 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1725 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1725 [0]
+      New connections: $auto$wreduce.cc:461:run$1337 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1725 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1725 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1020:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1338 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1728 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1728 [3]
+      New connections: $auto$wreduce.cc:461:run$1338 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1728 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1728 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1023:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1339 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1731 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1731 [0]
+      New connections: $auto$wreduce.cc:461:run$1339 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1731 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1731 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1026:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1340 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1734 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1734 [0]
+      New connections: $auto$wreduce.cc:461:run$1340 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1734 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1734 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1029:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1341 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1737 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1737 [0]
+      New connections: $auto$wreduce.cc:461:run$1341 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1737 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1737 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1032:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1342 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1740 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1740 [3]
+      New connections: $auto$wreduce.cc:461:run$1342 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1740 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1740 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1035:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1343 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1743 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1743 [3]
+      New connections: $auto$wreduce.cc:461:run$1343 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1743 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1743 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1038:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1344 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1746 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1746 [3]
+      New connections: $auto$wreduce.cc:461:run$1344 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1746 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1746 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1041:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1345 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1749 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1749 [3]
+      New connections: $auto$wreduce.cc:461:run$1345 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1749 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1749 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1044:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1346 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1752 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1752 [3]
+      New connections: $auto$wreduce.cc:461:run$1346 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1752 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1752 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1047:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1347 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1755 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1755 [3]
+      New connections: $auto$wreduce.cc:461:run$1347 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1755 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1755 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1050:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1348 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1758 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1758 [3]
+      New connections: $auto$wreduce.cc:461:run$1348 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1758 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1758 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1053:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1349 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1761 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1761 [3]
+      New connections: $auto$wreduce.cc:461:run$1349 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1761 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1761 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1056:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1350 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1764 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1764 [0]
+      New connections: $auto$wreduce.cc:461:run$1350 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1764 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1764 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1059:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1351 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1767 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1767 [0]
+      New connections: $auto$wreduce.cc:461:run$1351 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1767 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1767 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1062:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1352 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1770 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1770 [0]
+      New connections: $auto$wreduce.cc:461:run$1352 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1770 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1770 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1065:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1353 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1773 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1773 [0]
+      New connections: $auto$wreduce.cc:461:run$1353 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1773 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1773 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1068:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1354 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1776 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1776 [0]
+      New connections: $auto$wreduce.cc:461:run$1354 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1776 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1776 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1071:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1355 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1779 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1779 [0]
+      New connections: $auto$wreduce.cc:461:run$1355 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1779 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1779 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1074:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1356 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1782 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1782 [0]
+      New connections: $auto$wreduce.cc:461:run$1356 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1782 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1782 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1077:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1357 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1785 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1785 [0]
+      New connections: $auto$wreduce.cc:461:run$1357 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1785 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1785 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1080:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1358 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1788 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1788 [0]
+      New connections: $auto$wreduce.cc:461:run$1358 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1788 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1788 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1083:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1359 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1791 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1791 [0]
+      New connections: $auto$wreduce.cc:461:run$1359 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1791 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1791 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1086:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1360 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1794 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1794 [0]
+      New connections: $auto$wreduce.cc:461:run$1360 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1794 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1794 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1089:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1361 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1797 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1797 [0]
+      New connections: $auto$wreduce.cc:461:run$1361 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1797 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1797 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1092:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1362 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1800 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1800 [0]
+      New connections: $auto$wreduce.cc:461:run$1362 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1800 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1800 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1095:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1363 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1803 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1803 [0]
+      New connections: $auto$wreduce.cc:461:run$1363 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1803 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1803 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1098:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1364 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1806 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1806 [0]
+      New connections: $auto$wreduce.cc:461:run$1364 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1806 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1806 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1101:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1365 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1809 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1809 [3]
+      New connections: $auto$wreduce.cc:461:run$1365 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1809 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1809 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1104:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1366 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1812 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1812 [0]
+      New connections: $auto$wreduce.cc:461:run$1366 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1812 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1812 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1107:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1367 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1815 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1815 [0]
+      New connections: $auto$wreduce.cc:461:run$1367 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1815 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1815 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1110:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1368 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1818 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1818 [0]
+      New connections: $auto$wreduce.cc:461:run$1368 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1818 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1818 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1113:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1369 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1821 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1821 [0]
+      New connections: $auto$wreduce.cc:461:run$1369 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1821 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1821 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1116:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1370 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1824 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1824 [0]
+      New connections: $auto$wreduce.cc:461:run$1370 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1824 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1824 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1119:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1371 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1827 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1827 [0]
+      New connections: $auto$wreduce.cc:461:run$1371 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1827 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1827 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1122:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1372 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1830 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1830 [0]
+      New connections: $auto$wreduce.cc:461:run$1372 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1830 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1830 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1125:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1373 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1833 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1833 [0]
+      New connections: $auto$wreduce.cc:461:run$1373 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1833 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1833 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1128:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1374 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1836 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1836 [0]
+      New connections: $auto$wreduce.cc:461:run$1374 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1836 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1836 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1131:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1375 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1839 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1839 [0]
+      New connections: $auto$wreduce.cc:461:run$1375 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1839 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1839 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1134:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1376 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1842 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1842 [0]
+      New connections: $auto$wreduce.cc:461:run$1376 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1842 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1842 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1137:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1377 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1845 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1845 [0]
+      New connections: $auto$wreduce.cc:461:run$1377 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1845 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1845 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1140:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1378 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1848 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1848 [0]
+      New connections: $auto$wreduce.cc:461:run$1378 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1848 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1848 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1143:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1379 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1851 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1851 [0]
+      New connections: $auto$wreduce.cc:461:run$1379 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1851 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1851 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1146:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1380 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1854 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1854 [0]
+      New connections: $auto$wreduce.cc:461:run$1380 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1854 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1854 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$1149:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1381 [12:1] \u_crc.crc [0] }
+      New ports: A=1'0, B=1'1, Y=\u_crc.crc [0]
+      New connections: $auto$wreduce.cc:461:run$1381 [12:1] = { \u_crc.crc [0] 6'000000 \u_crc.crc [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$816:
+      Old ports: A=13'1000000100001, B=13'0000000000000, Y=$auto$wreduce.cc:461:run$1382 [12:0]
+      New ports: A=1'1, B=1'0, Y=$auto$wreduce.cc:461:run$1382 [0]
+      New connections: $auto$wreduce.cc:461:run$1382 [12:1] = { $auto$wreduce.cc:461:run$1382 [0] 6'000000 $auto$wreduce.cc:461:run$1382 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$819:
+      Old ports: A=13'1000000100001, B=13'0000000000000, Y={ $auto$wreduce.cc:461:run$1383 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1527 [0] }
+      New ports: A=1'1, B=1'0, Y=$auto$opt_expr.cc:205:group_cell_inputs$1527 [0]
+      New connections: $auto$wreduce.cc:461:run$1383 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1527 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1527 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$822:
+      Old ports: A=13'1000000100001, B=13'0000000000000, Y={ $auto$wreduce.cc:461:run$1384 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1530 [0] }
+      New ports: A=1'1, B=1'0, Y=$auto$opt_expr.cc:205:group_cell_inputs$1530 [0]
+      New connections: $auto$wreduce.cc:461:run$1384 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1530 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1530 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$825:
+      Old ports: A=13'1000000100001, B=13'0000000000000, Y={ $auto$wreduce.cc:461:run$1385 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1533 [0] }
+      New ports: A=1'1, B=1'0, Y=$auto$opt_expr.cc:205:group_cell_inputs$1533 [0]
+      New connections: $auto$wreduce.cc:461:run$1385 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1533 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1533 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$828:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1386 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1536 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1536 [0]
+      New connections: $auto$wreduce.cc:461:run$1386 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1536 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1536 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$831:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1387 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1539 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1539 [0]
+      New connections: $auto$wreduce.cc:461:run$1387 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1539 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1539 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$834:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1388 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1542 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1542 [0]
+      New connections: $auto$wreduce.cc:461:run$1388 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1542 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1542 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$837:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1389 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1545 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1545 [0]
+      New connections: $auto$wreduce.cc:461:run$1389 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1545 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1545 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$840:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1390 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1548 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1548 [3]
+      New connections: $auto$wreduce.cc:461:run$1390 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1548 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1548 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$843:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1391 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1551 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1551 [0]
+      New connections: $auto$wreduce.cc:461:run$1391 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1551 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1551 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$846:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1392 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1554 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1554 [0]
+      New connections: $auto$wreduce.cc:461:run$1392 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1554 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1554 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$849:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1393 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1557 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1557 [0]
+      New connections: $auto$wreduce.cc:461:run$1393 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1557 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1557 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$852:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1394 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1560 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1560 [0]
+      New connections: $auto$wreduce.cc:461:run$1394 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1560 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1560 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$855:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1395 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1563 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1563 [0]
+      New connections: $auto$wreduce.cc:461:run$1395 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1563 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1563 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$858:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1396 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1566 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1566 [0]
+      New connections: $auto$wreduce.cc:461:run$1396 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1566 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1566 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$861:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1397 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1569 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1569 [0]
+      New connections: $auto$wreduce.cc:461:run$1397 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1569 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1569 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$864:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1398 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1572 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1572 [0]
+      New connections: $auto$wreduce.cc:461:run$1398 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1572 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1572 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$867:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1399 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1575 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1575 [0]
+      New connections: $auto$wreduce.cc:461:run$1399 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1575 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1575 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$870:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1400 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1578 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1578 [0]
+      New connections: $auto$wreduce.cc:461:run$1400 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1578 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1578 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$873:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1401 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1581 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1581 [0]
+      New connections: $auto$wreduce.cc:461:run$1401 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1581 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1581 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$876:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1402 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1584 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1584 [0]
+      New connections: $auto$wreduce.cc:461:run$1402 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1584 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1584 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$879:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1403 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1587 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1587 [0]
+      New connections: $auto$wreduce.cc:461:run$1403 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1587 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1587 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$882:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1404 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1590 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1590 [0]
+      New connections: $auto$wreduce.cc:461:run$1404 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1590 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1590 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$885:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1405 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1593 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1593 [0]
+      New connections: $auto$wreduce.cc:461:run$1405 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1593 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1593 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$888:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1406 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1596 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1596 [0]
+      New connections: $auto$wreduce.cc:461:run$1406 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1596 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1596 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$891:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1407 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1599 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1599 [0]
+      New connections: $auto$wreduce.cc:461:run$1407 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1599 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1599 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$894:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1408 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1602 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1602 [0]
+      New connections: $auto$wreduce.cc:461:run$1408 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1602 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1602 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$897:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1409 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1605 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1605 [0]
+      New connections: $auto$wreduce.cc:461:run$1409 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1605 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1605 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$900:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1410 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1608 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1608 [0]
+      New connections: $auto$wreduce.cc:461:run$1410 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1608 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1608 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$903:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1411 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1611 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1611 [0]
+      New connections: $auto$wreduce.cc:461:run$1411 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1611 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1611 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$906:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1412 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1614 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1614 [0]
+      New connections: $auto$wreduce.cc:461:run$1412 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1614 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1614 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$909:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1413 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1617 [0] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1617 [0]
+      New connections: $auto$wreduce.cc:461:run$1413 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1617 [0] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1617 [0] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$912:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1414 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1620 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1620 [3]
+      New connections: $auto$wreduce.cc:461:run$1414 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1620 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1620 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$915:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1415 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1623 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1623 [3]
+      New connections: $auto$wreduce.cc:461:run$1415 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1623 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1623 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$918:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1416 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1626 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1626 [3]
+      New connections: $auto$wreduce.cc:461:run$1416 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1626 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1626 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$921:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1417 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1629 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1629 [3]
+      New connections: $auto$wreduce.cc:461:run$1417 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1629 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1629 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$924:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1418 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1632 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1632 [3]
+      New connections: $auto$wreduce.cc:461:run$1418 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1632 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1632 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$927:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1419 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1635 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1635 [3]
+      New connections: $auto$wreduce.cc:461:run$1419 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1635 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1635 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$930:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1420 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1638 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1638 [3]
+      New connections: $auto$wreduce.cc:461:run$1420 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1638 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1638 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$933:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1421 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1641 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1641 [3]
+      New connections: $auto$wreduce.cc:461:run$1421 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1641 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1641 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$936:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1422 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1644 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1644 [3]
+      New connections: $auto$wreduce.cc:461:run$1422 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1644 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1644 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$939:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1423 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1647 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1647 [3]
+      New connections: $auto$wreduce.cc:461:run$1423 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1647 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1647 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$942:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1424 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1650 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1650 [3]
+      New connections: $auto$wreduce.cc:461:run$1424 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1650 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1650 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$945:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1425 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1653 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1653 [3]
+      New connections: $auto$wreduce.cc:461:run$1425 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1653 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1653 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$948:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1426 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1656 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1656 [3]
+      New connections: $auto$wreduce.cc:461:run$1426 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1656 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1656 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$951:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1427 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1659 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1659 [3]
+      New connections: $auto$wreduce.cc:461:run$1427 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1659 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1659 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$954:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1428 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1662 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1662 [3]
+      New connections: $auto$wreduce.cc:461:run$1428 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1662 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1662 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$957:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1429 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1665 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1665 [3]
+      New connections: $auto$wreduce.cc:461:run$1429 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1665 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1665 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$960:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1430 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1668 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1668 [3]
+      New connections: $auto$wreduce.cc:461:run$1430 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1668 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1668 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$963:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1431 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1671 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1671 [3]
+      New connections: $auto$wreduce.cc:461:run$1431 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1671 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1671 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$966:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1432 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1674 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1674 [3]
+      New connections: $auto$wreduce.cc:461:run$1432 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1674 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1674 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$969:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1433 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1677 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1677 [3]
+      New connections: $auto$wreduce.cc:461:run$1433 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1677 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1677 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$972:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1434 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1680 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1680 [3]
+      New connections: $auto$wreduce.cc:461:run$1434 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1680 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1680 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$975:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1435 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1683 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1683 [3]
+      New connections: $auto$wreduce.cc:461:run$1435 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1683 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1683 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$978:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1436 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1686 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1686 [3]
+      New connections: $auto$wreduce.cc:461:run$1436 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1686 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1686 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$981:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1437 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1689 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1689 [3]
+      New connections: $auto$wreduce.cc:461:run$1437 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1689 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1689 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$984:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1438 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1692 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1692 [3]
+      New connections: $auto$wreduce.cc:461:run$1438 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1692 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1692 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$987:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1439 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1695 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1695 [3]
+      New connections: $auto$wreduce.cc:461:run$1439 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1695 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1695 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$990:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1440 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1698 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1698 [3]
+      New connections: $auto$wreduce.cc:461:run$1440 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1698 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1698 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$993:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1441 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1701 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1701 [3]
+      New connections: $auto$wreduce.cc:461:run$1441 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1701 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1701 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$996:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1442 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1704 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1704 [3]
+      New connections: $auto$wreduce.cc:461:run$1442 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1704 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1704 [3] 4'0000 }
+    Consolidated identical input bits for $mux cell $flatten\u_crc.$ternary$rtl/common/crc16.sv:18$999:
+      Old ports: A=13'0000000000000, B=13'1000000100001, Y={ $auto$wreduce.cc:461:run$1443 [12:1] $auto$opt_expr.cc:205:group_cell_inputs$1707 [3] }
+      New ports: A=1'0, B=1'1, Y=$auto$opt_expr.cc:205:group_cell_inputs$1707 [3]
+      New connections: $auto$wreduce.cc:461:run$1443 [12:1] = { $auto$opt_expr.cc:205:group_cell_inputs$1707 [3] 6'000000 $auto$opt_expr.cc:205:group_cell_inputs$1707 [3] 4'0000 }
+  Optimizing cells in module \flit_rx.
+Performed a total of 112 changes.
+
+19.20.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.20.6. Executing OPT_SHARE pass.
+
+19.20.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.20.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 111 unused wires.
+<suppressed ~1 debug messages>
+
+19.20.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~703 debug messages>
+
+19.20.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.20.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+19.20.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.20.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+19.20.14. Executing OPT_SHARE pass.
+
+19.20.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.20.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 359 unused wires.
+<suppressed ~1 debug messages>
+
+19.20.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.20.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+19.20.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \flit_rx..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+19.20.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \flit_rx.
+Performed a total of 0 changes.
+
+19.20.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+Removed a total of 0 cells.
+
+19.20.22. Executing OPT_SHARE pass.
+
+19.20.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.20.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+
+19.20.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+
+19.20.26. Finished OPT passes. (There is nothing left to do.)
+
+19.21. Executing TECHMAP pass (map to technology primitives).
+
+19.21.1. Executing Verilog-2005 frontend: /usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+19.21.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $sdffe.
+Using template $paramod$a1bc51c02ce12ac21eb18988e83292af48ed7d72\_90_alu for cells of type $alu.
+Using template $paramod$fc972a7a46956c1788f3cb5257b53c8f1df2d0cc\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_or.
+Using template $paramod$1a3a0c35c4a4896fbfd612699525c057298e72d2\_90_alu for cells of type $alu.
+Using template $paramod$7af24cf7f572852703f08ef7a936c59efa2c57af\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1185 debug messages>
+
+19.22. Executing OPT pass (performing simple optimizations).
+
+19.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~208 debug messages>
+
+19.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~150 debug messages>
+Removed a total of 50 cells.
+
+19.22.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.22.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 32 unused cells and 277 unused wires.
+<suppressed ~33 debug messages>
+
+19.22.5. Finished fast OPT passes.
+
+19.23. Executing ABC pass (technology mapping using ABC).
+
+19.23.1. Extracting gate netlist of module `\flit_rx' to `<abc-temp-dir>/input.blif'..
+Extracted 636 gates and 785 wires to a netlist network with 148 inputs and 32 outputs.
+
+19.23.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+19.23.1.2. Re-integrating ABC results.
+ABC RESULTS:               NOR cells:        7
+ABC RESULTS:             ORNOT cells:       33
+ABC RESULTS:              XNOR cells:       34
+ABC RESULTS:               MUX cells:        3
+ABC RESULTS:               NOT cells:        6
+ABC RESULTS:                OR cells:       86
+ABC RESULTS:              NAND cells:       11
+ABC RESULTS:            ANDNOT cells:       43
+ABC RESULTS:               AND cells:       10
+ABC RESULTS:               XOR cells:      325
+ABC RESULTS:        internal signals:      605
+ABC RESULTS:           input signals:      148
+ABC RESULTS:          output signals:       32
+Removing temp directory.
+
+19.24. Executing OPT pass (performing simple optimizations).
+
+19.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module flit_rx.
+<suppressed ~8 debug messages>
+
+19.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\flit_rx'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+19.24.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+19.24.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 1 unused cells and 537 unused wires.
+<suppressed ~12 debug messages>
+
+19.24.5. Finished fast OPT passes.
+
+19.25. Executing HIERARCHY pass (managing design hierarchy).
+
+19.25.1. Analyzing design hierarchy..
+Top module:  \flit_rx
+
+19.25.2. Analyzing design hierarchy..
+Top module:  \flit_rx
+Removed 0 unused modules.
+
+19.26. Printing statistics.
+
+=== flit_rx ===
+
+   Number of wires:                576
+   Number of wire bits:           1120
+   Number of public wires:          38
+   Number of public wire bits:     568
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                791
+     $_ANDNOT_                      42
+     $_AND_                         10
+     $_MUX_                          3
+     $_NAND_                        11
+     $_NOR_                          7
+     $_NOT_                          5
+     $_ORNOT_                       33
+     $_OR_                          86
+     $_SDFFE_PN0N_                   8
+     $_SDFFE_PN0P_                 226
+     $_SDFFE_PP0P_                   2
+     $_SDFF_PN0_                     1
+     $_SDFF_PP0_                     1
+     $_XNOR_                        34
+     $_XOR_                        322
+
+19.27. Executing CHECK pass (checking for obvious problems).
+Checking module flit_rx...
+Found and reported 0 problems.
+
+20. Printing statistics.
+
+=== flit_rx ===
+
+   Number of wires:                576
+   Number of wire bits:           1120
+   Number of public wires:          38
+   Number of public wire bits:     568
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                791
+     $_ANDNOT_                      42
+     $_AND_                         10
+     $_MUX_                          3
+     $_NAND_                        11
+     $_NOR_                          7
+     $_NOT_                          5
+     $_ORNOT_                       33
+     $_OR_                          86
+     $_SDFFE_PN0N_                   8
+     $_SDFFE_PN0P_                 226
+     $_SDFFE_PP0P_                   2
+     $_SDFF_PN0_                     1
+     $_SDFF_PP0_                     1
+     $_XNOR_                        34
+     $_XOR_                        322
+
+21. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+21.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\flit_rx':
+  mapped 238 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+22. Executing ABC pass (technology mapping using ABC).
+
+22.1. Extracting gate netlist of module `\flit_rx' to `<abc-temp-dir>/input.blif'..
+Extracted 1027 gates and 1305 wires to a netlist network with 276 inputs and 247 outputs.
+
+22.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lib -w /work/syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.37 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/work/syn/lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.61 sec
+ABC: Memory =   19.81 MB. Time =     0.61 sec
+ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + dch -f 
+ABC: + map 
+ABC: + topo 
+ABC: + stime -p 
+ABC: WireLoad = "none"  Gates =   1476 (  7.5 %)   Cap =  5.6 ff (  1.1 %)   Area =    12637.12 ( 92.5 %)   Delay = 10746.34 ps  ( 21.6 %)               
+ABC: Path  0 --      76 : 0   11 pi                        A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  27.7 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     534 : 1   10 sky130_fd_sc_hd__clkinv_1 A =   3.75  Df = 145.6  -44.0 ps  S = 176.9 ps  Cin =  3.1 ff  Cout =  23.6 ff  Cmax = 190.4 ff  G =  741  
+ABC: Path  2 --     542 : 3    1 sky130_fd_sc_hd__nand3_1  A =   5.00  Df = 274.2   -5.3 ps  S =  73.4 ps  Cin =  2.4 ff  Cout =   2.5 ff  Cmax = 146.5 ff  G =  101  
+ABC: Path  3 --     544 : 3    5 sky130_fd_sc_hd__nand3_1  A =   5.00  Df = 474.9  -63.4 ps  S = 152.8 ps  Cin =  2.4 ff  Cout =  12.3 ff  Cmax = 146.5 ff  G =  507  
+ABC: Path  4 --     602 : 2    2 sky130_fd_sc_hd__nand2_1  A =   3.75  Df = 588.4  -39.4 ps  S = 109.7 ps  Cin =  2.3 ff  Cout =   9.9 ff  Cmax = 166.6 ff  G =  414  
+ABC: Path  5 --     696 : 2    3 sky130_fd_sc_hd__xor2_1   A =   8.76  Df = 813.0  -40.5 ps  S = 268.6 ps  Cin =  4.4 ff  Cout =  11.2 ff  Cmax =  76.9 ff  G =  245  
+ABC: Path  6 --     701 : 3    3 sky130_fd_sc_hd__xnor3_4  A =  26.28  Df =1353.3  -59.1 ps  S = 112.2 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 554.8 ff  G =  350  
+ABC: Path  7 --     702 : 3    3 sky130_fd_sc_hd__xnor3_4  A =  26.28  Df =1665.0  -17.5 ps  S = 111.2 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 554.8 ff  G =  350  
+ABC: Path  8 --     703 : 3    3 sky130_fd_sc_hd__xnor3_4  A =  26.28  Df =2018.2  -59.6 ps  S = 111.2 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 554.8 ff  G =  350  
+ABC: Path  9 --     741 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =2383.9 -144.7 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 10 --     742 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =2750.0 -228.6 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 11 --     743 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =3116.1 -312.5 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 12 --     744 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =3482.2 -396.4 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 13 --     782 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =3848.3 -480.3 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 14 --     783 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =4214.3 -564.2 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 15 --     784 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =4580.4 -648.2 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 16 --     785 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =4946.5 -732.1 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 17 --     825 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =5312.6 -816.0 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 18 --     826 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =5678.7 -899.9 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 19 --     827 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =6044.8 -983.8 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 20 --     828 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =6410.9-1067.7 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 21 --     859 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =6777.0-1151.7 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 22 --     889 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =7143.0-1235.6 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 23 --     890 : 3    3 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =7509.1-1319.5 ps  S = 112.3 ps  Cin =  3.7 ff  Cout =  13.5 ff  Cmax = 506.3 ff  G =  351  
+ABC: Path 24 --     895 : 3    4 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =7873.0-1403.1 ps  S = 111.1 ps  Cin =  3.7 ff  Cout =  13.0 ff  Cmax = 506.3 ff  G =  337  
+ABC: Path 25 --     913 : 2    2 sky130_fd_sc_hd__and2_2   A =   7.51  Df =8068.9-1452.8 ps  S =  44.9 ps  Cin =  1.5 ff  Cout =   4.3 ff  Cmax = 303.0 ff  G =  277  
+ABC: Path 26 --     914 : 2    5 sky130_fd_sc_hd__nor2_1   A =   3.75  Df =8410.4 -283.9 ps  S = 436.0 ps  Cin =  2.4 ff  Cout =  24.2 ff  Cmax =  86.1 ff  G =  991  
+ABC: Path 27 --     942 : 3    2 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =8881.2 -288.2 ps  S =  99.6 ps  Cin =  3.7 ff  Cout =   7.2 ff  Cmax = 506.3 ff  G =  186  
+ABC: Path 28 --     943 : 3    4 sky130_fd_sc_hd__xor3_4   A =  27.53  Df =9156.8 -176.7 ps  S = 113.7 ps  Cin =  3.7 ff  Cout =  14.4 ff  Cmax = 506.3 ff  G =  373  
+ABC: Path 29 --    1185 : 3    2 sky130_fd_sc_hd__xnor3_4  A =  26.28  Df =9478.6 -217.6 ps  S =  93.7 ps  Cin =  3.7 ff  Cout =   4.9 ff  Cmax = 554.8 ff  G =  124  
+ABC: Path 30 --    1186 : 5    1 sky130_fd_sc_hd__a32oi_1  A =   8.76  Df =9630.8 -321.5 ps  S = 135.4 ps  Cin =  2.3 ff  Cout =   2.5 ff  Cmax =  85.2 ff  G =  102  
+ABC: Path 31 --    1190 : 4    2 sky130_fd_sc_hd__nand4_1  A =   6.26  Df =9747.4  -87.3 ps  S =  92.9 ps  Cin =  2.3 ff  Cout =   5.0 ff  Cmax = 124.5 ff  G =  202  
+ABC: Path 32 --    1965 : 3    1 sky130_fd_sc_hd__nor3_1   A =   5.00  Df =9916.5 -187.1 ps  S = 137.5 ps  Cin =  2.4 ff  Cout =   2.4 ff  Cmax =  52.2 ff  G =   97  
+ABC: Path 33 --    1966 : 4    1 sky130_fd_sc_hd__nand4_1  A =   6.26  Df =10003.3 -215.2 ps  S =  72.7 ps  Cin =  2.3 ff  Cout =   2.5 ff  Cmax = 124.5 ff  G =  100  
+ABC: Path 34 --    1967 : 4    6 sky130_fd_sc_hd__nor4_1   A =   6.26  Df =10475.3 -603.6 ps  S = 619.8 ps  Cin =  2.4 ff  Cout =  13.7 ff  Cmax =  36.6 ff  G =  564  
+ABC: Path 35 --    1989 : 4    1 sky130_fd_sc_hd__nand4_1  A =   6.26  Df =10614.3 -647.6 ps  S = 144.4 ps  Cin =  2.3 ff  Cout =   2.4 ff  Cmax = 124.5 ff  G =   99  
+ABC: Path 36 --    1990 : 3    1 sky130_fd_sc_hd__a21oi_1  A =   5.00  Df =10746.3 -176.9 ps  S = 380.9 ps  Cin =  2.3 ff  Cout =   0.0 ff  Cmax =  74.2 ff  G =    0  
+ABC: Start-point = pi75 (\fq [127]).  End-point = po244 ($auto$rtlil.cc:2609:MuxGate$5228).
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+22.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       44
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xor3_4 cells:      211
+ABC RESULTS:   sky130_fd_sc_hd__o211a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__xnor3_4 cells:       49
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       88
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:       54
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:      568
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:      110
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:       29
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:      242
+ABC RESULTS:        internal signals:      782
+ABC RESULTS:           input signals:      276
+ABC RESULTS:          output signals:      247
+Removing temp directory.
+
+23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \flit_rx..
+Removed 0 unused cells and 1297 unused wires.
+<suppressed ~1 debug messages>
+
+24. Printing statistics.
+
+=== flit_rx ===
+
+   Number of wires:               1505
+   Number of wire bits:           2035
+   Number of public wires:          38
+   Number of public wire bits:     568
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1714
+     sky130_fd_sc_hd__a211oi_1       2
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__a21oi_1      242
+     sky130_fd_sc_hd__a221oi_1       1
+     sky130_fd_sc_hd__a22oi_1        2
+     sky130_fd_sc_hd__a31oi_1        1
+     sky130_fd_sc_hd__a32oi_1        6
+     sky130_fd_sc_hd__and2_2         1
+     sky130_fd_sc_hd__and3_2         1
+     sky130_fd_sc_hd__clkinv_1     110
+     sky130_fd_sc_hd__dfxtp_1      238
+     sky130_fd_sc_hd__nand2_1      568
+     sky130_fd_sc_hd__nand3_1       88
+     sky130_fd_sc_hd__nand3b_1      12
+     sky130_fd_sc_hd__nand4_1       29
+     sky130_fd_sc_hd__nor2_1        54
+     sky130_fd_sc_hd__nor3_1        11
+     sky130_fd_sc_hd__nor3b_1        2
+     sky130_fd_sc_hd__nor4_1        12
+     sky130_fd_sc_hd__nor4b_1        2
+     sky130_fd_sc_hd__o211a_1        1
+     sky130_fd_sc_hd__o211ai_1       1
+     sky130_fd_sc_hd__o21a_1         3
+     sky130_fd_sc_hd__o21ai_0        6
+     sky130_fd_sc_hd__o21bai_1       1
+     sky130_fd_sc_hd__o221ai_1       1
+     sky130_fd_sc_hd__o2bb2ai_1      7
+     sky130_fd_sc_hd__or2_2          3
+     sky130_fd_sc_hd__or4_2          1
+     sky130_fd_sc_hd__xnor2_1        3
+     sky130_fd_sc_hd__xnor3_4       49
+     sky130_fd_sc_hd__xor2_1        44
+     sky130_fd_sc_hd__xor3_4       211
+
+   Chip area for module '\flit_rx': 17401.689600
+
+25. Printing statistics.
+
+=== flit_rx ===
+
+   Number of wires:               1505
+   Number of wire bits:           2035
+   Number of public wires:          38
+   Number of public wire bits:     568
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1714
+     sky130_fd_sc_hd__a211oi_1       2
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__a21oi_1      242
+     sky130_fd_sc_hd__a221oi_1       1
+     sky130_fd_sc_hd__a22oi_1        2
+     sky130_fd_sc_hd__a31oi_1        1
+     sky130_fd_sc_hd__a32oi_1        6
+     sky130_fd_sc_hd__and2_2         1
+     sky130_fd_sc_hd__and3_2         1
+     sky130_fd_sc_hd__clkinv_1     110
+     sky130_fd_sc_hd__dfxtp_1      238
+     sky130_fd_sc_hd__nand2_1      568
+     sky130_fd_sc_hd__nand3_1       88
+     sky130_fd_sc_hd__nand3b_1      12
+     sky130_fd_sc_hd__nand4_1       29
+     sky130_fd_sc_hd__nor2_1        54
+     sky130_fd_sc_hd__nor3_1        11
+     sky130_fd_sc_hd__nor3b_1        2
+     sky130_fd_sc_hd__nor4_1        12
+     sky130_fd_sc_hd__nor4b_1        2
+     sky130_fd_sc_hd__o211a_1        1
+     sky130_fd_sc_hd__o211ai_1       1
+     sky130_fd_sc_hd__o21a_1         3
+     sky130_fd_sc_hd__o21ai_0        6
+     sky130_fd_sc_hd__o21bai_1       1
+     sky130_fd_sc_hd__o221ai_1       1
+     sky130_fd_sc_hd__o2bb2ai_1      7
+     sky130_fd_sc_hd__or2_2          3
+     sky130_fd_sc_hd__or4_2          1
+     sky130_fd_sc_hd__xnor2_1        3
+     sky130_fd_sc_hd__xnor3_4       49
+     sky130_fd_sc_hd__xor2_1        44
+     sky130_fd_sc_hd__xor3_4       211
+
+   Chip area for module '\flit_rx': 17401.689600
+
+Warnings: 26 unique messages, 234 total
+End of script. Logfile hash: bc5f6984b6, CPU: user 7.70s system 0.36s, MEM: 43.32 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 28% 2x abc (3 sec), 17% 29x opt_expr (1 sec), ...

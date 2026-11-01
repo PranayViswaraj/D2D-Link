@@ -48,9 +48,10 @@ module apb_csr (
   assign access  = psel && penable;
   assign cfg_reg = (paddr == A_CTRL) || (paddr == A_ERRCFG) || (paddr == A_ERRWIN);
   assign stall   = pwrite && cfg_reg && cfg_full;
-  assign pready  = !stall;
-  assign wr      = access && pwrite && !stall;
-  assign rd      = access && !pwrite;
+  // no access completes while the synchronized reset is still asserted (bug_log #1)
+  assign pready  = rst_n && !stall;
+  assign wr      = access && pwrite && pready;
+  assign rd      = access && !pwrite && pready;
 
   always_comb begin
     mapped = 1'b1;
@@ -72,7 +73,7 @@ module apb_csr (
     endcase
     if (!rd) prdata = 32'd0;
   end
-  assign pslverr = access && !stall && !mapped;
+  assign pslverr = access && pready && !mapped;
 
   // ---------------- config registers + message ----------------
   logic        n_en, n_force;

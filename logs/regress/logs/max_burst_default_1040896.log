@@ -1,0 +1,28 @@
+/work/tb/uvm/run_test.py:14: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+  from cocotb.runner import get_runner  # noqa: E402
+make: Entering directory '/tmp/sim_build/system_default'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/tmp/sim_build/system_default'
+     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:79   in set_program_name_in_venv        Did not detect Python virtual environment. Using system-wide Python interpreter
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     cocotb                             Running on Verilator version 5.020 2024-01-01
+     0.00ns INFO     cocotb                             Running tests with cocotb v1.9.2 from /opt/venv/lib/python3.12/site-packages/cocotb
+     0.00ns INFO     cocotb                             Seeding Python random module with supplied seed 1040896
+     0.00ns INFO     cocotb.regression                  Found test d2d_tests.max_burst
+     0.00ns INFO     cocotb.regression                  running max_burst (1/1)
+     0.00ns INFO     /work/tb/uvm/d2d_tests.py(44)      [uvm_test_top]: clocks: link=1000ps axi_a=1700ps axi_b=2300ps
+  2678.00ns INFO     /work/tb/uvm/d2d_tests.py(144)     [uvm_test_top]: RESULT {"test": "max_burst", "seed": 1040896, "transactions": 40, "responses": 40, "flushed_by_reset": 0, "b_requests": 40, "errors": 0, "faults_a2b": {"single": 0, "multi": 0, "beat": 0, "burst": 0, "drop": 0}, "faults_b2a": {"single": 0, "multi": 0, "beat": 0, "burst": 0, "drop": 0}, "faults_total": 0, "counters_a": {"crc_err_cnt": 0, "nak_cnt": 0, "replay_cnt": 0, "timeout_cnt": 0, "retrain_cnt": 0}, "counters_b": {"crc_err_cnt": 0, "nak_cnt": 0, "replay_cnt": 0, "timeout_cnt": 0, "retrain_cnt": 0}, "ltssm_arcs": [["a", "RESET", "TRAIN"], ["a", "TRAIN", "ACTIVE"], ["b", "RESET", "TRAIN"], ["b", "TRAIN", "ACTIVE"]], "sim_time_ns": 2678.0}
+  2678.00ns INFO     cocotb.regression                  max_burst passed
+  2678.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** d2d_tests.max_burst            PASS        2678.00           9.68        276.69  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0               2678.00          13.64        196.39  **
+                                                        **************************************************************************************
+                                                        
+- :0: Verilog $finish
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/system_default -DCOCOTB_SIM=1 --top-module d2d_system_top --vpi --public-flat-rw --prefix Vtop -o d2d_system_top -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -O2 --x-assign unique --x-initial unique -DSIM=1 -I/work/rtl /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/sync_2ff.sv /work/rtl/common/reset_sync.sv /work/rtl/common/async_fifo.sv /work/rtl/common/crc16.sv /work/rtl/common/credit_counter.sv /work/rtl/replay_buffer.sv /work/rtl/flit_tx.sv /work/rtl/flit_rx.sv /work/rtl/link_training_fsm.sv /work/rtl/link_layer.sv /work/rtl/csr_link_sync.sv /work/rtl/apb_csr.sv /work/rtl/axi_slave_adapter.sv /work/rtl/axi_master_adapter.sv /work/rtl/die_a_top.sv /work/rtl/die_b_top.sv /work/rtl/lane_fault_inj.sv /work/rtl/d2d_system_top.sv in directory /tmp/sim_build/system_default
+INFO: Running command make -C /tmp/sim_build/system_default -f Vtop.mk VM_TRACE=0 in directory /tmp/sim_build/system_default
+INFO: Running command /tmp/sim_build/system_default/d2d_system_top in directory /work/tb/uvm
+INFO: Results file: /work/logs/regress/max_burst_default_1040896.xml

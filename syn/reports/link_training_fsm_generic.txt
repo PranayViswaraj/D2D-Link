@@ -1,0 +1,26 @@
+
+20. Printing statistics.
+
+=== link_training_fsm ===
+
+   Number of wires:                390
+   Number of wire bits:            513
+   Number of public wires:          26
+   Number of public wire bits:     107
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                450
+     $_ANDNOT_                     122
+     $_AND_                         20
+     $_MUX_                          4
+     $_NAND_                        27
+     $_NOR_                         40
+     $_NOT_                         11
+     $_ORNOT_                       21
+     $_OR_                          65
+     $_SDFFE_PP0P_                  57
+     $_SDFF_PN0_                     3
+     $_XNOR_                        26
+     $_XOR_                         54
+

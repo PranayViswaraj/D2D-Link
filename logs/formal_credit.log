@@ -1,0 +1,144 @@
+SBY  5:01:48 [credit_prove] Removing directory '/work/formal/credit_prove'.
+SBY  5:01:48 [credit_prove] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/credit_prove/src/d2d_checks.svh'.
+SBY  5:01:48 [credit_prove] Copy '/work/rtl/common/credit_counter.sv' to '/work/formal/credit_prove/src/credit_counter.sv'.
+SBY  5:01:48 [credit_prove] Copy '/work/formal/credit_props.sv' to '/work/formal/credit_prove/src/credit_props.sv'.
+SBY  5:01:48 [credit_prove] engine_0: abc pdr
+SBY  5:01:48 [credit_cover] Removing directory '/work/formal/credit_cover'.
+SBY  5:01:48 [credit_cover] Copy '/work/rtl/d2d_checks.svh' to '/work/formal/credit_cover/src/d2d_checks.svh'.
+SBY  5:01:48 [credit_cover] Copy '/work/rtl/common/credit_counter.sv' to '/work/formal/credit_cover/src/credit_counter.sv'.
+SBY  5:01:49 [credit_cover] Copy '/work/formal/credit_props.sv' to '/work/formal/credit_cover/src/credit_props.sv'.
+SBY  5:01:49 [credit_cover] engine_0: smtbmc z3
+SBY  5:01:49 [credit_prove] base: starting process "cd credit_prove/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:01:49 [credit_cover] base: starting process "cd credit_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  5:01:50 [credit_prove] base: finished (returncode=0)
+SBY  5:01:50 [credit_cover] base: finished (returncode=0)
+SBY  5:01:50 [credit_prove] prep: starting process "cd credit_prove/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:01:50 [credit_cover] prep: starting process "cd credit_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY  5:01:50 [credit_prove] prep: finished (returncode=0)
+SBY  5:01:50 [credit_cover] prep: finished (returncode=0)
+SBY  5:01:50 [credit_prove] aig: starting process "cd credit_prove/model; yosys -ql design_aiger.log design_aiger.ys"
+SBY  5:01:50 [credit_cover] smt2: starting process "cd credit_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  5:01:50 [credit_cover] smt2: finished (returncode=0)
+SBY  5:01:50 [credit_cover] engine_0: starting process "cd credit_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 20  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Reached cover statement at credit_props.sv:49.81-50.39 ($cover$credit_props.sv:49$78) in step 5.
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  5:01:51 [credit_cover] engine_0: ##   0:00:00  Status: passed
+SBY  5:01:51 [credit_cover] engine_0: finished (returncode=0)
+SBY  5:01:51 [credit_cover] engine_0: Status returned by engine: pass
+SBY  5:01:51 [credit_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY  5:01:51 [credit_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY  5:01:51 [credit_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY  5:01:51 [credit_cover] summary: cover trace: credit_cover/engine_0/trace0.vcd
+SBY  5:01:51 [credit_cover] summary:   reached cover statement credit_props.$cover$credit_props.sv:49$78 at credit_props.sv:49.81-50.39 in step 5
+SBY  5:01:51 [credit_cover] DONE (PASS, rc=0)
+SBY  5:01:53 [credit_prove] aig: finished (returncode=0)
+SBY  5:01:53 [credit_prove] engine_0: starting process "cd credit_prove; yosys-abc -c 'read_aiger model/design_aiger.aig; fold; strash; pdr -v -I engine_0/invariants.pla; write_cex -a engine_0/trace.aiw'"
+SBY  5:01:53 [credit_prove] engine_0: ABC command line: "read_aiger model/design_aiger.aig; fold; strash; pdr -v -I engine_0/invariants.pla; write_cex -a engine_0/trace.aiw".
+SBY  5:01:53 [credit_prove] engine_0: Warning: The last 3 outputs are interpreted as constraints.
+SBY  5:01:53 [credit_prove] engine_0: VarMax = 300. FrameMax = 10000. QueMax = 0. TimeMax = 0. MonoCNF = no. SkipGen = no. SolveAll = no.
+SBY  5:01:53 [credit_prove] engine_0: Frame Clauses                                                     Max Queue Flops Cex      Time
+SBY  5:01:53 [credit_prove] engine_0: 1 : 0 27                                                                1    28      0.03 sec
+SBY  5:01:53 [credit_prove] engine_0: 2 : 0 5 29                                                              1    29      0.05 sec
+SBY  5:01:53 [credit_prove] engine_0: 3 : 0 5 5 33                                                            1    29      0.08 sec
+SBY  5:01:53 [credit_prove] engine_0: 4 : 0 5 5 12 50                                                         1    29      0.14 sec
+SBY  5:01:53 [credit_prove] engine_0: 5 : 0 5 5 12 22 55                                                      1    29      0.22 sec
+SBY  5:01:53 [credit_prove] engine_0: 6 : 0 5 5 12 22 16 68                                                   1    29      0.34 sec
+SBY  5:01:53 [credit_prove] engine_0: 7 : 0 5 5 12 22 16 15 82                                                1    29      0.50 sec
+SBY  5:01:53 [credit_prove] engine_0: 8 : 0 5 5 12 22 16 15 15 87                                             1    29      0.64 sec
+SBY  5:01:54 [credit_prove] engine_0: 9 : 0 5 5 12 22 16 15 15 12 91                                          1    29      0.80 sec
+SBY  5:01:54 [credit_prove] engine_0: 10 : 0 5 5 12 22 16 15 15 12 15 103                                      1    29      0.99 sec
+SBY  5:01:54 [credit_prove] engine_0: 11 : 0 5 5 12 22 16 15 15 12 15 11 107                                   1    29      1.16 sec
+SBY  5:01:54 [credit_prove] engine_0: 12 : 0 5 5 12 22 16 15 15 12 15 11 9 105                                 1    29      1.31 sec
+SBY  5:01:54 [credit_prove] engine_0: 13 : 0 5 5 12 22 16 15 15 12 15 11 9 3 104                               1    29      1.42 sec
+SBY  5:01:54 [credit_prove] engine_0: 14 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 104                             1    29      1.53 sec
+SBY  5:01:55 [credit_prove] engine_0: 15 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 104                           1    29      1.66 sec
+SBY  5:01:55 [credit_prove] engine_0: 16 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 113                         1    29      1.85 sec
+SBY  5:01:55 [credit_prove] engine_0: 17 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 115                       1    29      1.97 sec
+SBY  5:01:55 [credit_prove] engine_0: 18 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 111                     0    29      2.11 sec
+SBY  5:01:55 [credit_prove] engine_0: 19 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 113                   1    29      2.24 sec
+SBY  5:01:55 [credit_prove] engine_0: 20 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 111                 1    29      2.36 sec
+SBY  5:01:55 [credit_prove] engine_0: 21 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 110               0    29      2.56 sec
+SBY  5:01:56 [credit_prove] engine_0: 22 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 112             1    29      2.71 sec
+SBY  5:01:56 [credit_prove] engine_0: 23 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 111           1    29      2.86 sec
+SBY  5:01:56 [credit_prove] engine_0: 24 : 0 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 110         0    29      3.02 sec
+SBY  5:01:56 [credit_prove] engine_0: 25 : ... 5 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 122     1    29      3.22 sec
+SBY  5:01:56 [credit_prove] engine_0: 26 : ... 5 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 121     1    29      3.38 sec
+SBY  5:01:56 [credit_prove] engine_0: 27 : ... 12 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 116     0    29      3.51 sec
+SBY  5:01:57 [credit_prove] engine_0: 28 : ... 22 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 115      0    29      3.64 sec
+SBY  5:01:57 [credit_prove] engine_0: 29 : ... 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 115       1    29      3.78 sec
+SBY  5:01:57 [credit_prove] engine_0: 30 : ... 16 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 115     1    29      3.94 sec
+SBY  5:01:57 [credit_prove] engine_0: 31 : ... 15 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 114      1    29      4.08 sec
+SBY  5:01:57 [credit_prove] engine_0: 32 : ... 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 118       1    29      4.23 sec
+SBY  5:01:57 [credit_prove] engine_0: 33 : ... 15 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 120     1    29      4.40 sec
+SBY  5:01:57 [credit_prove] engine_0: 34 : ... 12 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 117      0    29      4.53 sec
+SBY  5:01:58 [credit_prove] engine_0: 35 : ... 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 119       1    29      4.71 sec
+SBY  5:01:58 [credit_prove] engine_0: 36 : ... 15 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 118     1    29      4.83 sec
+SBY  5:01:58 [credit_prove] engine_0: 37 : ... 11 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 117      0    29      4.97 sec
+SBY  5:01:58 [credit_prove] engine_0: 38 : ... 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 119       1    29      5.13 sec
+SBY  5:01:58 [credit_prove] engine_0: 39 : ... 9 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 119     1    29      5.33 sec
+SBY  5:01:58 [credit_prove] engine_0: 40 : ... 3 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 117     0    29      5.54 sec
+SBY  5:01:59 [credit_prove] engine_0: 41 : ... 2 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 125     1    29      5.72 sec
+SBY  5:01:59 [credit_prove] engine_0: 42 : ... 3 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 129     1    29      5.90 sec
+SBY  5:01:59 [credit_prove] engine_0: 43 : ... 7 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 126     0    29      6.05 sec
+SBY  5:01:59 [credit_prove] engine_0: 44 : ... 4 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 124     0    29      6.21 sec
+SBY  5:01:59 [credit_prove] engine_0: 45 : ... 4 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 124     1    29      6.38 sec
+SBY  5:01:59 [credit_prove] engine_0: 46 : ... 1 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 122     0    29      6.52 sec
+SBY  5:02:00 [credit_prove] engine_0: 47 : ... 3 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 125     1    29      6.68 sec
+SBY  5:02:00 [credit_prove] engine_0: 48 : ... 1 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 124     0    29      6.83 sec
+SBY  5:02:00 [credit_prove] engine_0: 49 : ... 1 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 126     1    29      7.00 sec
+SBY  5:02:00 [credit_prove] engine_0: 50 : ... 2 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 125     1    29      7.16 sec
+SBY  5:02:00 [credit_prove] engine_0: 51 : ... 1 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 125     1    29      7.32 sec
+SBY  5:02:00 [credit_prove] engine_0: 52 : ... 6 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 133     1    29      7.51 sec
+SBY  5:02:01 [credit_prove] engine_0: 53 : ... 5 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 138     1    29      7.72 sec
+SBY  5:02:01 [credit_prove] engine_0: 54 : ... 5 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 135     0    29      7.90 sec
+SBY  5:02:01 [credit_prove] engine_0: 55 : ... 1 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 133     0    29      8.06 sec
+SBY  5:02:01 [credit_prove] engine_0: 56 : ... 1 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 134     1    29      8.22 sec
+SBY  5:02:01 [credit_prove] engine_0: 57 : ... 2 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 133     0    29      8.40 sec
+SBY  5:02:01 [credit_prove] engine_0: 58 : ... 2 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 132     0    29      8.54 sec
+SBY  5:02:02 [credit_prove] engine_0: 59 : ... 2 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 130     0    29      8.70 sec
+SBY  5:02:02 [credit_prove] engine_0: 60 : ... 3 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 131     1    29      8.86 sec
+SBY  5:02:02 [credit_prove] engine_0: 61 : ... 3 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 129     0    29      9.04 sec
+SBY  5:02:02 [credit_prove] engine_0: 62 : ... 1 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 136     1    29      9.23 sec
+SBY  5:02:02 [credit_prove] engine_0: 63 : ... 2 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 134     1    29      9.41 sec
+SBY  5:02:02 [credit_prove] engine_0: 64 : ... 1 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 133     0    29      9.57 sec
+SBY  5:02:03 [credit_prove] engine_0: 65 : ... 1 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 132     0    29      9.76 sec
+SBY  5:02:03 [credit_prove] engine_0: 66 : ... 2 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 131     0    29      9.92 sec
+SBY  5:02:03 [credit_prove] engine_0: 67 : ... 2 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 130     0    29     10.08 sec
+SBY  5:02:03 [credit_prove] engine_0: 68 : ... 5 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 131     1    29     10.25 sec
+SBY  5:02:03 [credit_prove] engine_0: 69 : ... 5 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 2 131     1    29     10.43 sec
+SBY  5:02:04 [credit_prove] engine_0: 70 : ... 3 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 2 4 137     1    29     10.65 sec
+SBY  5:02:04 [credit_prove] engine_0: 71 : ... 2 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 2 4 1 136     0    29     10.82 sec
+SBY  5:02:04 [credit_prove] engine_0: 72 : ... 1 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 2 4 1 1 135     0    29     10.99 sec
+SBY  5:02:04 [credit_prove] engine_0: 73 : ... 2 1 1 3 4 1 7 3 3 2 2 1 1 2 2 2 1 4 1 1 1 1 1 2 4 1 1 0 135     0    29     11.16 sec
+SBY  5:02:04 [credit_prove] engine_0: Invariant F[72] : 135 clauses with 29 flops (out of 29) (cex = 0, ave = 20.88)
+SBY  5:02:04 [credit_prove] engine_0: Verification of invariant with 135 clauses was successful.  Time =     0.08 sec
+SBY  5:02:04 [credit_prove] engine_0: Block =  414  Oblig =   414  Clause =   414  Call = 25935 (sat=62.6%)  Cex =   0  Start =  46
+SBY  5:02:04 [credit_prove] engine_0: SAT solving =     9.41 sec ( 83.50 %)
+SBY  5:02:04 [credit_prove] engine_0: unsat     =     5.40 sec ( 47.98 %)
+SBY  5:02:04 [credit_prove] engine_0: sat       =     4.00 sec ( 35.52 %)
+SBY  5:02:04 [credit_prove] engine_0: Generalize  =     0.81 sec (  7.23 %)
+SBY  5:02:04 [credit_prove] engine_0: Push clause =     8.59 sec ( 76.26 %)
+SBY  5:02:04 [credit_prove] engine_0: Ternary sim =     0.27 sec (  2.44 %)
+SBY  5:02:04 [credit_prove] engine_0: Containment =     0.00 sec (  0.02 %)
+SBY  5:02:04 [credit_prove] engine_0: CNF compute =     0.19 sec (  1.70 %)
+SBY  5:02:04 [credit_prove] engine_0: Refinement  =     0.00 sec (  0.00 %)
+SBY  5:02:04 [credit_prove] engine_0: TOTAL       =    11.26 sec (100.00 %)
+SBY  5:02:04 [credit_prove] engine_0: Property proved.  Time =    11.40 sec
+SBY  5:02:04 [credit_prove] engine_0: Counter-example is not available.
+SBY  5:02:04 [credit_prove] engine_0: finished (returncode=0)
+SBY  5:02:04 [credit_prove] engine_0: Status returned by engine: PASS
+SBY  5:02:04 [credit_prove] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:16 (16)
+SBY  5:02:04 [credit_prove] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:13 (13)
+SBY  5:02:04 [credit_prove] summary: engine_0 (abc pdr) returned PASS
+SBY  5:02:04 [credit_prove] summary: engine_0 did not produce any traces
+SBY  5:02:04 [credit_prove] DONE (PASS, rc=0)

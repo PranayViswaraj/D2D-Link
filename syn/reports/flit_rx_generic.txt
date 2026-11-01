@@ -1,0 +1,29 @@
+
+20. Printing statistics.
+
+=== flit_rx ===
+
+   Number of wires:                576
+   Number of wire bits:           1120
+   Number of public wires:          38
+   Number of public wire bits:     568
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                791
+     $_ANDNOT_                      42
+     $_AND_                         10
+     $_MUX_                          3
+     $_NAND_                        11
+     $_NOR_                          7
+     $_NOT_                          5
+     $_ORNOT_                       33
+     $_OR_                          86
+     $_SDFFE_PN0N_                   8
+     $_SDFFE_PN0P_                 226
+     $_SDFFE_PP0P_                   2
+     $_SDFF_PN0_                     1
+     $_SDFF_PP0_                     1
+     $_XNOR_                        34
+     $_XOR_                        322
+

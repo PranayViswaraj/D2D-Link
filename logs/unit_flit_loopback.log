@@ -1,0 +1,8 @@
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_link_blocks.flit_loopback
+     0.00ns INFO     cocotb.regression                  running flit_loopback (1/1)
+   158.50ns INFO     cocotb.flit_loop_wrap              flit loopback: TRAIN/ACK/IDLE/NAK flits ok, accept/dup/gap/crc paths ok
+   158.50ns INFO     cocotb.regression                  flit_loopback passed
+                                                        ** test_link_blocks.flit_loopback   PASS         158.50           0.10       1594.36  **
+INFO: Results file: /work/tb/unit/test_flit_loopback.None
+1 passed, 3 deselected, 1 warning in 40.52s

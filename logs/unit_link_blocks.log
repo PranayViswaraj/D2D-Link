@@ -1,0 +1,35 @@
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_link_blocks.replay_buffer_random
+     0.00ns INFO     cocotb.regression                  running replay_buffer_random (1/1)
+  6001.50ns INFO     cocotb.replay_buffer               replay_buffer DEPTH=4: {'enq': 1604, 'sent': 2185, 'rewinds': 256, 'full': 2740}
+  6001.50ns INFO     cocotb.regression                  replay_buffer_random passed
+  6001.50ns INFO     cocotb.regression                  ***********************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                        6001.50           7.41        809.52  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/replay_buffer_23bff7 -DCOCOTB_SIM=1 --top-module replay_buffer --vpi --public-flat-rw --prefix Vtop -o replay_buffer -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GDEPTH=4 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/replay_buffer.sv in directory /tmp/sim_build/replay_buffer_23bff7
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_link_blocks.replay_buffer_random
+     0.00ns INFO     cocotb.regression                  running replay_buffer_random (1/1)
+  6001.50ns INFO     cocotb.replay_buffer               replay_buffer DEPTH=16: {'enq': 2356, 'sent': 3512, 'rewinds': 300, 'full': 1280}
+  6001.50ns INFO     cocotb.regression                  replay_buffer_random passed
+  6001.50ns INFO     cocotb.regression                  ***********************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                        6001.50           5.09       1180.16  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/replay_buffer_a6e697 -DCOCOTB_SIM=1 --top-module replay_buffer --vpi --public-flat-rw --prefix Vtop -o replay_buffer -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GDEPTH=16 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/replay_buffer.sv in directory /tmp/sim_build/replay_buffer_a6e697
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_link_blocks.flit_loopback
+     0.00ns INFO     cocotb.regression                  running flit_loopback (1/1)
+    62.50ns INFO     cocotb.regression                  flit_loopback failed
+                                                            assert accepted == bodies[:2]
+                                                        AssertionError: assert [77317949008466304383496] == [77317949008466304383496, 79993886607973136461365]
+    62.50ns INFO     cocotb.regression                  ****************************************************************************************
+                                                        ** TESTS=1 PASS=0 FAIL=1 SKIP=0                   62.50           0.30        208.04  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/flit_loop_wrap_d75171 -DCOCOTB_SIM=1 --top-module flit_loop_wrap --vpi --public-flat-rw --prefix Vtop -o flit_loop_wrap -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/common/crc16.sv /work/rtl/flit_tx.sv /work/rtl/flit_rx.sv /work/tb/unit/flit_loop_wrap.sv in directory /tmp/sim_build/flit_loop_wrap_d75171
+/opt/venv/lib/python3.12/site-packages/_pytest/assertion/rewrite.py:184: UserWarning: Python runners and associated APIs are an experimental feature and subject to change.
+     0.00ns INFO     cocotb.regression                  Found test test_link_blocks.ltssm_directed
+     0.00ns INFO     cocotb.regression                  running ltssm_directed (1/1)
+   311.00ns INFO     cocotb.link_training_fsm           ltssm: all transitions exercised
+   311.00ns INFO     cocotb.regression                  ltssm_directed passed
+   311.00ns INFO     cocotb.regression                  *****************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                   311.00           0.77        401.92  **
+INFO: Running command perl /usr/bin/verilator -cc --exe -Mdir /tmp/sim_build/link_training_fsm_4fbc9e -DCOCOTB_SIM=1 --top-module link_training_fsm --vpi --public-flat-rw --prefix Vtop -o link_training_fsm -LDFLAGS '-Wl,-rpath,/opt/venv/lib/python3.12/site-packages/cocotb/libs -L/opt/venv/lib/python3.12/site-packages/cocotb/libs -lcocotbvpi_verilator' --assert -Wno-fatal -Wno-WIDTH -Wno-UNUSED -O2 -DSIM=1 -I/work/rtl -GTRAIN_GOOD=4 -GTRAIN_TIMEOUT=256 -GSTABLE_CYCLES=512 /opt/venv/lib/python3.12/site-packages/cocotb/share/lib/verilator/verilator.cpp /work/rtl/link_training_fsm.sv in directory /tmp/sim_build/link_training_fsm_4fbc9e
+            build_args=["--assert", "-Wno-fatal", "-Wno-WIDTH", "-Wno-UNUSED", "-O2"],
+1 failed, 3 passed, 1 warning in 183.71s (0:03:03)

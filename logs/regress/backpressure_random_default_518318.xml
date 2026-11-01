@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="518318" />
+    <testcase name="backpressure_random" classname="d2d_tests" file="/work/tb/uvm/d2d_tests.py" lineno="461" time="36.43756723403931" sim_time_ns="10291.001" ratio_time="282.4283227774421" />
+  </testsuite>
+</testsuites>

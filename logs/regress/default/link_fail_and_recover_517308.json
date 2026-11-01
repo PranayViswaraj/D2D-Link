@@ -1,0 +1,91 @@
+{
+ "test": "link_fail_and_recover",
+ "seed": 517308,
+ "transactions": 120,
+ "responses": 120,
+ "flushed_by_reset": 0,
+ "b_requests": 120,
+ "errors": 0,
+ "faults_a2b": {
+  "single": 62,
+  "multi": 52,
+  "beat": 46,
+  "burst": 58,
+  "drop": 60
+ },
+ "faults_b2a": {
+  "single": 55,
+  "multi": 58,
+  "beat": 53,
+  "burst": 48,
+  "drop": 61
+ },
+ "faults_total": 553,
+ "counters_a": {
+  "crc_err_cnt": 214,
+  "nak_cnt": 1,
+  "replay_cnt": 1,
+  "timeout_cnt": 0,
+  "retrain_cnt": 1
+ },
+ "counters_b": {
+  "crc_err_cnt": 218,
+  "nak_cnt": 1,
+  "replay_cnt": 1,
+  "timeout_cnt": 0,
+  "retrain_cnt": 1
+ },
+ "ltssm_arcs": [
+  [
+   "a",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "a",
+   "FAILED",
+   "RESET"
+  ],
+  [
+   "a",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "a",
+   "RETRAIN",
+   "FAILED"
+  ],
+  [
+   "a",
+   "TRAIN",
+   "ACTIVE"
+  ],
+  [
+   "b",
+   "ACTIVE",
+   "RETRAIN"
+  ],
+  [
+   "b",
+   "FAILED",
+   "RESET"
+  ],
+  [
+   "b",
+   "RESET",
+   "TRAIN"
+  ],
+  [
+   "b",
+   "RETRAIN",
+   "FAILED"
+  ],
+  [
+   "b",
+   "TRAIN",
+   "ACTIVE"
+  ]
+ ],
+ "sim_time_ns": 9967.0
+}

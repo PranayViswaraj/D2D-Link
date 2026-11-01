@@ -1,0 +1,27 @@
+25. Printing statistics.
+
+=== crc16 ===
+
+   Number of wires:                437
+   Number of wire bits:            574
+   Number of public wires:           4
+   Number of public wire bits:     141
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                449
+     sky130_fd_sc_hd__a21o_2         1
+     sky130_fd_sc_hd__a21oi_1        2
+     sky130_fd_sc_hd__clkinv_1      58
+     sky130_fd_sc_hd__nand2_1       37
+     sky130_fd_sc_hd__nand3_1       34
+     sky130_fd_sc_hd__nand3b_1       6
+     sky130_fd_sc_hd__nor2_1         9
+     sky130_fd_sc_hd__o2bb2ai_1      5
+     sky130_fd_sc_hd__xnor2_1        8
+     sky130_fd_sc_hd__xnor3_4       86
+     sky130_fd_sc_hd__xor2_1        56
+     sky130_fd_sc_hd__xor3_4       147
+
+   Chip area for module '\crc16': 7534.726400
+
