@@ -116,7 +116,7 @@ good-CRC, non-TRAIN flits while the receiver is ACTIVE.
 | REQ_DATA | [87:24] wdata, [23:16] wstrb, FLAGS.LAST = wlast |
 | RSP_HDR  | [87:84] bid, [83:82] bresp, rest 0 |
 | RSP_DATA | [87:24] rdata, [23:20] rid, [19:18] rresp, FLAGS.LAST = rlast |
-| TRAIN    | [87:16] = `72'hD2D_A5A5_5A5A_C3C3_3C` (TRAIN_PATTERN), FLAGS.LOCKED |
+| TRAIN    | [87:16] = `72'hD2D2_A5A5_5A5A_C3C3_3C` (TRAIN_PATTERN), FLAGS.LOCKED |
 
 Inside a die, flits travel through the CDC FIFOs and the replay buffer as an 80-bit **flit
 body** `{TYPE[3:0], FLAGS[3:0], PAYLOAD[71:0]}`. SEQ, ACK, credit fields and CRC are added

@@ -8,3 +8,5 @@ formal/*/
 logs/tmp/
 .vscode/
 docker/local-ca.crt
+*.None
+tb/**/*.xml
