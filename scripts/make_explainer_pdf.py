@@ -1,7 +1,8 @@
 """Generate docs/D2D-Link_Explained.pdf - an 8-page step-by-step explainer.
-Measured numbers come from the project's log files (docs/results.md); parameter values from docs/spec.md."""
+Measured numbers come from the project's log files (docs/results.md); parameter values from docs/spec.md.
 Usage (Windows host, needs reportlab + Segoe UI fonts):
   python scripts/make_explainer_pdf.py docs/D2D-Link_Explained.pdf logs/coverage_merged.json
+"""
 import json
 import math
 import sys
