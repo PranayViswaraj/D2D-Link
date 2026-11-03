@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>D2D-Link Project Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0E8C93;--teal-d:#0A6C72;--teal-l:#DFF1F1;--teal-m:#9ED5D7;
+  --ink:#15171C;--ink2:#2B2F36;--sub:#4A515C;--mute:#8B929C;--line:#E4E7EB;--bg:#F3F4F6;--cover:#EAECEF;
+  --orange:#E4572E;--orange-l:#FCE6DD;--amber:#A8690B;--amber-l:#FBEFD8;
+  --blue:#3461C4;--blue-l:#E6EDFB;--violet:#6A4EC4;--violet-l:#EEEAFB;--green:#1D8655;--green-l:#E0F2E8;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);font-size:10.4px;line-height:1.5;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;font-feature-settings:"cv11","ss01"}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;padding:38px 50px 0}
+.page:last-child{page-break-after:auto}
+.hdr{display:flex;justify-content:space-between;font-size:10px;color:var(--sub);border-bottom:1px solid var(--line);padding-bottom:9px}
+.hdr b{color:var(--ink);font-weight:600}
+.ftr{position:absolute;bottom:24px;left:50px;right:50px;display:flex;justify-content:space-between;font-size:9px;color:var(--mute)}
+.eyebrow{color:var(--teal);font-weight:600;font-size:10.5px;margin-top:24px}
+h1{font-family:"Inter Tight",Inter,"Segoe UI",sans-serif;font-size:25px;line-height:1.14;letter-spacing:-.02em;font-weight:700;margin:5px 0 8px}
+.lede{font-size:12.2px;line-height:1.55;color:var(--ink2);max-width:640px;margin:0 0 4px}
+h3{font-size:12.6px;font-weight:700;margin:16px 0 7px;letter-spacing:-.005em}
+h3 small{font-weight:400;color:var(--mute);font-size:10px;margin-left:6px}
+p{margin:0 0 7px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+ul.b{margin:0;padding-left:15px} ul.b li{margin:0 0 4px}
+table.t{width:100%;border-collapse:collapse;font-size:9.5px;line-height:1.38}
+table.t th{font-weight:500;color:var(--mute);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+table.t td{padding:4px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t td.r,table.t th.r{text-align:right}
+table.t td b{font-weight:600}
+table.t.tight td{padding:3px 6px}
+code,.mono{font-family:"JetBrains Mono",Consolas,monospace;font-size:.9em}
+.pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:8.6px;font-weight:500;white-space:nowrap;line-height:1.5}
+.pt{background:var(--teal-l);color:var(--teal-d)}.pa{background:var(--amber-l);color:var(--amber)}
+.pr{background:var(--orange-l);color:#B23A17}.pg{background:var(--bg);color:var(--sub)}
+.pk{background:#1B1D22;color:#fff}.pb{background:var(--blue-l);color:var(--blue)}.pv{background:var(--violet-l);color:var(--violet)}
+.stat{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+.stat .n{font-size:25px;font-weight:300;color:var(--teal);letter-spacing:-.02em;line-height:1.15}
+.stat .n.o{color:var(--orange)}.stat .n.k{color:var(--ink)}
+.stat .l{font-size:9.4px;color:var(--sub);margin-top:4px;line-height:1.35}
+.callout{background:var(--teal-l);border-radius:12px;padding:13px 18px}
+.callout h4,.box h4,.card h4{margin:0 0 5px;font-size:11px;font-weight:700}
+.box{background:var(--bg);border-radius:12px;padding:12px 15px}
+.card{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fff}
+.card p{font-size:9.6px;color:var(--ink2);margin:0}
+.warn{background:var(--orange-l);border-radius:12px;padding:12px 15px}
+.dark{background:#16181D;color:#E8EAED;border-radius:12px;padding:13px 16px}
+.dark h4{color:#fff;margin:0 0 6px;font-size:11px}
+.dark pre{margin:0;font-family:"JetBrains Mono",Consolas,monospace;font-size:8.9px;line-height:1.6;color:#C9CED6}
+.dark pre i{font-style:normal;color:#7FC9CC}
+.num{display:flex;gap:9px;margin-bottom:7px}
+.num .c{flex:0 0 20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:9.5px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.num b{font-weight:600}
+.cap{font-size:9px;color:var(--mute);margin-top:5px}
+.fn{position:absolute;bottom:50px;left:50px;right:50px;font-size:8.6px;color:var(--mute);line-height:1.45}
+svg{display:block;width:100%;height:auto;font-family:Inter,"Segoe UI",Arial,sans-serif}
+svg text{fill:var(--ink)}
+svg .bt{font-size:10px;font-weight:600}
+svg .bs{font-size:8.2px;fill:var(--sub)}
+svg .lb{font-size:8.2px;fill:var(--sub)}
+svg .lbt{font-size:8.2px;fill:var(--teal-d);font-weight:500}
+svg .lbo{font-size:8.2px;fill:#B23A17;font-weight:500}
+svg .lbg{font-size:8.2px;fill:var(--green);font-weight:500}
+svg .mono{font-family:"JetBrains Mono",Consolas,monospace}
+svg .ttl{font-size:9px;font-weight:600;fill:var(--mute);letter-spacing:.04em}
+.diagram{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
+.bars .row{display:grid;grid-template-columns:112px 1fr 58px;align-items:center;gap:8px;font-size:9.2px;margin-bottom:4px}
+.bars.syn .row{grid-template-columns:100px 1fr 82px}
+.bars .track{height:8px;background:var(--bg);border-radius:4px;position:relative}
+.bars .fill{position:absolute;left:0;top:0;bottom:0;background:var(--teal);border-radius:4px}
+.bars .v{text-align:right;color:var(--sub);font-variant-numeric:tabular-nums}
+.bars .k{color:var(--ink2)}
+/* cover */
+.cover{background:var(--cover);padding:52px 54px 0}
+.brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:16px}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--teal);display:flex;align-items:center;justify-content:center;position:relative}
+.logo:after{content:"";position:absolute;right:6px;top:6px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.hero{font-family:"Inter Tight",Inter,"Segoe UI",sans-serif;font-size:43px;line-height:1.08;letter-spacing:-.028em;font-weight:700;margin:78px 0 22px;max-width:660px}
+.hero-lede{font-size:14.2px;line-height:1.55;color:var(--ink2);max-width:600px;margin:0}
+.meta{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:20px;margin-top:34px}
+.meta span{display:block;color:var(--sub);font-size:11px}
+.meta b{font-weight:600;font-size:11.6px}
+.hero-card{position:absolute;left:54px;right:54px;top:535px;background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 30px rgba(15,23,42,.08);padding:16px 18px 64px}
+.hc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.hc-top b{font-size:11.5px}.hc-top span{color:var(--mute);font-size:9.4px;margin-left:8px}
+.stats4{position:absolute;left:54px;right:54px;top:905px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stats4 .stat{box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(15,23,42,.07);padding:15px 16px 17px;border:none}
+.stats4 .n{font-size:30px;color:var(--ink);font-weight:300}
+.stats4 .l{font-size:10.4px;margin-top:8px}
+</style>
+</head>
+<body>
+
+<!-- shared arrowheads -->
+<svg width="0" height="0" style="position:absolute">
+ <defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#69717C"/></marker>
+  <marker id="aht" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0E8C93"/></marker>
+  <marker id="aho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E4572E"/></marker>
+  <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1D8655"/></marker>
+  <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3461C4"/></marker>
+  <marker id="ahv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6A4EC4"/></marker>
+  <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8690B"/></marker>
+ </defs>
+</svg>
+
+<!-- =============================================================== 1 COVER -->
+<section class="page cover">
+ <div class="brand"><span class="logo"><svg viewBox="0 0 24 24" style="width:20px"><rect x="2.5" y="6.5" width="7" height="11" rx="2" fill="#fff"/><rect x="14.5" y="6.5" width="7" height="11" rx="2" fill="#fff" opacity=".85"/><path d="M9.5 10h5M14.5 14h-5" stroke="#fff" stroke-width="1.6"/></svg></span>D2D-Link</div>
+ <div class="hero">A chiplet link that carries AXI traffic between two dies, and never loses a transaction</div>
+ <p class="hero-lede">Project report covering what was built, how it works and how it was verified. Written so a reader new to die-to-die links can follow it from the first page to the last.</p>
+ <div class="meta">
+  <div><span>Design</span><b>UCIe-inspired die-to-die link controller</b></div>
+  <div><span>Status</span><b>Complete and verified, Nov 2026</b></div>
+  <div><span>Deliverable</span><b>RTL, testbench, proofs, reports</b></div>
+ </div>
+
+ <div class="hero-card">
+  <div class="hc-top"><div><b>d2d_system_top</b><span>Two dies joined by fault-injecting lanes, as simulated</span></div><span class="pill pt">44 / 44 regression jobs pass</span></div>
+  <svg viewBox="0 0 680 300">
+   <!-- host / memory -->
+   <rect x="8" y="128" width="64" height="50" rx="10" fill="#F3F4F6" stroke="#C9CED6"/>
+   <text x="40" y="150" class="bt" text-anchor="middle">AXI</text><text x="40" y="163" class="bt" text-anchor="middle">host</text>
+   <rect x="608" y="128" width="64" height="50" rx="10" fill="#F3F4F6" stroke="#C9CED6"/>
+   <text x="640" y="150" class="bt" text-anchor="middle">AXI</text><text x="640" y="163" class="bt" text-anchor="middle">memory</text>
+   <!-- dies -->
+   <rect x="94" y="22" width="222" height="262" rx="14" fill="#F7FAFD" stroke="#9DB3E3" stroke-width="1.2"/>
+   <text x="108" y="42" class="ttl">DIE A · die_a_top</text>
+   <rect x="364" y="22" width="222" height="262" rx="14" fill="#F9F8FE" stroke="#BCAEEA" stroke-width="1.2"/>
+   <text x="378" y="42" class="ttl">DIE B · die_b_top</text>
+   <!-- die A blocks -->
+   <rect x="108" y="62" width="86" height="56" rx="9" fill="#E6EDFB" stroke="#3461C4"/>
+   <text x="151" y="86" class="bt" text-anchor="middle">AXI slave</text><text x="151" y="99" class="bs" text-anchor="middle">adapter</text>
+   <rect x="108" y="196" width="86" height="56" rx="9" fill="#E6EDFB" stroke="#3461C4"/>
+   <text x="151" y="220" class="bt" text-anchor="middle">APB CSR</text><text x="151" y="233" class="bs" text-anchor="middle">registers, IRQ</text>
+   <rect x="206" y="74" width="14" height="32" rx="3" fill="#FBEFD8" stroke="#A8690B"/>
+   <rect x="206" y="208" width="14" height="32" rx="3" fill="#FBEFD8" stroke="#A8690B"/>
+   <rect x="232" y="62" width="72" height="190" rx="10" fill="#DFF1F1" stroke="#0E8C93" stroke-width="1.2"/>
+   <text x="268" y="140" class="bt" text-anchor="middle">Link layer</text><text x="268" y="154" class="bs" text-anchor="middle">CRC · retry</text><text x="268" y="166" class="bs" text-anchor="middle">credits · training</text>
+   <line x1="194" y1="90" x2="204" y2="90" stroke="#69717C" marker-end="url(#ah)"/><line x1="220" y1="90" x2="230" y2="90" stroke="#69717C" marker-end="url(#ah)"/>
+   <line x1="194" y1="224" x2="204" y2="224" stroke="#69717C" marker-end="url(#ah)"/><line x1="220" y1="224" x2="230" y2="224" stroke="#69717C" marker-end="url(#ah)"/>
+   <!-- die B blocks -->
+   <rect x="376" y="62" width="72" height="190" rx="10" fill="#DFF1F1" stroke="#0E8C93" stroke-width="1.2"/>
+   <text x="412" y="140" class="bt" text-anchor="middle">Link layer</text><text x="412" y="154" class="bs" text-anchor="middle">CRC · retry</text><text x="412" y="166" class="bs" text-anchor="middle">credits · training</text>
+   <rect x="460" y="74" width="14" height="32" rx="3" fill="#FBEFD8" stroke="#A8690B"/>
+   <rect x="460" y="208" width="14" height="32" rx="3" fill="#FBEFD8" stroke="#A8690B"/>
+   <rect x="486" y="62" width="86" height="56" rx="9" fill="#EEEAFB" stroke="#6A4EC4"/>
+   <text x="529" y="86" class="bt" text-anchor="middle">AXI master</text><text x="529" y="99" class="bs" text-anchor="middle">adapter</text>
+   <rect x="486" y="196" width="86" height="56" rx="9" fill="#EEEAFB" stroke="#6A4EC4"/>
+   <text x="529" y="220" class="bt" text-anchor="middle">APB CSR</text><text x="529" y="233" class="bs" text-anchor="middle">registers, IRQ</text>
+   <line x1="448" y1="90" x2="458" y2="90" stroke="#69717C" marker-end="url(#ah)"/><line x1="474" y1="90" x2="484" y2="90" stroke="#69717C" marker-end="url(#ah)"/>
+   <line x1="484" y1="224" x2="476" y2="224" stroke="#69717C" marker-end="url(#ah)"/><line x1="458" y1="224" x2="450" y2="224" stroke="#69717C" marker-end="url(#ah)"/>
+   <!-- host/mem arrows -->
+   <polyline points="72,153 86,153 86,90 106,90" fill="none" stroke="#69717C" marker-end="url(#ah)"/>
+   <polyline points="572,90 594,90 594,153 606,153" fill="none" stroke="#69717C" marker-end="url(#ah)"/>
+   <!-- lanes -->
+   <line x1="304" y1="132" x2="374" y2="132" stroke="#0E8C93" stroke-width="2.2" marker-end="url(#aht)"/>
+   <line x1="376" y1="182" x2="306" y2="182" stroke="#0E8C93" stroke-width="2.2" marker-end="url(#aht)"/>
+   <text x="340" y="124" class="lbt" text-anchor="middle">a2b</text><text x="340" y="198" class="lbt" text-anchor="middle">b2a</text>
+   <rect x="319" y="146" width="42" height="22" rx="11" fill="#FBEFD8" stroke="#A8690B" stroke-dasharray="3 2"/>
+   <text x="340" y="160" class="lb" text-anchor="middle" style="fill:#A8690B;font-weight:600">faults</text>
+   <text x="340" y="80" class="lb" text-anchor="middle">32-bit lanes</text><text x="340" y="91" class="lb" text-anchor="middle">4 beats / flit</text>
+   <!-- domain labels -->
+   <text x="151" y="272" class="lb" text-anchor="middle" style="fill:#3461C4">clk_axi_a</text>
+   <text x="268" y="272" class="lb" text-anchor="middle" style="fill:#0A6C72">clk_link</text>
+   <text x="412" y="272" class="lb" text-anchor="middle" style="fill:#0A6C72">clk_link</text>
+   <text x="529" y="272" class="lb" text-anchor="middle" style="fill:#6A4EC4">clk_axi_b</text>
+  </svg>
+ </div>
+
+ <div class="stats4">
+  <div class="stat"><div class="n">44 / 44</div><div class="l">regression jobs pass: 14 tests, 2 seeds, 2 configurations</div></div>
+  <div class="stat"><div class="n">100%</div><div class="l">functional coverage, 233 of 233 bins hit</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">transactions lost, duplicated or corrupted under 3,604 injected faults</div></div>
+  <div class="stat"><div class="n">4 + 1</div><div class="l">unbounded formal proofs plus a bounded FSM check, all PASS</div></div>
+ </div>
+</section>
+
+<!-- =============================================================== 2 EXEC SUMMARY -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Executive summary</span></div>
+ <div class="eyebrow">01 Executive summary</div>
+ <h1>Making two separate dies talk as if they were one chip</h1>
+ <p class="lede">Processors are increasingly built from <b>chiplets</b>: several small dies in one package instead of one large die. The dies still have to exchange bus traffic. D2D-Link is a die-to-die link controller in synthesizable SystemVerilog. It takes AXI4 traffic on Die A, packs it into 128-bit CRC-protected packets called <b>flits</b>, sends them over a 32-bit lane and rebuilds the same transactions on Die B. When a flit is corrupted or dropped, the link recovers on its own.</p>
+
+ <div class="g2" style="margin-top:6px">
+  <div>
+   <h3>The problems a die-to-die link must solve</h3>
+   <ul class="b">
+    <li>There are <b>few wires between dies</b>, so a wide bus must be packed into small packets and sent in beats.</li>
+    <li><b>Bits flip and packets are lost.</b> The link must detect this and resend, in order, without duplicates.</li>
+    <li>The receiver has a <b>finite buffer</b>. The sender must never overflow it, even while resending.</li>
+    <li>Each side runs on <b>its own clock</b>. Data must cross unrelated clocks without being corrupted.</li>
+    <li>The link must <b>start up</b>, notice a bad channel, retrain, and give up cleanly if it cannot recover.</li>
+   </ul>
+  </div>
+  <div>
+   <h3>What was built</h3>
+   <ul class="b">
+    <li>A <b>specification</b>, microarchitecture, CDC report and verification plan, written before the RTL.</li>
+    <li><b>Synthesizable RTL</b>: AXI adapters, a link layer (flit TX/RX, replay buffer, credits, training FSM), async FIFOs and APB registers.</li>
+    <li>A <b>pyuvm testbench</b> (Python UVM) with 14 constrained-random tests and fault injection on the lanes.</li>
+    <li><b>Formal proofs</b> in SymbiYosys of the FIFO, credits, replay buffer, a reduced retry link and the FSM.</li>
+    <li><b>Lint, synthesis</b> to SKY130 and a one-command Docker flow, using only open-source tools.</li>
+   </ul>
+  </div>
+ </div>
+
+ <h3 style="margin-top:18px">Headline results</h3>
+ <div class="g4">
+  <div class="stat"><div class="n">44 / 44</div><div class="l">regression jobs pass in a 10-minute run on 4 parallel jobs</div></div>
+  <div class="stat"><div class="n">5,108</div><div class="l">AXI transactions checked end to end against a reference memory</div></div>
+  <div class="stat"><div class="n">3,604</div><div class="l">faulted flits injected (bit flips, bursts, drops), all recovered</div></div>
+  <div class="stat"><div class="n o">~48 MHz</div><div class="l">estimated link clock in SKY130, before any timing optimisation*</div></div>
+ </div>
+
+ <h3 style="margin-top:18px">How the work was done</h3>
+ <svg viewBox="0 0 694 74">
+  <g font-size="9">
+   <rect x="0" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="44" y="28" class="bt" text-anchor="middle">Spec</text><text x="44" y="41" class="bs" text-anchor="middle">4 documents</text>
+   <rect x="101" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="145" y="28" class="bt" text-anchor="middle">RTL</text><text x="145" y="41" class="bs" text-anchor="middle">18 modules</text>
+   <rect x="202" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="246" y="28" class="bt" text-anchor="middle">Unit tests</text><text x="246" y="41" class="bs" text-anchor="middle">9 cases, Python models</text>
+   <rect x="303" y="8" width="88" height="46" rx="9" fill="#DFF1F1" stroke="#0E8C93"/><text x="347" y="28" class="bt" text-anchor="middle">System tests</text><text x="347" y="41" class="bs" text-anchor="middle">14 tests, 44 jobs</text>
+   <rect x="404" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="448" y="28" class="bt" text-anchor="middle">Formal</text><text x="448" y="41" class="bs" text-anchor="middle">5 jobs, 10 tasks</text>
+   <rect x="505" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="549" y="28" class="bt" text-anchor="middle">Lint</text><text x="549" y="41" class="bs" text-anchor="middle">0 warnings</text>
+   <rect x="606" y="8" width="88" height="46" rx="9" fill="#F3F4F6"/><text x="650" y="28" class="bt" text-anchor="middle">Synthesis</text><text x="650" y="41" class="bs" text-anchor="middle">12 blocks, SKY130</text>
+   <g stroke="#69717C" marker-end="url(#ah)"><line x1="89" y1="31" x2="99" y2="31"/><line x1="190" y1="31" x2="200" y2="31"/><line x1="291" y1="31" x2="301" y2="31"/><line x1="392" y1="31" x2="402" y2="31"/><line x1="493" y1="31" x2="503" y2="31"/><line x1="594" y1="31" x2="604" y2="31"/></g>
+   <text x="0" y="70" class="lb">Every number in this report is copied from a log file in the repository (docs/results.md). Re-generate everything with: make regress formal syn report</text>
+  </g>
+ </svg>
+
+ <h3 style="margin-top:14px">Why it matters</h3>
+ <p>Die-to-die links are central to UCIe and to every chiplet product. This project takes one such link through the whole front-end flow (specification, RTL, clock crossings, UVM-style verification with fault injection, formal proofs, lint and synthesis) using only open-source tools. The interesting work is in the corner cases: a flit corrupted while the link is retraining, a lost NAK, a reset in the middle of a burst, three clocks at ratios nobody chose on purpose. The tests target exactly those cases.</p>
+
+ <div class="callout" style="margin-top:12px">
+  <h4>Project status in one paragraph</h4>
+  <p style="margin:0">Complete against its plan: phases 0 to 6 are committed and the working tree is clean. One real RTL bug was found by the tests and fixed. Three items are still open: the SystemVerilog UVM agent has been syntax-checked but never simulated (no SV-UVM simulator is available locally); the timing figure is an estimate, not sign-off; and the formal suite takes 709 s in total, over its 10-minute target, though every task is within its 5-minute cap.</p>
+ </div>
+
+ <div class="fn">* Yosys + ABC estimate on SKY130 HD standard cells, with no wires, clock tree or placement. Treat it as an order of magnitude. D2D-Link is UCIe-<i>inspired</i>: it borrows the ideas (flits, CRC, retry, credits, training) but is not UCIe-compliant.</div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>2 / 12</span></div>
+</section>
+
+<!-- =============================================================== 3 BACKGROUND + SPEC -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Background and specification</span></div>
+ <div class="eyebrow">02 Background and specification</div>
+ <h1>What a die-to-die link is, and what this one supports</h1>
+ <p class="lede">A large chip can be split into smaller dies that are cheaper to make and can be reused. The price is that signals which used to be on-chip wires now have to cross between dies through a small number of package wires. A die-to-die link controller hides that boundary.</p>
+
+ <div class="g2" style="margin-top:4px">
+  <div>
+   <h3>Monolithic die versus chiplets</h3>
+   <div class="diagram">
+    <svg viewBox="0 0 320 132">
+     <rect x="6" y="14" width="104" height="104" rx="8" fill="#F3F4F6" stroke="#C9CED6"/>
+     <text x="58" y="62" class="bt" text-anchor="middle">One large die</text><text x="58" y="76" class="bs" text-anchor="middle">CPU + memory ctrl</text>
+     <text x="58" y="130" class="lb" text-anchor="middle">monolithic</text>
+     <rect x="140" y="6" width="176" height="114" rx="10" fill="#fff" stroke="#C9CED6" stroke-dasharray="4 3"/>
+     <text x="228" y="130" class="lb" text-anchor="middle">package with two chiplets</text>
+     <rect x="152" y="26" width="62" height="76" rx="7" fill="#E6EDFB" stroke="#3461C4"/>
+     <text x="183" y="60" class="bt" text-anchor="middle">Die A</text><text x="183" y="73" class="bs" text-anchor="middle">host</text>
+     <rect x="242" y="26" width="62" height="76" rx="7" fill="#EEEAFB" stroke="#6A4EC4"/>
+     <text x="273" y="60" class="bt" text-anchor="middle">Die B</text><text x="273" y="73" class="bs" text-anchor="middle">memory</text>
+     <g stroke="#0E8C93" stroke-width="1.6"><line x1="214" y1="50" x2="242" y2="50"/><line x1="214" y1="58" x2="242" y2="58"/><line x1="214" y1="70" x2="242" y2="70"/><line x1="214" y1="78" x2="242" y2="78"/></g>
+     <text x="228" y="44" class="lbt" text-anchor="middle">D2D</text>
+    </svg>
+   </div>
+
+   <h3>Three layers, bottom to top</h3>
+   <div style="display:grid;gap:7px">
+    <div class="card" style="background:var(--blue-l);border:none"><h4>Protocol layer <span class="pill pg" style="float:right">UCIe: protocol</span></h4><p>The AXI adapters turn the bus channels (AW, W, B, AR, R) into flit bodies and back again.</p></div>
+    <div class="card" style="background:var(--teal-l);border:none"><h4>Link layer <span class="pill pg" style="float:right">UCIe: D2D adapter</span></h4><p>Adds sequence numbers, CRC, Go-Back-N retry, credits and training, and delivers flits in order with no loss.</p></div>
+    <div class="card" style="background:var(--amber-l);border:none"><h4>Physical lane model <span class="pill pg" style="float:right">UCIe: PHY</span></h4><p>An ideal 32-bit parallel lane, 4 beats per flit. The testbench XORs bit flips into it and drops beats. There is no real PHY.</p></div>
+   </div>
+  </div>
+
+  <div>
+   <h3>Feature list <small>docs/spec.md §1.1</small></h3>
+   <table class="t">
+    <tr><th>ID</th><th>Feature</th></tr>
+    <tr><td><b>F1</b></td><td>AXI4 slave on Die A, AXI4 master on Die B: 64-bit data, 32-bit address, 4-bit ID, all five channels</td></tr>
+    <tr><td><b>F2</b></td><td>INCR bursts of 1 to 16 beats, AxSIZE passed through, full WSTRB</td></tr>
+    <tr><td><b>F3</b></td><td>Up to 4 outstanding writes and 4 outstanding reads at Die A</td></tr>
+    <tr><td><b>F4</b></td><td>128-bit flits with CRC-16-CCITT, sent as 4 beats on a 32-bit lane</td></tr>
+    <tr><td><b>F5</b></td><td>Two virtual channels, request and response, each with its own credits</td></tr>
+    <tr><td><b>F6</b></td><td>Go-Back-N retry: 8-bit sequence numbers, 16-entry replay buffer, NAK and replay timeout</td></tr>
+    <tr><td><b>F7</b></td><td>Training FSM: RESET, TRAIN, ACTIVE, RETRAIN, FAILED, with no data loss across a retrain</td></tr>
+    <tr><td><b>F8</b></td><td>Three asynchronous clocks. Every crossing is a gray-code async FIFO</td></tr>
+    <tr><td><b>F9</b></td><td>APB3 register block per die: control, status, error counters, thresholds, interrupts</td></tr>
+    <tr><td><b>F10</b></td><td>Fault-injection ports on the lanes, in the system top only</td></tr>
+   </table>
+
+   <h3>Clock and reset domains</h3>
+   <table class="t">
+    <tr><th>Domain</th><th>Clock</th><th>Contains</th></tr>
+    <tr><td><span class="pill pb">AXI-A</span></td><td class="mono">clk_axi_a</td><td>Die A AXI slave adapter and registers</td></tr>
+    <tr><td><span class="pill pt">LINK</span></td><td class="mono">clk_link</td><td>Both link layers and the lane bus</td></tr>
+    <tr><td><span class="pill pv">AXI-B</span></td><td class="mono">clk_axi_b</td><td>Die B AXI master adapter and registers</td></tr>
+   </table>
+   <p class="cap">All three clocks are mutually asynchronous. Each reset is synchronized in its own domain: asynchronous assert, synchronous deassert through 2 flops.</p>
+  </div>
+ </div>
+
+ <h3>Parameters <small>default configuration and the small configuration used for formal and half the regression</small></h3>
+ <table class="t tight">
+  <tr><th>Parameter</th><th class="r">Default</th><th class="r">Small</th><th>Meaning</th><th>Parameter</th><th class="r">Default</th><th class="r">Small</th><th>Meaning</th></tr>
+  <tr><td class="mono">REPLAY_DEPTH</td><td class="r">16</td><td class="r">4</td><td>flits kept for resend</td><td class="mono">REPLAY_TIMEOUT</td><td class="r">256</td><td class="r">128</td><td>link cycles without ACK progress</td></tr>
+  <tr><td class="mono">CREDITS_REQ / RSP</td><td class="r">16</td><td class="r">4</td><td>receive buffer slots per VC</td><td class="mono">TRAIN_GOOD</td><td class="r">8</td><td class="r">4</td><td>good TRAIN flits to lock</td></tr>
+  <tr><td class="mono">TX_FIFO_DEPTH</td><td class="r">8</td><td class="r">4</td><td>AXI to link FIFO depth</td><td class="mono">TRAIN_TIMEOUT</td><td class="r">1024</td><td class="r">512</td><td>link cycles per training attempt</td></tr>
+  <tr><td class="mono">DATA_W / FLIT_W</td><td class="r">64 / 128</td><td class="r">fixed</td><td>set by the flit layout</td><td class="mono">STABLE_CYCLES</td><td class="r">2048</td><td class="r">1024</td><td>ACTIVE time that clears attempts</td></tr>
+ </table>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>3 / 12</span></div>
+</section>
+
+<!-- =============================================================== 4 ARCHITECTURE -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>System architecture</span></div>
+ <div class="eyebrow">03 System architecture</div>
+ <h1>Two dies, three clocks, and every crossing goes through a FIFO</h1>
+ <p class="lede">Each die has an AXI adapter and a register block in its own AXI clock domain, and a link layer in the shared link clock domain. Four async FIFOs per die are the only paths between domains. In the verification top, a fault injector sits on each lane.</p>
+
+ <div class="diagram" style="margin-top:12px">
+  <svg viewBox="0 0 694 372">
+   <!-- host / memory -->
+   <circle cx="24" cy="84" r="22" fill="#F3F4F6" stroke="#C9CED6"/><text x="24" y="82" class="bt" text-anchor="middle" style="font-size:8.6px">AXI</text><text x="24" y="93" class="bt" text-anchor="middle" style="font-size:8.6px">host</text>
+   <circle cx="670" cy="84" r="22" fill="#F3F4F6" stroke="#C9CED6"/><text x="670" y="82" class="bt" text-anchor="middle" style="font-size:8.6px">AXI</text><text x="670" y="93" class="bt" text-anchor="middle" style="font-size:8.6px">memory</text>
+   <!-- die frames -->
+   <rect x="56" y="14" width="266" height="318" rx="12" fill="#FAFBFE" stroke="#9DB3E3"/>
+   <text x="68" y="31" class="ttl">die_a_top</text>
+   <rect x="372" y="14" width="266" height="318" rx="12" fill="#FBFAFE" stroke="#BCAEEA"/>
+   <text x="384" y="31" class="ttl">die_b_top</text>
+   <!-- domain bands -->
+   <rect x="64" y="40" width="168" height="282" rx="8" fill="#E6EDFB" opacity=".45"/>
+   <rect x="238" y="40" width="80" height="282" rx="8" fill="#DFF1F1" opacity=".6"/>
+   <rect x="376" y="40" width="80" height="282" rx="8" fill="#DFF1F1" opacity=".6"/>
+   <rect x="462" y="40" width="168" height="282" rx="8" fill="#EEEAFB" opacity=".55"/>
+   <!-- Die A -->
+   <rect x="70" y="55" width="95" height="58" rx="8" fill="#fff" stroke="#3461C4"/>
+   <text x="117" y="80" class="bt" text-anchor="middle" style="font-size:9px">axi_slave_adapter</text><text x="117" y="93" class="bs" text-anchor="middle">AXI4 slave port</text>
+   <rect x="70" y="247" width="95" height="58" rx="8" fill="#fff" stroke="#3461C4"/>
+   <text x="117" y="272" class="bt" text-anchor="middle">apb_csr</text><text x="117" y="285" class="bs" text-anchor="middle">APB3 + IRQ</text>
+   <g fill="#FBEFD8" stroke="#A8690B">
+    <rect x="182" y="55" width="46" height="24" rx="4"/><rect x="182" y="89" width="46" height="24" rx="4"/>
+    <rect x="182" y="247" width="46" height="24" rx="4"/><rect x="182" y="281" width="46" height="24" rx="4"/>
+   </g>
+   <g class="bs" text-anchor="middle" style="font-size:7.6px;fill:#7A4C06">
+    <text x="205" y="70">REQ TX</text><text x="205" y="104">RSP RX</text><text x="205" y="262">cfg</text><text x="205" y="296">status</text>
+   </g>
+   <rect x="246" y="55" width="66" height="250" rx="9" fill="#fff" stroke="#0E8C93" stroke-width="1.3"/>
+   <text x="279" y="172" class="bt" text-anchor="middle">link_layer</text><text x="279" y="185" class="bs" text-anchor="middle">TX + RX</text>
+   <g stroke="#69717C" fill="none" marker-end="url(#ah)">
+    <line x1="165" y1="67" x2="180" y2="67"/><line x1="228" y1="67" x2="244" y2="67"/>
+    <line x1="244" y1="101" x2="230" y2="101"/><line x1="182" y1="101" x2="167" y2="101"/>
+    <line x1="165" y1="259" x2="180" y2="259"/><line x1="228" y1="259" x2="244" y2="259"/>
+    <line x1="244" y1="293" x2="230" y2="293"/><line x1="182" y1="293" x2="167" y2="293"/>
+   </g>
+   <!-- Die B -->
+   <rect x="382" y="55" width="66" height="250" rx="9" fill="#fff" stroke="#0E8C93" stroke-width="1.3"/>
+   <text x="415" y="172" class="bt" text-anchor="middle">link_layer</text><text x="415" y="185" class="bs" text-anchor="middle">TX + RX</text>
+   <g fill="#FBEFD8" stroke="#A8690B">
+    <rect x="466" y="55" width="46" height="24" rx="4"/><rect x="466" y="89" width="46" height="24" rx="4"/>
+    <rect x="466" y="247" width="46" height="24" rx="4"/><rect x="466" y="281" width="46" height="24" rx="4"/>
+   </g>
+   <g class="bs" text-anchor="middle" style="font-size:7.6px;fill:#7A4C06">
+    <text x="489" y="70">REQ RX</text><text x="489" y="104">RSP TX</text><text x="489" y="262">cfg</text><text x="489" y="296">status</text>
+   </g>
+   <rect x="529" y="55" width="95" height="58" rx="8" fill="#fff" stroke="#6A4EC4"/>
+   <text x="576" y="80" class="bt" text-anchor="middle" style="font-size:9px">axi_master_adapter</text><text x="576" y="93" class="bs" text-anchor="middle">AXI4 master port</text>
+   <rect x="529" y="247" width="95" height="58" rx="8" fill="#fff" stroke="#6A4EC4"/>
+   <text x="576" y="272" class="bt" text-anchor="middle">apb_csr</text><text x="576" y="285" class="bs" text-anchor="middle">APB3 + IRQ</text>
+   <g stroke="#69717C" fill="none" marker-end="url(#ah)">
+    <line x1="448" y1="67" x2="464" y2="67"/><line x1="512" y1="67" x2="527" y2="67"/>
+    <line x1="529" y1="101" x2="514" y2="101"/><line x1="466" y1="101" x2="450" y2="101"/>
+    <line x1="529" y1="259" x2="514" y2="259"/><line x1="466" y1="259" x2="450" y2="259"/>
+    <line x1="448" y1="293" x2="464" y2="293"/><line x1="512" y1="293" x2="527" y2="293"/>
+   </g>
+   <!-- host / mem arrows -->
+   <line x1="46" y1="84" x2="68" y2="84" stroke="#69717C" marker-end="url(#ah)"/>
+   <line x1="624" y1="84" x2="646" y2="84" stroke="#69717C" marker-end="url(#ah)"/>
+   <!-- lanes + injectors -->
+   <rect x="326" y="136" width="42" height="30" rx="6" fill="#FBEFD8" stroke="#A8690B" stroke-dasharray="3 2"/>
+   <text x="347" y="149" class="bs" text-anchor="middle" style="font-size:7.2px;fill:#7A4C06">lane_fault</text><text x="347" y="159" class="bs" text-anchor="middle" style="font-size:7.2px;fill:#7A4C06">_inj</text>
+   <rect x="326" y="196" width="42" height="30" rx="6" fill="#FBEFD8" stroke="#A8690B" stroke-dasharray="3 2"/>
+   <text x="347" y="209" class="bs" text-anchor="middle" style="font-size:7.2px;fill:#7A4C06">lane_fault</text><text x="347" y="219" class="bs" text-anchor="middle" style="font-size:7.2px;fill:#7A4C06">_inj</text>
+   <g stroke="#0E8C93" stroke-width="1.8" fill="none">
+    <line x1="312" y1="151" x2="324" y2="151" marker-end="url(#aht)"/><line x1="368" y1="151" x2="380" y2="151" marker-end="url(#aht)"/>
+    <line x1="382" y1="211" x2="370" y2="211" marker-end="url(#aht)"/><line x1="326" y1="211" x2="314" y2="211" marker-end="url(#aht)"/>
+   </g>
+   <text x="347" y="129" class="lbt" text-anchor="middle">lane a2b</text><text x="347" y="240" class="lbt" text-anchor="middle">lane b2a</text>
+   <text x="347" y="252" class="lb" text-anchor="middle">32b × 4 beats</text>
+   <!-- domain labels -->
+   <g class="lb" text-anchor="middle">
+    <text x="148" y="318" style="fill:#3461C4;font-weight:500">clk_axi_a domain</text>
+    <text x="279" y="318" style="fill:#0A6C72;font-weight:500">clk_link</text>
+    <text x="415" y="318" style="fill:#0A6C72;font-weight:500">clk_link</text>
+    <text x="546" y="318" style="fill:#6A4EC4;font-weight:500">clk_axi_b domain</text>
+   </g>
+   <!-- legend -->
+   <g transform="translate(56,352)" class="lb">
+    <rect x="0" y="-8" width="10" height="10" rx="2" fill="#E6EDFB" stroke="#3461C4"/><text x="15" y="1">Die A AXI clock</text>
+    <rect x="110" y="-8" width="10" height="10" rx="2" fill="#DFF1F1" stroke="#0E8C93"/><text x="125" y="1">shared link clock</text>
+    <rect x="226" y="-8" width="10" height="10" rx="2" fill="#EEEAFB" stroke="#6A4EC4"/><text x="241" y="1">Die B AXI clock</text>
+    <rect x="336" y="-8" width="10" height="10" rx="2" fill="#FBEFD8" stroke="#A8690B"/><text x="351" y="1">async FIFO: the only clock crossing</text>
+    <rect x="510" y="-8" width="10" height="10" rx="2" fill="#FBEFD8" stroke="#A8690B" stroke-dasharray="2 2"/><text x="525" y="1">verification-only fault injector</text>
+   </g>
+  </svg>
+ </div>
+ <p class="cap">Figure 1. System block diagram (docs/microarch.md §1). Requests flow left to right on the a2b lane, responses come back on b2a. The cfg and status FIFOs carry register writes into the link domain and counter snapshots back out.</p>
+
+ <h3>Block summary <small>18 modules, all synthesizable, no <code>initial</code> blocks</small></h3>
+ <div class="g2" style="gap:18px">
+  <table class="t tight">
+   <tr><th>Module</th><th>Domain</th><th>What it does</th></tr>
+   <tr><td class="mono">sync_2ff</td><td>any</td><td>2-flop synchronizer, used only for gray pointers</td></tr>
+   <tr><td class="mono">reset_sync</td><td>any</td><td>async-assert, sync-deassert reset</td></tr>
+   <tr><td class="mono">async_fifo</td><td>2 clocks</td><td>gray-pointer FIFO, also reports the read count to the writer</td></tr>
+   <tr><td class="mono">crc16</td><td>–</td><td>parallel CRC-16-CCITT over 112 bits</td></tr>
+   <tr><td class="mono">credit_counter</td><td>link</td><td>consume 1 / return N, bounds asserted</td></tr>
+   <tr><td class="mono">replay_buffer</td><td>link</td><td>circular store of sent flits, three pointers</td></tr>
+   <tr><td class="mono">flit_tx</td><td>link</td><td>picks the next flit, fills header, CRC, serializes</td></tr>
+   <tr><td class="mono">flit_rx</td><td>link</td><td>deserializes, checks CRC and SEQ, requests NAKs</td></tr>
+  </table>
+  <table class="t tight">
+   <tr><th>Module</th><th>Domain</th><th>What it does</th></tr>
+   <tr><td class="mono">link_training_fsm</td><td>link</td><td>training, retrain and fail state machine, error window</td></tr>
+   <tr><td class="mono">link_layer</td><td>link</td><td>integrates the above, VC arbiter, credit accumulators, counters</td></tr>
+   <tr><td class="mono">axi_slave_adapter</td><td>axi_a</td><td>AXI4 slave to REQ flit bodies, RSP bodies to B and R</td></tr>
+   <tr><td class="mono">axi_master_adapter</td><td>axi_b</td><td>REQ bodies to AXI4 master, B and R to RSP bodies</td></tr>
+   <tr><td class="mono">apb_csr</td><td>axi</td><td>registers, snapshot shadowing, interrupts</td></tr>
+   <tr><td class="mono">csr_link_sync</td><td>link</td><td>link side of the CSR crossing: config in, status snapshots out</td></tr>
+   <tr><td class="mono">lane_fault_inj</td><td>link</td><td>XOR and drop injection plus one register stage</td></tr>
+   <tr><td class="mono">die_a_top / die_b_top</td><td>all</td><td>reset syncs, CDC FIFOs, adapter, CSR, link layer</td></tr>
+   <tr><td class="mono">d2d_system_top</td><td>all</td><td>two dies and two fault injectors</td></tr>
+  </table>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>4 / 12</span></div>
+</section>
+
+<!-- =============================================================== 5 FLIT -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>The flit</span></div>
+ <div class="eyebrow">04 The flit</div>
+ <h1>Everything crosses the link as a 128-bit flit</h1>
+ <p class="lede">A flit (flow-control unit) is a fixed-size packet. A fixed size keeps the hardware simple: the receiver always knows where a flit ends, and the CRC always covers the same bits. Every flit has a 40-bit header, a 72-bit payload and a 16-bit CRC.</p>
+
+ <h3>Bit layout</h3>
+ <div class="diagram">
+  <svg viewBox="0 0 666 74">
+   <!-- 128 bits over 666 px: 5.203 px/bit -->
+   <g class="mono" style="font-size:7.4px" fill="#8B929C">
+    <text x="0" y="10">127</text><text x="20.8" y="10">123</text><text x="62.4" y="10">115</text><text x="104" y="10">107</text><text x="145.7" y="10">99</text><text x="187.3" y="10">91</text><text x="208" y="10">87</text><text x="582.7" y="10">15</text><text x="660" y="10">0</text>
+   </g>
+   <rect x="0" y="15" width="20.8" height="30" fill="#16181D"/><text x="10.4" y="34" text-anchor="middle" style="fill:#fff;font-size:7.6px;font-weight:600">TY</text>
+   <rect x="21.3" y="15" width="41.1" height="30" fill="#0A6C72"/><text x="41.8" y="34" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">SEQ</text>
+   <rect x="62.9" y="15" width="41.1" height="30" fill="#0E8C93"/><text x="83.5" y="34" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">ACK</text>
+   <rect x="104.5" y="15" width="41.1" height="30" fill="#4FB1B6"/><text x="125" y="34" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">CRQ</text>
+   <rect x="146.1" y="15" width="41.1" height="30" fill="#4FB1B6"/><text x="166.7" y="34" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">CRS</text>
+   <rect x="187.7" y="15" width="20.3" height="30" fill="#69717C"/><text x="197.8" y="34" text-anchor="middle" style="fill:#fff;font-size:7.6px;font-weight:600">FL</text>
+   <rect x="208.5" y="15" width="374.2" height="30" fill="#E6EDFB" stroke="#3461C4"/><text x="395.6" y="34" text-anchor="middle" style="fill:#3461C4;font-size:9.4px;font-weight:600">PAYLOAD · 72 bits</text>
+   <rect x="583.2" y="15" width="82.8" height="30" fill="#E4572E"/><text x="624.6" y="34" text-anchor="middle" style="fill:#fff;font-size:9px;font-weight:600">CRC-16</text>
+   <path d="M0 54 v5 h582.7 v-5" fill="none" stroke="#C9CED6"/><text x="291" y="70" text-anchor="middle" class="lb">112 bits protected by the CRC</text>
+   <path d="M0 54" />
+  </svg>
+ </div>
+
+ <div class="g2" style="margin-top:4px">
+  <div>
+   <h3>Header fields</h3>
+   <table class="t tight">
+    <tr><th>Field</th><th>Bits</th><th>Meaning</th></tr>
+    <tr><td><b>TYPE</b></td><td class="mono">127:124</td><td>which kind of flit (table right)</td></tr>
+    <tr><td><b>SEQ</b></td><td class="mono">123:116</td><td>sequence number, used by retry</td></tr>
+    <tr><td><b>ACK_SEQ</b></td><td class="mono">115:108</td><td>next SEQ expected from the other side</td></tr>
+    <tr><td><b>CRED_REQ_CUM</b></td><td class="mono">107:100</td><td>running total of freed request slots</td></tr>
+    <tr><td><b>CRED_RSP_CUM</b></td><td class="mono">99:92</td><td>same for the response channel</td></tr>
+    <tr><td><b>FLAGS</b></td><td class="mono">91:88</td><td>LAST beat of a burst, or LOCKED in TRAIN</td></tr>
+    <tr><td><b>PAYLOAD</b></td><td class="mono">87:16</td><td>72 bits, layout depends on TYPE</td></tr>
+    <tr><td><b>CRC</b></td><td class="mono">15:0</td><td>CRC-16/CCITT-FALSE over bits 127:16</td></tr>
+   </table>
+   <p class="cap">ACK and credit fields are <b>running totals</b> (mod 256) carried on every flit, so losing one flit never loses an ACK or a credit. The next good flit brings the up-to-date value.</p>
+  </div>
+  <div>
+   <h3>Nine flit types</h3>
+   <table class="t tight">
+    <tr><th>Code</th><th>Type</th><th>Retried</th><th>VC</th><th>Carries</th></tr>
+    <tr><td>1</td><td><b>REQ_HDR</b></td><td><span class="pill pt">yes</span></td><td>REQ</td><td>AW or AR</td></tr>
+    <tr><td>2</td><td><b>REQ_DATA</b></td><td><span class="pill pt">yes</span></td><td>REQ</td><td>one W beat</td></tr>
+    <tr><td>3</td><td><b>RSP_HDR</b></td><td><span class="pill pt">yes</span></td><td>RSP</td><td>B response</td></tr>
+    <tr><td>4</td><td><b>RSP_DATA</b></td><td><span class="pill pt">yes</span></td><td>RSP</td><td>one R beat</td></tr>
+    <tr><td>0</td><td><b>IDLE</b></td><td><span class="pill pg">no</span></td><td>–</td><td>filler, still carries ACK and credits</td></tr>
+    <tr><td>5</td><td><b>ACK</b></td><td><span class="pill pg">no</span></td><td>–</td><td>sent when the ACK value changed</td></tr>
+    <tr><td>6</td><td><b>NAK</b></td><td><span class="pill pg">no</span></td><td>–</td><td>"resend from ACK_SEQ"</td></tr>
+    <tr><td>7</td><td><b>CREDIT</b></td><td><span class="pill pg">no</span></td><td>–</td><td>sent when a credit count changed</td></tr>
+    <tr><td>8</td><td><b>TRAIN</b></td><td><span class="pill pg">no</span></td><td>–</td><td>fixed pattern plus LOCKED bit</td></tr>
+   </table>
+   <p class="cap">Codes 9 to 15 are reserved and treated as a corrupted flit.</p>
+  </div>
+ </div>
+
+ <h3>What the 72-bit payload holds</h3>
+ <table class="t tight">
+  <tr><th>Flit type</th><th>Payload fields, bit 87 down to 16</th><th>Used for</th></tr>
+  <tr><td><b>REQ_HDR</b></td><td class="mono">is_write · id[4] · addr[32] · len[4] · size[3] · burst[2]</td><td>one AXI AW or AR</td></tr>
+  <tr><td><b>REQ_DATA</b></td><td class="mono">wdata[64] · wstrb[8]   (FLAGS.LAST = wlast)</td><td>one AXI W beat</td></tr>
+  <tr><td><b>RSP_HDR</b></td><td class="mono">bid[4] · bresp[2]</td><td>one AXI B response</td></tr>
+  <tr><td><b>RSP_DATA</b></td><td class="mono">rdata[64] · rid[4] · rresp[2]   (FLAGS.LAST = rlast)</td><td>one AXI R beat</td></tr>
+  <tr><td><b>TRAIN</b></td><td class="mono">72'hD2D2_A5A5_5A5A_C3C3_3C</td><td>link training</td></tr>
+ </table>
+
+ <div class="g2" style="margin-top:14px">
+  <div>
+   <h3 style="margin-top:0">Four beats on a 32-bit lane</h3>
+   <div class="diagram">
+    <svg viewBox="0 0 310 104">
+     <text x="0" y="22" class="lb mono">clk</text>
+     <path d="M34 26 v-12 h17 v12 h17 v-12 h17 v12 h17 v-12 h17 v12 h17 v-12 h17 v12 h17 v-12 h17 v12 h17 v-12 h17 v12 h17 v-12 h17 v12 h17" fill="none" stroke="#8B929C"/>
+     <text x="0" y="48" class="lb mono">sof</text>
+     <path d="M34 50 h17 v-10 h34 v10 h221" fill="none" stroke="#E4572E" stroke-width="1.4"/>
+     <text x="0" y="80" class="lb mono">data</text>
+     <g>
+      <rect x="51" y="64" width="64" height="26" rx="5" fill="#E6EDFB" stroke="#3461C4"/><text x="83" y="76" class="bt" text-anchor="middle" style="font-size:8.6px">beat 0</text><text x="83" y="86" class="bs mono" text-anchor="middle" style="font-size:7px">127..96</text>
+      <rect x="119" y="64" width="64" height="26" rx="5" fill="#DFF1F1" stroke="#0E8C93"/><text x="151" y="76" class="bt" text-anchor="middle" style="font-size:8.6px">beat 1</text><text x="151" y="86" class="bs mono" text-anchor="middle" style="font-size:7px">95..64</text>
+      <rect x="187" y="64" width="64" height="26" rx="5" fill="#EEEAFB" stroke="#6A4EC4"/><text x="219" y="76" class="bt" text-anchor="middle" style="font-size:8.6px">beat 2</text><text x="219" y="86" class="bs mono" text-anchor="middle" style="font-size:7px">63..32</text>
+      <rect x="255" y="64" width="54" height="26" rx="5" fill="#FCE6DD" stroke="#E4572E"/><text x="282" y="76" class="bt" text-anchor="middle" style="font-size:8.6px">beat 3</text><text x="282" y="86" class="bs mono" text-anchor="middle" style="font-size:7px">31..0</text>
+     </g>
+    </svg>
+   </div>
+   <p class="cap">One beat per <code>clk_link</code> cycle, most significant beat first. <code>sof</code> marks beat 0 so the receiver can realign. A flit cut short is counted as an error and triggers a NAK. The transmitter always sends something: IDLE, ACK or CREDIT flits fill gaps and keep ACKs and credits flowing.</p>
+  </div>
+  <div>
+   <div class="callout" style="margin-top:24px">
+    <h4>CRC-16: catching corrupted flits</h4>
+    <p>The transmitter runs the 112 header and payload bits through CRC-16/CCITT-FALSE (polynomial 0x1021, initial value 0xFFFF, no reflection, no final XOR) and appends the result. The receiver recomputes it. If it does not match, the flit is dropped and a NAK is sent.</p>
+    <p style="margin:0">CRC-16 is guaranteed to catch any 1, 2 or 3 flipped bits and any burst of up to 16 bits, so the tests inject only those patterns. In hardware it is one combinational XOR tree (<code>rtl/common/crc16.sv</code>), checked against a Python model on 1,004 random and corner-case vectors.</p>
+   </div>
+  </div>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>5 / 12</span></div>
+</section>
+
+<!-- =============================================================== 6 LINK LAYER -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Link layer internals</span></div>
+ <div class="eyebrow">05 Link layer internals</div>
+ <h1>Inside the link layer: a transmitter, a receiver and a memory of what was sent</h1>
+ <p class="lede">The link layer is where reliability lives. The transmitter keeps a copy of every data flit until the other die acknowledges it. The receiver checks every flit and tells the transmitter what arrived, what was lost and how much buffer space has been freed.</p>
+
+ <div class="diagram" style="margin-top:12px">
+  <svg viewBox="0 0 694 322">
+   <text x="0" y="12" class="ttl">TRANSMIT PATH</text><text x="0" y="200" class="ttl">RECEIVE PATH</text>
+   <!-- c1 tx fifos -->
+   <rect x="0" y="34" width="88" height="26" rx="5" fill="#FBEFD8" stroke="#A8690B"/><text x="44" y="50" class="bs" text-anchor="middle" style="fill:#7A4C06;font-weight:500">tx_req FIFO</text>
+   <rect x="0" y="72" width="88" height="26" rx="5" fill="#FBEFD8" stroke="#A8690B"/><text x="44" y="88" class="bs" text-anchor="middle" style="fill:#7A4C06;font-weight:500">tx_rsp FIFO</text>
+   <!-- arbiter -->
+   <rect x="112" y="34" width="112" height="64" rx="8" fill="#fff" stroke="#0E8C93"/>
+   <text x="168" y="58" class="bt" text-anchor="middle">VC arbiter</text><text x="168" y="71" class="bs" text-anchor="middle">round-robin enqueue</text><text x="168" y="82" class="bs" text-anchor="middle">needs credit + space</text>
+   <rect x="112" y="128" width="112" height="44" rx="8" fill="#fff" stroke="#0E8C93"/>
+   <text x="168" y="147" class="bt" text-anchor="middle">credit_counter ×2</text><text x="168" y="160" class="bs" text-anchor="middle">REQ · RSP</text>
+   <!-- replay -->
+   <rect x="248" y="34" width="112" height="64" rx="8" fill="#DFF1F1" stroke="#0E8C93"/>
+   <text x="304" y="58" class="bt" text-anchor="middle">replay_buffer</text><text x="304" y="71" class="bs mono" text-anchor="middle" style="font-size:7.6px">wr_seq · rd_seq</text><text x="304" y="82" class="bs mono" text-anchor="middle" style="font-size:7.6px">ack_seq</text>
+   <rect x="248" y="128" width="112" height="44" rx="8" fill="#fff" stroke="#0E8C93"/>
+   <text x="304" y="147" class="bt" text-anchor="middle">freed-credit acc.</text><text x="304" y="160" class="bs" text-anchor="middle">from RX FIFO read ptr</text>
+   <!-- flit_tx -->
+   <rect x="384" y="34" width="118" height="64" rx="8" fill="#fff" stroke="#0E8C93" stroke-width="1.3"/>
+   <text x="443" y="58" class="bt" text-anchor="middle">flit_tx</text><text x="443" y="71" class="bs" text-anchor="middle">select · header · CRC</text><text x="443" y="82" class="bs" text-anchor="middle">4-beat serializer</text>
+   <!-- fsm -->
+   <rect x="532" y="118" width="112" height="56" rx="8" fill="#FBEFD8" stroke="#A8690B"/>
+   <text x="588" y="141" class="bt" text-anchor="middle">link_training_fsm</text><text x="588" y="154" class="bs" text-anchor="middle">state · error window</text>
+   <!-- rx row -->
+   <rect x="0" y="214" width="88" height="54" rx="8" fill="#F3F4F6" stroke="#C9CED6" stroke-dasharray="3 2"/><text x="44" y="238" class="bt" text-anchor="middle">AXI adapter</text><text x="44" y="251" class="bs" text-anchor="middle">other clock</text>
+   <rect x="248" y="214" width="112" height="54" rx="8" fill="#FBEFD8" stroke="#A8690B"/>
+   <text x="304" y="238" class="bt" text-anchor="middle">rx_req / rx_rsp</text><text x="304" y="251" class="bs" text-anchor="middle">async FIFO = credit buffer</text>
+   <rect x="384" y="214" width="118" height="54" rx="8" fill="#fff" stroke="#0E8C93" stroke-width="1.3"/>
+   <text x="443" y="236" class="bt" text-anchor="middle">flit_rx</text><text x="443" y="249" class="bs" text-anchor="middle">deserialize · CRC check</text><text x="443" y="260" class="bs" text-anchor="middle">SEQ check · NAK request</text>
+   <rect x="532" y="282" width="112" height="34" rx="8" fill="#fff" stroke="#C9CED6"/>
+   <text x="588" y="303" class="bs" text-anchor="middle" style="fill:#15171C;font-weight:500">error counters → CSRs</text>
+   <!-- arrows: tx path -->
+   <g stroke="#69717C" fill="none" marker-end="url(#ah)">
+    <line x1="88" y1="47" x2="110" y2="50"/><line x1="88" y1="85" x2="110" y2="82"/>
+    <line x1="224" y1="66" x2="246" y2="66"/><line x1="360" y1="66" x2="382" y2="66"/>
+    <line x1="168" y1="126" x2="168" y2="100"/>
+    <line x1="246" y1="241" x2="90" y2="241"/>
+    <line x1="382" y1="241" x2="362" y2="241"/>
+   </g>
+   <line x1="502" y1="56" x2="690" y2="56" stroke="#0E8C93" stroke-width="2" marker-end="url(#aht)"/>
+   <text x="690" y="48" class="lbt" text-anchor="end">lane_tx → other die</text>
+   <line x1="692" y1="252" x2="504" y2="252" stroke="#0E8C93" stroke-width="2" marker-end="url(#aht)"/>
+   <text x="690" y="245" class="lbt" text-anchor="end">lane_rx ← other die</text>
+   <text x="168" y="236" class="lb" text-anchor="middle">in-order flit bodies</text>
+   <!-- feedback -->
+   <line x1="304" y1="212" x2="304" y2="174" stroke="#A8690B" stroke-dasharray="3 2" marker-end="url(#aha)"/>
+   <text x="310" y="196" class="lb">read pointer (synced)</text>
+   <polyline points="360,150 425,150 425,100" fill="none" stroke="#0E8C93" marker-end="url(#aht)"/>
+   <text x="364" y="144" class="lbt">credit fields</text>
+   <polyline points="400,212 400,112 340,112 340,100" fill="none" stroke="#E4572E" marker-end="url(#aho)"/>
+   <text x="344" y="122" class="lbo">ACK_SEQ, NAK</text>
+   <line x1="482" y1="212" x2="482" y2="100" stroke="#E4572E" marker-end="url(#aho)"/>
+   <text x="487" y="196" class="lbo">NAK request</text>
+   <polyline points="502,226 588,226 588,176" fill="none" stroke="#A8690B" marker-end="url(#aha)"/>
+   <text x="594" y="206" class="lb">good / bad / TRAIN</text>
+   <polyline points="588,116 588,86 504,86" fill="none" stroke="#A8690B" marker-end="url(#aha)"/>
+   <text x="594" y="100" class="lb">link state</text>
+   <polyline points="420,270 420,300 530,300" fill="none" stroke="#69717C" marker-end="url(#ah)"/>
+   <polyline points="400,270 400,312 168,312 168,174" fill="none" stroke="#0E8C93" marker-end="url(#aht)"/>
+   <text x="176" y="306" class="lbt">credits returned by the other die (freed_cum)</text>
+  </svg>
+ </div>
+ <p class="cap">Figure 2. Link layer internals (docs/microarch.md §2). Teal: data and credits. Orange: retry control. Amber: training and CDC.</p>
+
+ <div class="g2">
+  <div>
+   <h3>What the transmitter sends, in priority order</h3>
+   <div class="num"><span class="c">a</span><div><b>TRAIN</b> while the link is training or retraining.</div></div>
+   <div class="num"><span class="c">b</span><div><b>NAK</b> if the receiver has requested one.</div></div>
+   <div class="num"><span class="c">c</span><div><b>The replay buffer entry at <code>rd_seq</code></b>, if there is one not yet sent. That covers new data and resends.</div></div>
+   <div class="num"><span class="c">d</span><div><b>ACK</b> if the acknowledged value has changed.</div></div>
+   <div class="num"><span class="c">e</span><div><b>CREDIT</b> if a freed-credit count has changed.</div></div>
+   <div class="num"><span class="c">f</span><div><b>IDLE</b> otherwise. The lane is never silent while training or active.</div></div>
+   <p class="cap">Enqueue is separate: each cycle at most one flit body moves from a TX FIFO into the replay buffer. That needs buffer space, a credit for its channel, and a link that is not in RESET or FAILED. Enqueue assigns SEQ = <code>wr_seq</code> and spends the credit.</p>
+  </div>
+  <div>
+   <h3>What the receiver does with each flit</h3>
+   <table class="t tight">
+    <tr><th>Flit received</th><th>Action</th></tr>
+    <tr><td><b>Bad</b>: CRC, framing, reserved type, bad TRAIN pattern</td><td>count a CRC error; in ACTIVE send one NAK for <code>exp_seq</code></td></tr>
+    <tr><td><b>SEQ = expected</b></td><td>push into the RX FIFO, <code>exp_seq++</code></td></tr>
+    <tr><td><b>SEQ ahead</b> (a gap: a flit was lost)</td><td>request a NAK</td></tr>
+    <tr><td><b>SEQ behind</b> (a duplicate after replay)</td><td>drop silently</td></tr>
+   </table>
+   <h3>Pipeline latency <small>link cycles</small></h3>
+   <table class="t tight">
+    <tr><th>Stage</th><th class="r">Cycles</th></tr>
+    <tr><td>Enqueue from TX FIFO to replay buffer</td><td class="r">1</td></tr>
+    <tr><td>Select, header and CRC, serialize</td><td class="r">4 beats</td></tr>
+    <tr><td>Lane fault-injection register</td><td class="r">1</td></tr>
+    <tr><td>Deserialize and CRC check</td><td class="r">4 + 1</td></tr>
+    <tr><td>Push into RX async FIFO (+2–3 sync)</td><td class="r">1</td></tr>
+   </table>
+   <p class="cap">An ACK round trip takes about 24 link cycles, well under the replay timeout of 128 or 256.</p>
+  </div>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>6 / 12</span></div>
+</section>
+
+<!-- =============================================================== 7 RELIABILITY -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Reliability</span></div>
+ <div class="eyebrow">06 Reliability: retry and credits</div>
+ <h1>Go-Back-N retry and credits: nothing lost, nothing overflowed</h1>
+ <p class="lede">Two mechanisms make the link reliable. Retry guarantees every data flit arrives exactly once and in order. Credits guarantee the sender never overruns the receiver's buffer. Both are formally proven.</p>
+
+ <div class="g2" style="margin-top:6px">
+  <div>
+   <h3>Go-Back-N retry, in action</h3>
+   <div class="diagram">
+    <svg viewBox="0 0 310 352">
+     <text x="40" y="14" class="bt" text-anchor="middle" style="fill:#3461C4">Transmitter</text>
+     <text x="228" y="14" class="bt" text-anchor="middle" style="fill:#6A4EC4">Receiver</text>
+     <line x1="40" y1="22" x2="40" y2="348" stroke="#C9CED6" stroke-dasharray="3 3"/>
+     <line x1="228" y1="22" x2="228" y2="348" stroke="#C9CED6" stroke-dasharray="3 3"/>
+     <g class="mono" style="font-size:8px">
+      <line x1="40" y1="36" x2="226" y2="58" stroke="#0E8C93" stroke-width="1.4" marker-end="url(#aht)"/><text x="46" y="31" style="fill:#0A6C72">SEQ 5</text><text x="234" y="61" class="lbt">accept</text>
+      <line x1="40" y1="74" x2="226" y2="96" stroke="#0E8C93" stroke-width="1.4" marker-end="url(#aht)"/><text x="46" y="69" style="fill:#0A6C72">SEQ 6</text><text x="234" y="99" class="lbt">accept</text>
+      <line x1="40" y1="112" x2="226" y2="134" stroke="#E4572E" stroke-width="1.4" marker-end="url(#aho)"/><text x="46" y="107" style="fill:#B23A17">SEQ 7</text>
+      <path d="M128 117 l9 9 M137 117 l-9 9" stroke="#E4572E" stroke-width="2"/><text x="142" y="116" class="lbo">bits flipped</text>
+      <text x="234" y="132" class="lbo">CRC error</text><text x="234" y="142" class="lbo">&#8594; NAK(7)</text>
+      <line x1="40" y1="150" x2="226" y2="172" stroke="#8B929C" stroke-width="1.2" marker-end="url(#ah)"/><text x="46" y="145" style="fill:#69717C">SEQ 8</text><text x="234" y="174" class="lb">dropped:</text><text x="234" y="184" class="lb">out of order</text>
+      <line x1="228" y1="146" x2="42" y2="204" stroke="#E4572E" stroke-width="1.4" stroke-dasharray="4 2" marker-end="url(#aho)"/><text x="112" y="196" style="fill:#B23A17">NAK, ACK_SEQ=7</text>
+      <text x="46" y="218" style="fill:#B23A17;font-size:7.6px">rewind: rd_seq := 7</text>
+      <line x1="40" y1="238" x2="226" y2="260" stroke="#1D8655" stroke-width="1.4" marker-end="url(#ahg)"/><text x="46" y="233" style="fill:#1D8655">SEQ 7 (replay)</text><text x="234" y="263" class="lbg">accept</text>
+      <line x1="40" y1="276" x2="226" y2="298" stroke="#1D8655" stroke-width="1.4" marker-end="url(#ahg)"/><text x="46" y="271" style="fill:#1D8655">SEQ 8 (replay)</text><text x="234" y="301" class="lbg">accept</text>
+      <line x1="228" y1="306" x2="42" y2="336" stroke="#0E8C93" stroke-width="1.2" stroke-dasharray="4 2" marker-end="url(#aht)"/><text x="112" y="335" style="fill:#0A6C72">ACK_SEQ=9 on any flit</text>
+      <text x="46" y="350" style="fill:#0A6C72;font-size:7.6px">retire 5..8</text>
+     </g>
+    </svg>
+   </div>
+   <p class="cap">Every data flit gets a sequence number and a copy stays in the replay buffer until it is acknowledged. A bad or out-of-order flit makes the receiver send a NAK, and the transmitter goes back and resends everything from that point. If a flit simply disappears and nothing follows it, a replay timeout triggers the same rewind.</p>
+  </div>
+  <div>
+   <h3>The replay buffer: three pointers</h3>
+   <div class="diagram">
+    <svg viewBox="0 0 310 92">
+     <text x="58" y="12" class="lbg" text-anchor="middle">ack_seq</text><line x1="58" y1="16" x2="58" y2="30" stroke="#1D8655" marker-end="url(#ahg)"/>
+     <text x="186" y="12" class="lbo" text-anchor="middle">rd_seq</text><line x1="186" y1="16" x2="186" y2="30" stroke="#E4572E" marker-end="url(#aho)"/>
+     <text x="263" y="12" class="lb" text-anchor="middle" style="fill:#3461C4;font-weight:500">wr_seq</text><line x1="263" y1="16" x2="263" y2="30" stroke="#3461C4" marker-end="url(#ahb)"/>
+     <g class="mono" style="font-size:7.6px" text-anchor="middle">
+      <rect x="0" y="34" width="23" height="24" rx="3" fill="#E0F2E8"/><text x="11.5" y="49">20</text>
+      <rect x="25.6" y="34" width="23" height="24" rx="3" fill="#E0F2E8"/><text x="37" y="49">21</text>
+      <rect x="51.2" y="34" width="23" height="24" rx="3" fill="#FBEFD8"/><text x="62.7" y="49">22</text>
+      <rect x="76.8" y="34" width="23" height="24" rx="3" fill="#FBEFD8"/><text x="88.3" y="49">23</text>
+      <rect x="102.4" y="34" width="23" height="24" rx="3" fill="#FBEFD8"/><text x="113.9" y="49">24</text>
+      <rect x="128" y="34" width="23" height="24" rx="3" fill="#FBEFD8"/><text x="139.5" y="49">25</text>
+      <rect x="153.6" y="34" width="23" height="24" rx="3" fill="#FBEFD8"/><text x="165.1" y="49">26</text>
+      <rect x="179.2" y="34" width="23" height="24" rx="3" fill="#E6EDFB"/><text x="190.7" y="49">27</text>
+      <rect x="204.8" y="34" width="23" height="24" rx="3" fill="#E6EDFB"/><text x="216.3" y="49">28</text>
+      <rect x="230.4" y="34" width="23" height="24" rx="3" fill="#E6EDFB"/><text x="241.9" y="49">29</text>
+      <rect x="256" y="34" width="23" height="24" rx="3" fill="#F3F4F6"/><text x="267.5" y="49">30</text>
+      <rect x="281.6" y="34" width="23" height="24" rx="3" fill="#F3F4F6"/><text x="293.1" y="49">31</text>
+     </g>
+     <g class="lb"><rect x="0" y="70" width="9" height="9" rx="2" fill="#E0F2E8"/><text x="13" y="78">acked (free)</text>
+     <rect x="78" y="70" width="9" height="9" rx="2" fill="#FBEFD8"/><text x="91" y="78">sent, awaiting ACK</text>
+     <rect x="176" y="70" width="9" height="9" rx="2" fill="#E6EDFB"/><text x="189" y="78">stored, not yet sent</text></g>
+    </svg>
+   </div>
+   <p class="cap" style="color:var(--ink2)">The rule is <code>ack ≤ rd ≤ wr</code> and <code>wr − ack ≤ 16</code>. There are 256 sequence numbers and the window is 16, less than half, so the receiver can always tell a duplicate (drop it) from a gap (NAK it). This invariant is formally proven.</p>
+
+   <h3>Credits: never overflow the receiver</h3>
+   <div class="diagram">
+    <svg viewBox="0 0 310 98">
+     <rect x="0" y="24" width="88" height="50" rx="8" fill="#E6EDFB" stroke="#3461C4"/><text x="44" y="45" class="bt" text-anchor="middle">Transmitter</text><text x="44" y="58" class="bs" text-anchor="middle">credits 3 / 16</text>
+     <rect x="222" y="24" width="88" height="50" rx="8" fill="#EEEAFB" stroke="#6A4EC4"/><text x="266" y="45" class="bt" text-anchor="middle">RX buffer</text><text x="266" y="58" class="bs" text-anchor="middle">async FIFO, 16 slots</text>
+     <line x1="88" y1="38" x2="220" y2="38" stroke="#3461C4" stroke-width="1.4" marker-end="url(#ahb)"/><text x="154" y="32" class="lb" text-anchor="middle" style="fill:#3461C4;font-weight:500">data flit: spends 1 credit</text>
+     <line x1="222" y1="62" x2="90" y2="62" stroke="#1D8655" stroke-width="1.4" marker-end="url(#ahg)"/><text x="154" y="76" class="lbg" text-anchor="middle">freed count comes back</text>
+     <text x="154" y="94" class="lb" text-anchor="middle">on every flit in the other direction (CRED_*_CUM)</text>
+    </svg>
+   </div>
+   <p class="cap" style="color:var(--ink2)">A credit is one free slot in the receiver's buffer, and the transmitter may only enqueue while it holds one. Request and response channels have <b>separate credits</b>, so a jammed request path can never block the responses that would clear it. That removes the classic request/response deadlock.</p>
+  </div>
+ </div>
+
+ <h3>Three design decisions worth remembering</h3>
+ <div class="g3">
+  <div class="card"><h4>Cumulative, not incremental</h4><p>ACK and credit fields carry running totals (mod 256). If the flit carrying them is lost, the next good flit has the up-to-date total, so a credit or ACK can never leak away.</p></div>
+  <div class="card"><h4>Credits are spent once</h4><p>A credit is consumed when a flit enters the replay buffer, not each time it is sent. Replays never spend credits again, so an in-order flit always finds a free slot (asserted in RTL).</p></div>
+  <div class="card"><h4>Headers filled at send time</h4><p>The replay buffer stores only the 80-bit body. SEQ, ACK, credits and CRC are added as the flit goes out, so a replayed flit carries fresh ACK and credit values.</p></div>
+ </div>
+
+ <h3>Every way a flit can go wrong, and how the link recovers</h3>
+ <table class="t tight">
+  <tr><th>Event</th><th>Detected by</th><th>Recovery</th><th class="r">Seen in final regression</th></tr>
+  <tr><td>Bit flips or a corrupted beat</td><td>CRC mismatch at the receiver</td><td>NAK, then Go-Back-N replay</td><td class="r">1,361 bad flits</td></tr>
+  <tr><td>Dropped data flit</td><td>SEQ gap at the next data flit</td><td>NAK, then replay</td><td class="r">350 NAKs</td></tr>
+  <tr><td>Last flit, NAK or ACKs lost</td><td>replay timer expires</td><td>replay from oldest unacknowledged</td><td class="r">62 timeouts</td></tr>
+  <tr><td>Error burst above threshold</td><td>error-window counter</td><td>RETRAIN, then replay</td><td class="r">26 retrains</td></tr>
+  <tr><td>Retrain keeps failing</td><td>attempt counter</td><td>FAILED + interrupt; software toggles ENABLE</td><td class="r">tested</td></tr>
+  <tr><td>Duplicate after a replay</td><td>SEQ behind expected</td><td>dropped</td><td class="r">353 replays total</td></tr>
+ </table>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>7 / 12</span></div>
+</section>
+
+<!-- =============================================================== 8 TRAINING + CDC -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Training and clock crossings</span></div>
+ <div class="eyebrow">07 Link training and clock-domain crossing</div>
+ <h1>Bringing the link up safely, and moving data between unrelated clocks</h1>
+ <p class="lede">Before any data flows, both dies must agree that the link works. Each side sends TRAIN flits; after 8 good ones in a row it is <b>locked</b> and says so in its own TRAIN flits. When both sides are locked the link goes ACTIVE. Too many errors send it back to RETRAIN, and too many failed attempts end in FAILED.</p>
+
+ <div class="diagram" style="margin-top:10px">
+  <svg viewBox="0 0 694 236">
+   <rect x="20" y="62" width="110" height="46" rx="23" fill="#F3F4F6" stroke="#69717C"/><text x="75" y="89" class="bt" text-anchor="middle">RESET</text>
+   <rect x="190" y="62" width="110" height="46" rx="23" fill="#FBEFD8" stroke="#A8690B"/><text x="245" y="89" class="bt" text-anchor="middle">TRAIN</text>
+   <rect x="370" y="62" width="110" height="46" rx="23" fill="#E0F2E8" stroke="#1D8655" stroke-width="1.4"/><text x="425" y="89" class="bt" text-anchor="middle">ACTIVE</text>
+   <rect x="370" y="168" width="110" height="46" rx="23" fill="#FBEFD8" stroke="#A8690B"/><text x="425" y="195" class="bt" text-anchor="middle">RETRAIN</text>
+   <rect x="566" y="114" width="110" height="46" rx="23" fill="#FCE6DD" stroke="#E4572E"/><text x="621" y="141" class="bt" text-anchor="middle">FAILED</text>
+   <line x1="130" y1="85" x2="188" y2="85" stroke="#69717C" marker-end="url(#ah)"/><text x="159" y="79" class="lb" text-anchor="middle">enable</text>
+   <line x1="300" y1="85" x2="368" y2="85" stroke="#1D8655" stroke-width="1.3" marker-end="url(#ahg)"/><text x="334" y="73" class="lbg" text-anchor="middle">both sides</text><text x="334" y="100" class="lbg" text-anchor="middle">locked</text>
+   <line x1="405" y1="108" x2="405" y2="166" stroke="#A8690B" marker-end="url(#aha)"/><text x="399" y="132" class="lb" text-anchor="end">errors &gt; threshold,</text><text x="399" y="143" class="lb" text-anchor="end">forced, or peer retrains</text>
+   <line x1="445" y1="166" x2="445" y2="110" stroke="#1D8655" marker-end="url(#ahg)"/><text x="451" y="141" class="lbg">re-locked: replay</text><text x="451" y="152" class="lbg">unacked flits</text>
+   <polyline points="480,85 621,85 621,112" fill="none" stroke="#E4572E" marker-end="url(#aho)"/><text x="530" y="79" class="lbo">retry budget used</text>
+   <polyline points="480,191 621,191 621,162" fill="none" stroke="#E4572E" marker-end="url(#aho)"/><text x="490" y="205" class="lbo">timeout, budget used</text>
+   <polyline points="265,62 265,22 650,22 650,112" fill="none" stroke="#E4572E" marker-end="url(#aho)"/><text x="460" y="16" class="lbo" text-anchor="middle">training timeout with the attempt budget used up</text>
+   <path d="M210 62 C200 38 232 36 228 60" fill="none" stroke="#A8690B" marker-end="url(#aha)"/><text x="196" y="40" class="lb" text-anchor="end">timeout:</text><text x="196" y="50" class="lb" text-anchor="end">try again</text>
+   <polyline points="606,162 606,228 75,228 75,110" fill="none" stroke="#E4572E" stroke-dasharray="4 3" marker-end="url(#aho)"/>
+   <text x="250" y="222" class="lbo" text-anchor="middle">software clears CTRL.ENABLE: FAILED → RESET → TRAIN</text>
+   <text x="150" y="150" class="lb">Any state goes to RESET</text><text x="150" y="161" class="lb">when ENABLE = 0</text>
+  </svg>
+ </div>
+ <p class="cap">Figure 3. Link training state machine. All 5 states and 11 transition arcs are covered by the regression; ACTIVE-only-with-lock and FAILED-only-after-budget are checked by bounded model checking.</p>
+
+ <div class="g2" style="margin-top:2px">
+  <div>
+   <div class="callout" style="padding:11px 15px"><h4>No data is lost across a retrain</h4><p style="margin:0;font-size:9.6px">Retraining never touches the replay buffer, sequence numbers, credits or receive FIFOs. On return to ACTIVE the transmitter replays everything unacknowledged and the receiver drops duplicates. A TRAIN flit with LOCKED=1 arriving while ACTIVE is ignored: without that rule the two dies could keep knocking each other back into training forever.</p></div>
+   <h3>Training knobs</h3>
+   <table class="t tight">
+    <tr><th>Knob (default)</th><th>Meaning</th></tr>
+    <tr><td class="mono">ERR_THRESH = 8</td><td>retrain if more than 8 bad flits in a window</td></tr>
+    <tr><td class="mono">ERR_WINDOW = 256</td><td>window length, in received flits</td></tr>
+    <tr><td class="mono">MAX_RETRAIN = 4</td><td>attempts before FAILED</td></tr>
+    <tr><td class="mono">TRAIN_GOOD = 8</td><td>good TRAIN flits needed to lock</td></tr>
+    <tr><td class="mono">TRAIN_TIMEOUT = 1024</td><td>link cycles per training attempt</td></tr>
+   </table>
+  </div>
+  <div>
+   <h3 style="margin-top:0">How a safe clock crossing works</h3>
+   <div class="diagram" style="padding:10px 12px">
+    <svg viewBox="0 0 310 150">
+     <rect x="0" y="0" width="152" height="150" rx="8" fill="#E6EDFB" opacity=".5"/><rect x="158" y="0" width="152" height="150" rx="8" fill="#DFF1F1" opacity=".7"/>
+     <text x="8" y="13" class="ttl" style="fill:#3461C4">WRITE CLOCK</text><text x="302" y="13" class="ttl" text-anchor="end" style="fill:#0A6C72">READ CLOCK</text>
+     <line x1="155" y1="0" x2="155" y2="150" stroke="#8B929C" stroke-dasharray="3 3"/>
+     <rect x="112" y="24" width="86" height="40" rx="6" fill="#fff" stroke="#A8690B"/><text x="155" y="41" class="bt" text-anchor="middle" style="font-size:9px">dual-port RAM</text><text x="155" y="54" class="bs" text-anchor="middle">DEPTH × 80 bits</text>
+     <line x1="8" y1="44" x2="110" y2="44" stroke="#69717C" marker-end="url(#ah)"/><text x="10" y="38" class="lb">write data</text>
+     <line x1="198" y1="44" x2="302" y2="44" stroke="#69717C" marker-end="url(#ah)"/><text x="300" y="38" class="lb" text-anchor="end">read data</text>
+     <rect x="6" y="80" width="88" height="22" rx="5" fill="#fff" stroke="#3461C4"/><text x="49" y="94" class="bs mono" text-anchor="middle" style="fill:#15171C">wptr → gray reg</text>
+     <rect x="222" y="80" width="78" height="22" rx="5" fill="#fff" stroke="#0E8C93"/><text x="261" y="94" class="bs" text-anchor="middle" style="fill:#15171C">2-flop sync</text>
+     <line x1="94" y1="91" x2="220" y2="91" stroke="#0E8C93" marker-end="url(#aht)"/>
+     <rect x="216" y="116" width="88" height="22" rx="5" fill="#fff" stroke="#0E8C93"/><text x="261" y="130" class="bs mono" text-anchor="middle" style="fill:#15171C">rptr → gray reg</text>
+     <rect x="10" y="116" width="78" height="22" rx="5" fill="#fff" stroke="#3461C4"/><text x="49" y="130" class="bs" text-anchor="middle" style="fill:#15171C">2-flop sync</text>
+     <line x1="216" y1="127" x2="90" y2="127" stroke="#3461C4" marker-end="url(#ahb)"/>
+     <text x="155" y="112" class="lb" text-anchor="middle">only gray pointers cross</text>
+    </svg>
+   </div>
+   <p class="cap" style="color:var(--ink2)">Sampling a changing multi-bit value from another clock can capture a half-updated number. Gray code changes exactly one bit per step, so a sampled pointer is always the old or the new value, never a random third. The FIFO is formally proven with two unconstrained, unrelated clocks.</p>
+  </div>
+ </div>
+
+ <div class="g2" style="margin-top:2px">
+  <div>
+   <h3>The 8 crossings <small>docs/cdc.md §2</small></h3>
+   <table class="t tight">
+    <tr><th>Die</th><th>FIFO</th><th>Direction</th><th>Carries</th></tr>
+    <tr><td>A</td><td class="mono">req_tx</td><td>axi_a → link</td><td>AW, AR, W bodies</td></tr>
+    <tr><td>A</td><td class="mono">rsp_rx</td><td>link → axi_a</td><td>B, R bodies; RSP credit buffer</td></tr>
+    <tr><td>B</td><td class="mono">req_rx</td><td>link → axi_b</td><td>requests; REQ credit buffer</td></tr>
+    <tr><td>B</td><td class="mono">rsp_tx</td><td>axi_b → link</td><td>B, R bodies</td></tr>
+    <tr><td>A, B</td><td class="mono">cfg</td><td>axi → link</td><td>config messages (30 bits)</td></tr>
+    <tr><td>A, B</td><td class="mono">sts</td><td>link → axi</td><td>state + 5 counters (83 bits)</td></tr>
+   </table>
+  </div>
+  <div>
+   <h3>Why gray code</h3>
+   <table class="t tight">
+    <tr><th>Step</th><th>Binary</th><th>Gray</th><th>Bits that change</th></tr>
+    <tr><td>3 → 4</td><td class="mono">011 → 100</td><td class="mono">010 → 110</td><td>binary 3, gray 1</td></tr>
+    <tr><td>7 → 0</td><td class="mono">111 → 000</td><td class="mono">100 → 000</td><td>binary 3, gray 1</td></tr>
+   </table>
+   <p class="cap" style="color:var(--ink2)"><b>Counters never cross bit by bit.</b> The link domain pushes a complete status snapshot through a FIFO, so a register read is coherent and only a few clocks stale. <b>Credit return reuses the receive FIFO's</b> already-synchronized read pointer, so it needs no extra crossing. It lags by 2–3 cycles, so credits come back late, never early.</p>
+  </div>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>8 / 12</span></div>
+</section>
+
+<!-- =============================================================== 9 JOURNEY -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>A transaction's journey</span></div>
+ <div class="eyebrow">08 A transaction's journey</div>
+ <h1>Following one AXI write burst from the host to memory and back</h1>
+ <p class="lede">This is the whole design working together. A write burst is broken into flits on Die A, carried across the lane with sequence numbers and CRC, rebuilt into AXI on Die B, and its response travels back on the other virtual channel. The ACK for the request rides on the response flits.</p>
+
+ <div class="diagram" style="margin-top:12px">
+  <svg viewBox="0 0 694 430">
+   <g text-anchor="middle">
+    <rect x="10" y="6" width="84" height="34" rx="8" fill="#F3F4F6"/><text x="52" y="27" class="bt">Host</text>
+    <rect x="120" y="6" width="94" height="34" rx="8" fill="#E6EDFB"/><text x="167" y="21" class="bt">AXI slave</text><text x="167" y="33" class="bs">Die A · clk_axi_a</text>
+    <rect x="238" y="6" width="94" height="34" rx="8" fill="#DFF1F1"/><text x="285" y="21" class="bt">Link layer A</text><text x="285" y="33" class="bs">clk_link</text>
+    <rect x="362" y="6" width="94" height="34" rx="8" fill="#DFF1F1"/><text x="409" y="21" class="bt">Link layer B</text><text x="409" y="33" class="bs">clk_link</text>
+    <rect x="480" y="6" width="94" height="34" rx="8" fill="#EEEAFB"/><text x="527" y="21" class="bt">AXI master</text><text x="527" y="33" class="bs">Die B · clk_axi_b</text>
+    <rect x="600" y="6" width="84" height="34" rx="8" fill="#F3F4F6"/><text x="642" y="27" class="bt">Memory</text>
+   </g>
+   <g stroke="#D5D9DF" stroke-dasharray="3 3"><line x1="52" y1="42" x2="52" y2="424"/><line x1="167" y1="42" x2="167" y2="424"/><line x1="285" y1="42" x2="285" y2="424"/><line x1="409" y1="42" x2="409" y2="424"/><line x1="527" y1="42" x2="527" y2="424"/><line x1="642" y1="42" x2="642" y2="424"/></g>
+   <g font-size="8.4">
+    <!-- 1 -->
+    <circle cx="20" cy="64" r="8" fill="#0E8C93"/><text x="20" y="67.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">1</text>
+    <line x1="52" y1="64" x2="165" y2="64" stroke="#3461C4" stroke-width="1.4" marker-end="url(#ahb)"/><text x="110" y="58" class="lb" text-anchor="middle">AW + 4 W beats</text>
+    <!-- 2 -->
+    <circle cx="20" cy="94" r="8" fill="#0E8C93"/><text x="20" y="97.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">2</text>
+    <rect x="124" y="82" width="86" height="24" rx="5" fill="#fff" stroke="#3461C4"/><text x="167" y="92" class="bs" text-anchor="middle" style="fill:#15171C">pack: 1 REQ_HDR</text><text x="167" y="102" class="bs" text-anchor="middle" style="fill:#15171C">+ 4 REQ_DATA</text>
+    <!-- 3 -->
+    <circle cx="20" cy="126" r="8" fill="#0E8C93"/><text x="20" y="129.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">3</text>
+    <line x1="167" y1="126" x2="283" y2="126" stroke="#A8690B" stroke-width="1.4" marker-end="url(#aha)"/><text x="226" y="120" class="lb" text-anchor="middle" style="fill:#7A4C06">async FIFO crossing</text>
+    <!-- 4 -->
+    <circle cx="20" cy="156" r="8" fill="#0E8C93"/><text x="20" y="159.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">4</text>
+    <rect x="238" y="144" width="94" height="24" rx="5" fill="#fff" stroke="#0E8C93"/><text x="285" y="154" class="bs" text-anchor="middle" style="fill:#15171C">enqueue: SEQ, spend</text><text x="285" y="164" class="bs" text-anchor="middle" style="fill:#15171C">credit, keep a copy</text>
+    <!-- 5 -->
+    <circle cx="20" cy="188" r="8" fill="#0E8C93"/><text x="20" y="191.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">5</text>
+    <line x1="285" y1="182" x2="407" y2="182" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/>
+    <line x1="285" y1="188" x2="407" y2="188" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/>
+    <line x1="285" y1="194" x2="407" y2="194" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/>
+    <text x="347" y="176" class="lbt" text-anchor="middle">5 flits on lane a2b, with CRC</text>
+    <!-- 6 -->
+    <circle cx="20" cy="220" r="8" fill="#0E8C93"/><text x="20" y="223.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">6</text>
+    <rect x="362" y="208" width="94" height="24" rx="5" fill="#fff" stroke="#0E8C93"/><text x="409" y="218" class="bs" text-anchor="middle" style="fill:#15171C">check CRC and SEQ,</text><text x="409" y="228" class="bs" text-anchor="middle" style="fill:#15171C">accept in order</text>
+    <!-- 7 -->
+    <circle cx="20" cy="252" r="8" fill="#0E8C93"/><text x="20" y="255.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">7</text>
+    <line x1="409" y1="252" x2="525" y2="252" stroke="#A8690B" stroke-width="1.4" marker-end="url(#aha)"/><text x="467" y="246" class="lb" text-anchor="middle" style="fill:#7A4C06">async FIFO crossing</text>
+    <line x1="527" y1="268" x2="640" y2="268" stroke="#6A4EC4" stroke-width="1.4" marker-end="url(#ahv)"/><text x="584" y="262" class="lb" text-anchor="middle">AW, then 4 W beats</text>
+    <!-- 8 -->
+    <circle cx="20" cy="296" r="8" fill="#0E8C93"/><text x="20" y="299.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">8</text>
+    <line x1="642" y1="290" x2="529" y2="290" stroke="#6A4EC4" stroke-width="1.4" marker-end="url(#ahv)"/><text x="584" y="284" class="lb" text-anchor="middle">B response</text>
+    <line x1="527" y1="306" x2="411" y2="306" stroke="#A8690B" stroke-width="1.4" marker-end="url(#aha)"/><text x="467" y="300" class="lb" text-anchor="middle" style="fill:#7A4C06">RSP_HDR body</text>
+    <!-- 9 -->
+    <circle cx="20" cy="336" r="8" fill="#0E8C93"/><text x="20" y="339.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">9</text>
+    <line x1="409" y1="336" x2="287" y2="336" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/><text x="347" y="330" class="lbt" text-anchor="middle">RSP_HDR on lane b2a</text><text x="347" y="348" class="lb" text-anchor="middle">carries ACK_SEQ for all 5</text>
+    <rect x="238" y="356" width="94" height="20" rx="5" fill="#fff" stroke="#0E8C93"/><text x="285" y="369" class="bs" text-anchor="middle" style="fill:#15171C">retire 5 replay entries</text>
+    <!-- 10 -->
+    <circle cx="20" cy="398" r="8" fill="#0E8C93"/><text x="20" y="401.5" text-anchor="middle" style="fill:#fff;font-size:8.4px;font-weight:600">10</text>
+    <line x1="285" y1="392" x2="169" y2="392" stroke="#A8690B" stroke-width="1.4" marker-end="url(#aha)"/><text x="226" y="386" class="lb" text-anchor="middle" style="fill:#7A4C06">async FIFO crossing</text>
+    <line x1="167" y1="410" x2="54" y2="410" stroke="#3461C4" stroke-width="1.4" marker-end="url(#ahb)"/><text x="110" y="404" class="lb" text-anchor="middle">B: write done</text>
+   </g>
+  </svg>
+ </div>
+ <p class="cap">Figure 4. Sequence of one 4-beat write. Reads work the same way, with the R beats returning as RSP_DATA flits. If a flit in step 5 is corrupted, Die B sends a NAK and Die A replays from that flit; the host only sees a slightly later B.</p>
+
+ <div class="g2" style="margin-top:8px">
+  <div class="box" style="background:var(--blue-l)"><h4>Why one transaction at a time at Die B?</h4><p style="margin:0">Die B executes requests strictly in arrival order, one at a time. That is legal AXI, keeps the ordering argument trivial and lets the scoreboard predict every response exactly. The cost is throughput. It is documented as a limitation; per-ID reordering would be the next feature.</p></div>
+  <div class="box"><h4>Adapter rules</h4><p style="margin:0">Die A accepts an AW only with fewer than 4 writes outstanding, and an AR only with fewer than 4 reads. AW and AR are never accepted in the same cycle, so the request order is the handshake order. Die B asserts BREADY and RREADY only when the response FIFO can take the flit.</p></div>
+ </div>
+
+ <h3>Control and status registers <small>APB3, one block per die, no wait states, unmapped address → PSLVERR</small></h3>
+ <div class="g2" style="gap:18px">
+  <table class="t tight">
+   <tr><th>Offset</th><th>Register</th><th>Access</th><th>What it does</th></tr>
+   <tr><td class="mono">0x00</td><td><b>CTRL</b></td><td>RW</td><td>ENABLE, FORCE_RETRAIN pulse</td></tr>
+   <tr><td class="mono">0x04</td><td><b>STATUS</b></td><td>RO</td><td>link state, LINK_UP</td></tr>
+   <tr><td class="mono">0x08</td><td><b>CRC_ERR_CNT</b></td><td>RO</td><td>bad flits received</td></tr>
+   <tr><td class="mono">0x0C</td><td><b>NAK_CNT</b></td><td>RO</td><td>NAKs sent</td></tr>
+   <tr><td class="mono">0x10</td><td><b>REPLAY_CNT</b></td><td>RO</td><td>replays started</td></tr>
+   <tr><td class="mono">0x14</td><td><b>TIMEOUT_CNT</b></td><td>RO</td><td>replay timeouts</td></tr>
+  </table>
+  <table class="t tight">
+   <tr><th>Offset</th><th>Register</th><th>Access</th><th>What it does</th></tr>
+   <tr><td class="mono">0x18</td><td><b>RETRAIN_CNT</b></td><td>RO</td><td>ACTIVE → RETRAIN count</td></tr>
+   <tr><td class="mono">0x1C</td><td><b>ERR_CFG</b></td><td>RW</td><td>error threshold, retry budget</td></tr>
+   <tr><td class="mono">0x20</td><td><b>ERR_WINDOW</b></td><td>RW</td><td>error window in flits</td></tr>
+   <tr><td class="mono">0x24</td><td><b>IRQ_EN</b></td><td>RW</td><td>link down, retrain, failed, CRC</td></tr>
+   <tr><td class="mono">0x28</td><td><b>IRQ_STATUS</b></td><td>W1C</td><td>same bits, write 1 to clear</td></tr>
+   <tr><td class="mono">0x2C</td><td><b>ID</b></td><td>RO</td><td>constant 0xD2D1_0001</td></tr>
+  </table>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>9 / 12</span></div>
+</section>
+
+<!-- =============================================================== 10 VERIFICATION -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Verification</span></div>
+ <div class="eyebrow">09 Verification</div>
+ <h1>Proving it works: block tests, a UVM-style testbench, fault injection and formal</h1>
+ <p class="lede">Each block was first tested on its own against a Python model. The integrated two-die system was then hammered by 14 constrained-random tests that inject faults on the lanes, while a scoreboard predicts every response. Formal proofs cover the invariants simulation can only sample.</p>
+
+ <div class="diagram" style="margin-top:12px">
+  <svg viewBox="0 0 694 262">
+   <rect x="0" y="0" width="694" height="262" rx="10" fill="#FAFBFC"/>
+   <text x="12" y="18" class="ttl">d2d_env (pyuvm) · d2d_test_base</text>
+   <!-- virtual sequencer -->
+   <rect x="12" y="30" width="160" height="34" rx="7" fill="#F3F4F6" stroke="#C9CED6"/><text x="92" y="44" class="bt" text-anchor="middle">virtual_sequencer</text><text x="92" y="56" class="bs" text-anchor="middle">handles to all sequencers</text>
+   <!-- agents left -->
+   <rect x="12" y="84" width="160" height="44" rx="8" fill="#E6EDFB" stroke="#3461C4"/><text x="92" y="102" class="bt" text-anchor="middle">axi_master_agent</text><text x="92" y="115" class="bs" text-anchor="middle">Die A host: sequencer, driver, monitor</text>
+   <rect x="12" y="142" width="160" height="44" rx="8" fill="#E6EDFB" stroke="#3461C4"/><text x="92" y="160" class="bt" text-anchor="middle">apb_agent [A]</text><text x="92" y="173" class="bs" text-anchor="middle">register reads and writes</text>
+   <!-- agents right -->
+   <rect x="522" y="84" width="160" height="44" rx="8" fill="#EEEAFB" stroke="#6A4EC4"/><text x="602" y="102" class="bt" text-anchor="middle">axi_slave_mem_agent</text><text x="602" y="115" class="bs" text-anchor="middle">Die B memory, random READY/latency</text>
+   <rect x="522" y="142" width="160" height="44" rx="8" fill="#EEEAFB" stroke="#6A4EC4"/><text x="602" y="160" class="bt" text-anchor="middle">apb_agent [B]</text><text x="602" y="173" class="bs" text-anchor="middle">register reads and writes</text>
+   <!-- fault agents top -->
+   <rect x="232" y="22" width="230" height="38" rx="8" fill="#FBEFD8" stroke="#A8690B"/><text x="347" y="38" class="bt" text-anchor="middle">lane_fault_agent [a2b], [b2a]</text><text x="347" y="51" class="bs" text-anchor="middle">XOR / drop per beat, aligned to flits</text>
+   <!-- DUT -->
+   <rect x="212" y="78" width="270" height="116" rx="10" fill="#fff" stroke="#15171C" stroke-width="1.3"/>
+   <text x="347" y="94" class="ttl" text-anchor="middle" style="fill:#15171C">DUT · d2d_system_top (Verilator)</text>
+   <rect x="224" y="104" width="94" height="78" rx="7" fill="#E6EDFB"/><text x="271" y="140" class="bt" text-anchor="middle">die_a_top</text><text x="271" y="153" class="bs" text-anchor="middle">AXI slave side</text>
+   <rect x="376" y="104" width="94" height="78" rx="7" fill="#EEEAFB"/><text x="423" y="140" class="bt" text-anchor="middle">die_b_top</text><text x="423" y="153" class="bs" text-anchor="middle">AXI master side</text>
+   <line x1="318" y1="132" x2="374" y2="132" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/>
+   <line x1="376" y1="156" x2="320" y2="156" stroke="#0E8C93" stroke-width="1.6" marker-end="url(#aht)"/>
+   <circle cx="347" cy="144" r="7" fill="#FBEFD8" stroke="#A8690B"/><text x="347" y="147" text-anchor="middle" style="font-size:8px;fill:#A8690B;font-weight:700">×</text>
+   <!-- agent arrows -->
+   <g stroke="#69717C" fill="none" marker-end="url(#ah)">
+    <line x1="172" y1="106" x2="222" y2="118"/><line x1="172" y1="164" x2="222" y2="166"/>
+    <line x1="522" y1="106" x2="472" y2="118"/><line x1="522" y1="164" x2="472" y2="166"/>
+    <line x1="347" y1="60" x2="347" y2="136"/>
+    <line x1="92" y1="64" x2="92" y2="82"/>
+   </g>
+   <!-- scoreboard / coverage -->
+   <rect x="150" y="214" width="190" height="38" rx="8" fill="#E0F2E8" stroke="#1D8655"/><text x="245" y="230" class="bt" text-anchor="middle">d2d_scoreboard</text><text x="245" y="243" class="bs" text-anchor="middle">reference memory, order, loss / duplicate</text>
+   <rect x="354" y="214" width="190" height="38" rx="8" fill="#DFF1F1" stroke="#0E8C93"/><text x="449" y="230" class="bt" text-anchor="middle">d2d_coverage</text><text x="449" y="243" class="bs" text-anchor="middle">cocotb-coverage, 233 bins</text>
+   <g stroke="#1D8655" stroke-dasharray="3 2" fill="none" marker-end="url(#ahg)">
+    <polyline points="12,106 5,106 5,233 148,233"/>
+    <polyline points="682,106 689,106 689,204 290,204 290,212"/>
+   </g>
+   <polyline points="689,204 689,233 546,233" fill="none" stroke="#0E8C93" stroke-dasharray="3 2" marker-end="url(#aht)"/>
+   <text x="12" y="226" class="lbg">AXI monitors</text><text x="682" y="226" class="lbg" text-anchor="end">AXI monitors</text>
+  </svg>
+ </div>
+ <p class="cap">Figure 5. System testbench architecture (docs/verification_plan.md §2). Every bus-functional model drives on the falling edge and samples just before the rising edge, so combinational READY signals are seen correctly.</p>
+
+ <div class="g2" style="margin-top:4px">
+  <div>
+   <h3>14 seeded system tests</h3>
+   <table class="t tight">
+    <tr><th>Test</th><th>What it stresses</th></tr>
+    <tr><td class="mono">smoke</td><td>train, one write, one read-back</td></tr>
+    <tr><td class="mono">random_rw</td><td>200 random reads and writes, random length, ID, WSTRB</td></tr>
+    <tr><td class="mono">max_burst</td><td>16-beat bursts back to back</td></tr>
+    <tr><td class="mono">outstanding_stress</td><td>4 writes + 4 reads in flight, slow memory</td></tr>
+    <tr><td class="mono">credit_starvation</td><td>host stalls responses until credits run out</td></tr>
+    <tr><td class="mono">backpressure_random</td><td>random VALID gaps and READY at both ends</td></tr>
+    <tr><td class="mono" style="color:#B23A17">crc_error_retry</td><td>1% of flits get bit flips, both directions</td></tr>
+    <tr><td class="mono" style="color:#B23A17">flit_drop_timeout</td><td>whole flits dropped, incl. sparse tail flits</td></tr>
+    <tr><td class="mono" style="color:#B23A17">error_storm_retrain</td><td>heavy corruption burst forces RETRAIN</td></tr>
+    <tr><td class="mono" style="color:#B23A17">link_fail_and_recover</td><td>corrupt until FAILED, recover via APB</td></tr>
+    <tr><td class="mono">csr_access</td><td>reset values, RW, RO, W1C, PSLVERR</td></tr>
+    <tr><td class="mono">ltssm_arcs</td><td>directed FSM corners via registers</td></tr>
+    <tr><td class="mono">clock_ratio_sweep</td><td>several unrelated clock period triples</td></tr>
+    <tr><td class="mono" style="color:#B23A17">reset_during_traffic</td><td>reset mid-burst, retrain, new traffic</td></tr>
+   </table>
+   <p class="cap">Red: tests that inject faults or resets. Each runs on 2 seeds; 8 also run in the small configuration, giving 44 jobs.</p>
+  </div>
+  <div>
+   <h3>What the scoreboard checks</h3>
+   <div class="num"><span class="c">1</span><div><b>Reference memory.</b> Writes are applied in Die A acceptance order, honouring WSTRB. Every read beat is compared against it. This is exact because execution is strictly ordered.</div></div>
+   <div class="num"><span class="c">2</span><div><b>Die B request stream.</b> Each request seen at Die B must equal the next Die A request. This catches loss, duplication or reordering where it happens.</div></div>
+   <div class="num"><span class="c">3</span><div><b>Responses.</b> ID, RESP, RLAST and beat count per burst.</div></div>
+   <div class="num"><span class="c">4</span><div><b>End of test.</b> Every accepted transaction completed, nothing outstanding, no extra responses, both links ACTIVE.</div></div>
+   <div class="num"><span class="c">5</span><div><b>Fault accounting.</b> Injected faults are logged next to the CRC, NAK, replay, timeout and retrain counters.</div></div>
+   <h3>Unit tests <small>9 pytest cases, all pass</small></h3>
+   <p style="margin:0">CRC against a Python model (1,004 vectors); async FIFO at depth 4 and 16 with random unrelated clocks; credit counter at every level; replay buffer against a Go-Back-N model; flit TX-to-RX loopback through accept, duplicate, gap and CRC paths; training FSM directed tests.</p>
+  </div>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>10 / 12</span></div>
+</section>
+
+<!-- =============================================================== 11 RESULTS -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Results</span></div>
+ <div class="eyebrow">10 Results</div>
+ <h1>Every test passes, every coverage bin is hit, every proof holds</h1>
+ <p class="lede">All numbers below are copied from log files in the repository (<code>logs/regress/summary.md</code>, <code>logs/formal_summary.txt</code>, <code>syn/reports/summary.txt</code>). Regression base seed 517299, wall clock 10.0 minutes on 4 parallel jobs.</p>
+
+ <div class="g6" style="margin-top:12px">
+  <div class="stat"><div class="n">44/44</div><div class="l">jobs pass</div></div>
+  <div class="stat"><div class="n">5,108</div><div class="l">transactions checked</div></div>
+  <div class="stat"><div class="n">3,604</div><div class="l">faulty flits injected</div></div>
+  <div class="stat"><div class="n">353</div><div class="l">Go-Back-N replays</div></div>
+  <div class="stat"><div class="n">26</div><div class="l">retrains survived</div></div>
+  <div class="stat"><div class="n k">0</div><div class="l">lost, duplicated or corrupted</div></div>
+ </div>
+
+ <div class="g2" style="margin-top:4px">
+  <div>
+   <h3>From injected fault to recovery <small>all 44 runs</small></h3>
+   <div class="bars">
+    <div class="row"><span class="k">Faulty flits injected</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">3,604</span></div>
+    <div class="row"><span class="k">Bad flits detected</span><div class="track"><div class="fill" style="width:37.8%"></div></div><span class="v">1,361</span></div>
+    <div class="row"><span class="k">Go-Back-N replays</span><div class="track"><div class="fill" style="width:9.8%"></div></div><span class="v">353</span></div>
+    <div class="row"><span class="k">NAKs sent</span><div class="track"><div class="fill" style="width:9.7%"></div></div><span class="v">350</span></div>
+    <div class="row"><span class="k">Replay timeouts</span><div class="track"><div class="fill" style="width:1.7%"></div></div><span class="v">62</span></div>
+    <div class="row"><span class="k">Retrains</span><div class="track"><div class="fill" style="width:.8%;min-width:3px"></div></div><span class="v">26</span></div>
+   </div>
+   <p class="cap">Fewer bad flits are detected than injected, as expected. Drops remove whole flits with no CRC event (recovered by SEQ gap or timeout), and errors injected while a link is retraining or failed count only as CRC errors. One NAK can cover a run of bad flits.</p>
+
+   <h3>Formal proofs <small>SymbiYosys, small configuration</small></h3>
+   <table class="t tight">
+    <tr><th>Job</th><th>Method</th><th>What is proven</th><th class="r">Result</th></tr>
+    <tr><td><b>fifo</b></td><td>ABC PDR</td><td>no overflow or underflow, 1-bit gray steps, data order, two free clocks</td><td class="r"><span class="pill pt">PASS</span></td></tr>
+    <tr><td><b>credit</b></td><td>ABC PDR</td><td>credits in [0, MAX]; conservation with late or lost returns</td><td class="r"><span class="pill pt">PASS</span></td></tr>
+    <tr><td><b>replay</b></td><td>k-induction</td><td>ack ≤ rd ≤ wr, window ≤ depth, full never accepts</td><td class="r"><span class="pill pt">PASS</span></td></tr>
+    <tr><td><b>retry</b></td><td>ABC PDR</td><td>delivered stream is exactly 0, 1, 2, … over a lossy channel</td><td class="r"><span class="pill pt">PASS</span></td></tr>
+    <tr><td><b>ltssm</b></td><td>BMC, depth 20</td><td>legal states; ACTIVE only with lock; FAILED only after budget</td><td class="r"><span class="pill pa">PASS · bounded</span></td></tr>
+   </table>
+   <p class="cap">Each job also has a cover task, all PASS. Total 709 s, run alongside the unit tests; every task is under the 5-minute cap.</p>
+  </div>
+  <div>
+   <h3>Functional coverage <small>233 / 233 bins, 100%</small></h3>
+   <div class="bars" style="--w:1">
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.len_x_idgrp</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">64/64</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.kind_x_id</span><div class="track"><div class="fill" style="width:50%"></div></div><span class="v">32/32</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">csr.reg_x_dir</span><div class="track"><div class="fill" style="width:40.6%"></div></div><span class="v">26/26</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.id</span><div class="track"><div class="fill" style="width:25%"></div></div><span class="v">16/16</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.len</span><div class="track"><div class="fill" style="width:25%"></div></div><span class="v">16/16</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">csr.reg</span><div class="track"><div class="fill" style="width:20.3%"></div></div><span class="v">13/13</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">ltssm.arc</span><div class="track"><div class="fill" style="width:17.2%"></div></div><span class="v">11/11</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">fault.type_x_vc</span><div class="track"><div class="fill" style="width:15.6%"></div></div><span class="v">10/10</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.outstanding</span><div class="track"><div class="fill" style="width:12.5%"></div></div><span class="v">8/8</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">ltssm.state</span><div class="track"><div class="fill" style="width:7.8%"></div></div><span class="v">5/5</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">fault.type</span><div class="track"><div class="fill" style="width:7.8%"></div></div><span class="v">5/5</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">axi.idgrp · wstrb</span><div class="track"><div class="fill" style="width:6.25%"></div></div><span class="v">4/4 · 4/4</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">link.replay_depth</span><div class="track"><div class="fill" style="width:6.25%"></div></div><span class="v">4/4</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">cdc.clk_ratio</span><div class="track"><div class="fill" style="width:6.25%"></div></div><span class="v">4/4</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">link.recovery</span><div class="track"><div class="fill" style="width:4.7%"></div></div><span class="v">3/3</span></div>
+    <div class="row"><span class="k mono" style="font-size:8.2px">5 items of 2 bins</span><div class="track"><div class="fill" style="width:3.1%"></div></div><span class="v">2/2 each</span></div>
+   </div>
+   <p class="cap">Bar length is the number of bins in each coverage item; every item is fully hit. The last row is axi.kind, csr.dir, fault.vc, link.credit_stall. An earlier run missed 4 FSM arcs and read-only-register writes; the directed <code>ltssm_arcs</code> test and new checks in <code>csr_access</code> closed them.</p>
+
+   <h3>Lint</h3>
+   <table class="t tight">
+    <tr><th>Tool</th><th>Result</th></tr>
+    <tr><td>Verilator 5.020 <code>--lint-only -Wall</code>, synthesis and <code>-DSIM</code> views</td><td><span class="pill pt">0 warnings</span></td></tr>
+    <tr><td>Verible v0.0-4298 lint</td><td><span class="pill pt">0 violations</span></td></tr>
+    <tr><td>Waivers, each justified in docs/lint_waivers.md</td><td>7</td></tr>
+   </table>
+  </div>
+ </div>
+
+ <h3>Synthesis estimates <small>Yosys 0.33 + ABC, SKY130 HD tt_025C_1v80, standard-cell area only, no latches inferred</small></h3>
+ <div class="g2">
+  <div class="bars syn">
+   <div class="row"><span class="k mono" style="font-size:8.2px">die_a_top</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v">179,397 µm²</span></div>
+   <div class="row"><span class="k mono" style="font-size:8.2px">die_b_top</span><div class="track"><div class="fill" style="width:98%"></div></div><span class="v">175,826 µm²</span></div>
+   <div class="row"><span class="k mono" style="font-size:8.2px">link_layer</span><div class="track"><div class="fill" style="width:49.8%"></div></div><span class="v">89,296 µm²</span></div>
+   <div class="row"><span class="k mono" style="font-size:8.2px">async_fifo 80b×16</span><div class="track"><div class="fill" style="width:29.3%"></div></div><span class="v">52,577 µm²</span></div>
+   <div class="row"><span class="k mono" style="font-size:8.2px">replay_buffer</span><div class="track"><div class="fill" style="width:27.9%"></div></div><span class="v">50,064 µm²</span></div>
+   <div class="row"><span class="k mono" style="font-size:8.2px">flit_rx · flit_tx</span><div class="track"><div class="fill" style="width:9.7%"></div></div><span class="v">17.4k · 13.3k</span></div>
+  </div>
+  <div class="box" style="background:var(--amber-l)">
+   <h4>Estimated clock: about 48 MHz</h4>
+   <p style="margin:0;font-size:9.6px">The worst combinational path is about 20.8 ns in <code>link_layer</code>: replay-buffer read mux, header assembly and the 112-bit parallel CRC (about 9.0 ns on its own). This has no wires, clock tree or setup time, and OpenSTA is not installed, so it is a rough estimate. About 2,600 of the ~4,300 flops per die are the flop-based replay and FIFO arrays.</p>
+  </div>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>11 / 12</span></div>
+</section>
+
+<!-- =============================================================== 12 LESSONS / NEXT -->
+<section class="page">
+ <div class="hdr"><span><b>D2D-Link</b> Project report</span><span>Findings and next steps</span></div>
+ <div class="eyebrow">11 Findings, limitations and next steps</div>
+ <h1>What the tests found, what the design does not do, and what comes next</h1>
+ <p class="lede">The bug log keeps the record honest. Real RTL defects are listed separately from testbench mistakes and from behaviour that only looked like a bug.</p>
+
+ <div class="g2" style="margin-top:6px">
+  <div>
+   <h3>The real RTL bug: AXI READY high while still in reset</h3>
+   <div class="diagram" style="padding:10px 12px">
+    <svg viewBox="0 0 310 132">
+     <rect x="96" y="2" width="68" height="114" fill="#FCE6DD" opacity=".7"/>
+     <text x="96" y="128" class="lbo">the window: handshake accepted, flops still in reset</text>
+     <g class="lb mono"><text x="0" y="18">clk_axi_a</text><text x="0" y="42">rst pin</text><text x="0" y="64">rst sync</text><text x="0" y="86">AWREADY</text><text x="0" y="108">AWVALID</text></g>
+     <path d="M62 22 v-10 h17 v10 h17 v-10 h17 v10 h17 v-10 h17 v10 h17 v-10 h17 v10 h17 v-10 h17 v10 h17 v-10 h17 v10 h17 v-10 h17 v10" fill="none" stroke="#8B929C"/>
+     <path d="M62 46 h34 v-10 h214" fill="none" stroke="#15171C" stroke-width="1.3"/>
+     <path d="M62 68 h102 v-10 h146" fill="none" stroke="#15171C" stroke-width="1.3"/>
+     <path d="M62 90 h34 v-10 h68 v10 h12 v-10 h134" fill="none" stroke="#E4572E" stroke-width="1.5"/>
+     <path d="M62 112 h40 v-10 h44 v10 h164" fill="none" stroke="#3461C4" stroke-width="1.3"/>
+     
+    </svg>
+   </div>
+   <div class="warn" style="margin-top:8px">
+    <p style="margin:0 0 5px;font-size:9.6px">The pin reset deasserts 2 clocks before the internally synchronized reset. In that window the slave adapter built <code>AWREADY</code> from reset-state values, so it read 1. A host that started right after reset completed an AW handshake that the still-in-reset flops never captured: the W beats were never accepted and the bus hung. <code>apb_csr.pready</code> had the same flaw.</p>
+    <p style="margin:0;font-size:9.6px"><b>Caught by</b> <code>reset_during_traffic</code>, seed 112. <b>Fix:</b> gate AWREADY, ARREADY, WREADY and PREADY with the synchronized reset. <b>Lesson:</b> every combinational handshake output must be qualified by the domain's synchronized reset, not only its registers.</p>
+   </div>
+
+   <h3>Looked like a bug, was the specification</h3>
+   <p style="font-size:9.8px">At a uniform 3% flit error rate the link went to FAILED. The retrain threshold is more than 8 bad flits per 256 (about 3.1%), so 3% regularly crosses it, retrains recur, the budget of 4 runs out and FAILED follows, exactly as specified. <code>crc_error_retry</code> now injects 1%; escalation is covered by its own tests. The thresholds encode a bit-error-rate budget, and the registers make it tunable.</p>
+
+   <h3>Testbench bugs <small>5, none weakened a check</small></h3>
+   <table class="t tight">
+    <tr><td><b>T1</b></td><td>BFMs sampled READY after the edge; now drive on falling edge, sample before rising</td></tr>
+    <tr><td><b>T2</b></td><td>loopback test released <code>rb_valid</code> a cycle early</td></tr>
+    <tr><td><b>T3</b></td><td>dense traffic meant NAK always beat the timeout; added a sparse phase</td></tr>
+    <tr><td><b>T4</b></td><td>host driver kept W beats for an AW lost to reset; added a reset epoch</td></tr>
+    <tr><td><b>T5</b></td><td>scoreboard counted reset-flushed transactions as missing</td></tr>
+   </table>
+  </div>
+  <div>
+   <h3>Known limitations <small>docs/spec.md §9</small></h3>
+   <div class="box">
+    <ul class="b" style="font-size:9.6px">
+     <li><b>Throughput:</b> Die B runs one transaction at a time, with no per-ID reordering.</li>
+     <li><b>Efficiency:</b> one flit per AXI beat: 80 useful bits of 128, 4 link cycles per beat.</li>
+     <li><b>Scope:</b> only INCR bursts verified; no exclusive access, QoS, cache or prot signals.</li>
+     <li><b>Reset:</b> both dies assumed to reset together; no single-die reset mid-traffic.</li>
+     <li><b>Recovery:</b> FAILED needs software to toggle ENABLE (traffic is preserved).</li>
+     <li><b>PHY:</b> ideal parallel lane; no deskew, scrambling or lane repair; framing trusted.</li>
+     <li><b>SV-UVM:</b> <code>uvm_sv/</code> is syntax-checked only, never simulated locally.</li>
+    </ul>
+   </div>
+
+   <h3>What would come next</h3>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+    <div class="card"><h4>1 &#183; Run the SV-UVM agent</h4><p>Simulate <code>uvm_sv/</code> on EDA Playground (UVM 1.2) against <code>die_a_top</code>.</p></div>
+    <div class="card"><h4>2 &#183; Raise the clock</h4><p>Register the CRC check, CRC per 32-bit beat, SRAM for the replay and FIFO arrays.</p></div>
+    <div class="card"><h4>3 &#183; Raise throughput</h4><p>Per-ID reordering at Die B; more than one beat per flit.</p></div>
+    <div class="card"><h4>4 &#183; Closer to a real link</h4><p>PHY model, independent die resets, OpenSTA timing, code coverage.</p></div>
+   </div>
+
+   <div class="dark" style="margin-top:12px">
+    <h4>Reproduce everything</h4>
+<pre>make image    <i># build the Docker tool container</i>
+make lint     <i># Verilator -Wall + Verible</i>
+make unit     <i># block-level cocotb tests</i>
+make regress  <i># 44 jobs, 2 seeds, 15-min cap</i>
+make formal   <i># SymbiYosys proofs</i>
+make syn      <i># Yosys + SKY130 estimates</i>
+make report   <i># coverage report from logs</i></pre>
+   </div>
+  </div>
+ </div>
+
+ <div class="callout" style="margin-top:14px">
+  <h4>In one sentence</h4>
+  <p style="margin:0">D2D-Link moves AXI transactions between two dies over a lossy, clock-crossing link without losing, duplicating or reordering a single one, and every claim in this report traces to a test, a proof or a log file.</p>
+ </div>
+ <div class="ftr"><span>D2D-Link · Project report</span><span>12 / 12</span></div>
+</section>
+
+</body>
+</html>

@@ -260,7 +260,7 @@ steps = [("1", "The big picture", "What a die-to-die link is, what D2D-Link does
          ("5", "A transaction's journey", "One AXI write followed hop by hop"),
          ("6", "Verification", "pyuvm testbench, fault injection, coverage, formal"),
          ("7", "Results and lessons", "The bug found, synthesis estimates, limitations"),
-         ("8", "Interview prep", "Likely questions, answered from the design")]
+         ("8", "Design Q&A", "Common design questions, answered from the RTL")]
 for i, (n, t, d) in enumerate(steps):
     col, row = i % 2, i // 2
     x = M + col * (COL + GAP)
@@ -756,9 +756,9 @@ for i, (k, n, hit) in enumerate(items):
     text(x + 122 + bw, yy - 9, f"{hit}/{n}", "UI", 6.6, SUB)
 c.showPage()
 
-# ================================================================== PAGE 8 - results, lessons, interview
-y = page_frame(8, "Steps 7 + 8", "Results, lessons and interview prep",
-               "What was found, what it costs in silicon, and how to talk about it")
+# ================================================================== PAGE 8 - results, lessons, design Q&A
+y = page_frame(8, "Steps 7 + 8", "Results, lessons and design Q&A",
+               "What was found, what it costs in silicon, and why it is built this way")
 yl = section(M, y, "The real RTL bug the tests caught", RED)
 yl = callout(M, yl - 2, COL, "AXI READY high while the block was still in reset",
              "When reset is released at the pin, each domain's internal reset stays active for 2 more clocks (the "
@@ -785,7 +785,7 @@ yl = para("Standard-cell area only, no routing. The worst combinational path is 
           "of about 2,600 flops per die for the buffers.", M, yl, COL, BODY_S)
 
 x2 = M + COL + GAP
-yr = section(x2, y, "Questions an interviewer will ask", BLUE)
+yr = section(x2, y, "Common design questions", BLUE)
 qa = [("Why cumulative ACK and credit counts?",
        "An increment lost with a corrupted flit is gone for good: a credit leaks and the link eventually deadlocks. A "
        "running total heals itself: the next good flit carries it and the transmitter takes the difference."),

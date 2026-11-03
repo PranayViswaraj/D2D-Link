@@ -111,4 +111,4 @@ flit boundary) + 4 + 1 + 5 ≈ 24 link cycles, well under `REPLAY_TIMEOUT` (128/
    The replay buffer stores only the 80-bit body. The SEQ of the flit being sent is `rd_seq`
    itself, and the storage index is `rd_seq[log2(DEPTH)-1:0]`.
 5. **Strict in-order AXI execution at Die B.** This keeps the ordering proof trivial and the
-   scoreboard exact. It is a deliberate scope reduction for the 2-hour budget.
+   scoreboard exact. It is a deliberate scope reduction: throughput is traded for an exact ordering model.
